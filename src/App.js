@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import Webcam from "react-webcam";
-import Tensor from "tensor"
+import * as tf from '@tensorflow/tfjs';
 
 function App() {
   const WebcamComponent = () => <Webcam />;

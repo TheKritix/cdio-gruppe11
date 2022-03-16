@@ -1,0 +1,12 @@
+
+.Button-options {
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    grid-gap: 30px;
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+}

@@ -1,0 +1,17 @@
+#canvas {
+    background-color: transparent;
+}
+
+#overlay {
+    position: absolute;
+    z-index: 10;
+}
+
+#webcamLayer {
+    position: absolute;
+}
+
+#start {
+    position: absolute;
+    top: 800px;
+}

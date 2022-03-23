@@ -11,12 +11,17 @@
 .frontpage-logo{
     width: 500px;
     height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
     
 }
 
 .title{
     text-align: center;
     font-size: 50px;
+    
     
 
 }
@@ -29,10 +34,11 @@
 }
 
 .buttonDesign{
-    background-color: yellow;
+    background-color: white;
     height: 40px;
     font-size: 20px;
     border-radius: 10px;
+    width: 200px;
     
 }
 

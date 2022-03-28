@@ -1,18 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react";
-import Webcam from "react-webcam";
-import Tensor from "tensor"
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import Homepage from './Pages/HomePage';
+
 
 function App() {
-  const WebcamComponent = () => <Webcam />;
   return (
-    <div className="App">
-      <header className="App-header">
-        <Webcam
-        ></Webcam>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

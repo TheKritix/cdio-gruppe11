@@ -9,8 +9,7 @@ function HomePage() {
      <div className='title'>
     Solitaire
      </div>
-
-    
+ 
  <div className='emoji iwazaru'>
 🙊 
  </div>
@@ -26,8 +25,10 @@ function HomePage() {
  <div className='emoji heart'>
  ❤️ 
  </div>
-
  </div>
+
+ 
+ 
  
     )
 }

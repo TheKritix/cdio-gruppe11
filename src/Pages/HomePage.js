@@ -2,66 +2,100 @@ import React, { Component, useState } from 'react';
 import './HomePage.css';
 import styled from 'styled-components';
 import {useInterval} from 'react-use';
+import { FlyingCards } from './FlyingCards';
 
-function Rain() {
-    const [cardToRender, setCardToRender] = useState([{key: 0, card: '', offset: 0}]);
+/**
+ * https://codepen.io/robertheiser/pen/NXrqXa 
+ */
 
-    useInterval(() => {
-        if (cardToRender.length > 20){
-            cardToRender.shift();
-        }
-        const offset = Math.floor(Math.random() * 1000); 
-        const key = Math.floor(Math.random() * 100000);
-        const card = '🃏'
-        cardToRender.push({offset,key,card})
 
-        setCardToRender([...cardToRender]);
-    }, 100);
-
-    return(
-        <SuperContainer>
-        {cardToRender.map(({key, card, offset}) => {
-           return( 
-           <CardContainer key={key} offset={offset}>
-                {card}
-            </CardContainer>
-        )
-        })}
-        </SuperContainer>
-    );
-}
 
 function Homepage() {
         return(
             <>
-            <div className='landingpage'>
-            <Rain></Rain>
+           <div id="all">
+                <div id="container">
+                    <div id="animate">
+                    </div>
+                </div>
             </div>
-        
+            <div id="text">     
+                <h2>SOLITAIRE</h2>
+            </div>
+            animate();
              </>
             
         )
 }
 
-const SuperContainer = styled.div `
-    display: flex;
-    witdh: 100%; 
-    align-items: center;
-`;
+var container = document.getElementById('animate');
+var emoji = ['🃏','♥️'];
+var circles = [];
 
-const CardContainer = styled.div`
-@keyframes falldown {
-        0% { margin-top: 0;}
-        100% {margin-top: 1000px;}
-}    
+for (var i = 0; i < 15; i++) {
+  addCircle(i * 150, [10 + 0, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 + 0, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 - 200, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 + 200, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 - 400, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 + 400, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 - 600, -300], emoji[Math.floor(Math.random() * emoji.length)]);
+  addCircle(i * 150, [10 + 600, 300], emoji[Math.floor(Math.random() * emoji.length)]);
+}
 
-position: absolute;
-top:80px;
-left: ${props => props.offset}px;
-font-size: 45px;
-animation-name: falldown;
-animation-duration: 4s;
-`;
+
+
+function addCircle(delay, range, color) {
+  setTimeout(function() {
+    var c = new Circle(range[0] + Math.random() * range[1], 80 + Math.random() * 4, color, {
+      x: -0.15 + Math.random() * 0.3,
+      y: 1 + Math.random() * 1
+    }, range);
+    circles.push(c);
+  }, delay);
+}
+
+function Circle(x, y, c, v, range) {
+  var _this = this;
+  this.x = x;
+  this.y = y;
+  this.color = c;
+  this.v = v;
+  this.range = range;
+  this.element = document.createElement('span');
+  /*this.element.style.display = 'block';*/
+  this.element.style.opacity = 0;
+  this.element.style.position = 'absolute';
+  this.element.style.fontSize = '26px';
+  this.element.style.color = 'hsl('+(Math.random()*360|0)+',80%,50%)';
+  this.element.innerHTML = c;
+  container.appendChild(this.element);
+
+  this.update = function() {
+    if (_this.y > 800) {
+      _this.y = 80 + Math.random() * 4;
+      _this.x = _this.range[0] + Math.random() * _this.range[1];
+    }
+    _this.y += _this.v.y;
+    _this.x += _this.v.x;
+    this.element.style.opacity = 1;
+    this.element.style.transform = 'translate3d(' + _this.x + 'px, ' + _this.y + 'px, 0px)';
+    this.element.style.webkitTransform = 'translate3d(' + _this.x + 'px, ' + _this.y + 'px, 0px)';
+    this.element.style.mozTransform = 'translate3d(' + _this.x + 'px, ' + _this.y + 'px, 0px)';
+  };
+}
+
+function animate() {
+  for (var i in circles) {
+    circles[i].update();
+  }
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+
+
 
 
 

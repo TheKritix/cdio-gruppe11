@@ -10,7 +10,6 @@ function HomePage() {
     Solitaire
      </div>
 
-    
  <div className='emoji iwazaru'>
 🙊 
  </div>

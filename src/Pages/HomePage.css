@@ -5,12 +5,11 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    margin: auto;
-    padding-top: -1000px;
     background: linear-gradient(180deg, #000, #10a329);
     background-size: 100% 100%;
     animation: sky 50s ease infinite;
     z-index: 1;
+    
     
   }
   
@@ -36,29 +35,29 @@
   }
 
 
-  .card1Btn:hover{
+  .oneCardBtn:hover{
     background-color: #3e8e41;
     
   }
     
-  .card1Btn:active{
+  .oneCardBtn:active{
     background-color: #3e8e41;
     box-shadow: 0 3px #666;
     transform: translate(4px);
   }
 
-  .card3Btn:hover{
+  .threeCardBtn:hover{
     background-color: #3e8e41;
   }
     
-  .card3Btn:active{
+  .threeCardBtn:active{
 
     background-color: #3e8e41;
     box-shadow: 0 3px #666;
     transform: translate(4px);
   }
 
-  .card1Btn{
+  .oneCardBtn{
     width: 200px;
     margin-right: 40px;
     border-radius: 8px;
@@ -69,7 +68,7 @@
 
   }
 
-  .card3Btn{
+  .threeCardBtn{
     width: 200px;
     border-radius: 8px;
     font-size: 20px;
@@ -77,63 +76,55 @@
     box-shadow: 0px 0px 12px -2px; 
     background-color: rgb(255, 240, 211);
 
-    
-
 
   }
   
-  .emoji {
+  .card {
     display: block;
     position: relative;
     top: -10px;
     animation: rain linear infinite;
     transform: translate3d(0,0,0);
     z-index: -1;
-  
 
   }
   
-  .iwazaru {
+  .one {
     animation-duration: 4s;
+   
 
   }
 
-  .bomb {
+  .two {
     animation-duration: 5s;
     
   }
   
-  .fire {
+  .three {
     animation-duration: 3s;
     
   }
   
-  .percent {
-    animation-duration: 6s;
+  .four {
+    animation-duration: 4s;
     
   }
   
-  .heart {
+  .five {
     animation-duration: 4.5s;
     
   }
 
-  
-  .card3{
+  .six{
     animation-duration: 5s;
   }
 
-  .card5{
-    animation-duration: 4s;
-  }
-
-  .card9{
+  .seven{
     animation-duration: 6s;
   }
 
-  .card10{
-    animation-duration: 4.5s;
-  }
+
+  
   
 
 

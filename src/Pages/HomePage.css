@@ -11,7 +11,6 @@
     background-size: 100% 100%;
     animation: sky 50s ease infinite;
     z-index: 1;
-    
   }
   
   .title {
@@ -30,57 +29,9 @@
     display: flex;
     justify-content: center;
     top: 60%;
-    height: 50px;
-    
-    
+    height: 50px; 
   }
 
-
-  .card1Btn:hover{
-    background-color: #3e8e41;
-    
-  }
-    
-  .card1Btn:active{
-    background-color: #3e8e41;
-    box-shadow: 0 3px #666;
-    transform: translate(4px);
-  }
-
-  .card3Btn:hover{
-    background-color: #3e8e41;
-  }
-    
-  .card3Btn:active{
-
-    background-color: #3e8e41;
-    box-shadow: 0 3px #666;
-    transform: translate(4px);
-  }
-
-  .card1Btn{
-    width: 200px;
-    margin-right: 40px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-family: 'Cinzel', serif;    
-    box-shadow: 0px 0px 12px -2px; 
-    background-color: rgb(255, 240, 211);
-
-  }
-
-  .card3Btn{
-    width: 200px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-family: 'Cinzel', serif;
-    box-shadow: 0px 0px 12px -2px; 
-    background-color: rgb(255, 240, 211);
-
-    
-
-
-  }
   
   .emoji {
     display: block;

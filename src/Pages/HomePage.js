@@ -38,9 +38,6 @@ function HomePage() {
  <div className='emoji heart'>
  <img src={card7} height="200"></img>
  </div>
- 
-
-
  </div>
 
  

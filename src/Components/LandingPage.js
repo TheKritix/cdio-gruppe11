@@ -18,8 +18,7 @@ class LandingPage extends Component {
            <div className='landingpage'>
                <div className='title'>Solitaire</div>
                 <ul className='button-list'>
-                    <button id='card1Btn' className='button'> 1 Card </button>
-                    <button id='card3Btn' className='button'>3 Card</button>
+                    <button id='startButton' className='button'>Start Game</button>
                 </ul>
                 <div className='deck card1'>
                     <img src={Card1} alt ='Joker' height="150"></img>

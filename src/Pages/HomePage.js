@@ -8,8 +8,7 @@ import './HomePage.css';
 function HomePage() {
 return(
     <>
-    <LandingPage id='landingpage'></LandingPage>
-    <PopUp id='popup'></PopUp>
+    <LandingPage></LandingPage>
     </>
     )
 }

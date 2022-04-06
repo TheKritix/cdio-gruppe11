@@ -15,6 +15,14 @@ import './LandingPage.css';
 class LandingPage extends Component {
     render() {
         return(
+            <>
+            <div className='popup-div'>
+             <h1>Welcome to Solitaire</h1>
+             <p>
+                 Take a picture of you solitaire and get the best next move. 
+             </p>
+             <button><a href='/landingpage'> Got it!</a></button>
+         </div>
            <div className='landingpage'>
                <div className='title'>Solitaire</div>
                 <ul className='button-list'>
@@ -48,6 +56,7 @@ class LandingPage extends Component {
                     <img src={Card10} alt ='Back of card2' height="200"></img>
                 </div>
            </div>
+           </>
         );
     }
 }

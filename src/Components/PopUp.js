@@ -11,7 +11,7 @@ class PopUp extends Component {
              <p>
                  Take a picture of you solitaire and get the best next move. 
              </p>
-             <button>Got It!</button>
+             <button><a href='/landingpage'> Got it!</a></button>
          </div>
         );
     }

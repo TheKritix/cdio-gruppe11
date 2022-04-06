@@ -54,8 +54,6 @@ cursor: pointer;
 border-top: 1px solid #B4B4B4;
 }
 
-
-
 .popup-div button:focus,
 .popup-div button:hover {
 font-weight: bold;
@@ -66,4 +64,9 @@ border-bottom-right-radius: 10px;
 }
 .popup-div button:active {
 background: #D6D6D6;
+}
+
+.popup-div a {
+    text-decoration: none;
+    color: black
 }

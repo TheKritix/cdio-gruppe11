@@ -10,7 +10,7 @@ import card8 from './card8.png';
 import card9 from './card9.png';
 import card10 from './card10.png';
 import LandingPage from '../Components/LandingPage';
-import PopUp from '../Components/PopUp';
+
 
 
 function HomePage() {

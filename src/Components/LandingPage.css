@@ -8,8 +8,10 @@
     background: linear-gradient(180deg, #000, #10a329 );
     background-size: 100% 100%;
     animation: sky 50s ease infinite;
-    z-index: 1;
+    z-index: -1;
 }
+
+
 
 
 @keyframes sky { 
@@ -45,7 +47,12 @@
     font-family: 'Cinzel', serif;    
     box-shadow: 0px 0px 12px -2px; 
     background-color: rgb(255, 240, 211);
+    justify-content: center;
+    height: 50px;
+    margin-left: 600px;
+    margin-right: 200px;
 }
+    
 
   .button:hover {
     background-color: rgb(50, 53, 52);
@@ -64,6 +71,8 @@
     transform: translate3d(0,0,0);
     z-index: -1;
   }
+
+
 
 .card1 {
       animation-duration: 4s;
@@ -110,10 +119,7 @@
 
 
 
-  body {
-    background: black;
-    font-family: 'Cinzel', serif;
-    }
+
     
     @keyframes fade {
     from {
@@ -124,7 +130,14 @@
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
     }
-    
+    }
+
+    .popup-wrap {
+        background-color: rgba(0,0,0, .80);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+
     }
     .popup-div {
     position: absolute;
@@ -141,7 +154,9 @@
     margin: 0;
     border-top: 1px solid white;
     animation: fade 1s ease 1 forwards;
+    z-index: 1;
     }
+
     .popup-div h1 {
     text-align: center;
     font-size: 1.2rem;
@@ -183,5 +198,7 @@
     }
 
  
-
+.startbutton {
+   
+}
   

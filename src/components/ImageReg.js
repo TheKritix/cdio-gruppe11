@@ -3,6 +3,7 @@ import Webcam from "react-webcam";
 import * as tensorflow from "@tensorflow/tfjs";
 import * as coco from "@tensorflow-models/coco-ssd";
 import "./ImageReg.css";
+import testimg from './Udklip.PNG'
 
 // Source for ML https://github.com/manfye/tfjs-article-objDetection/blob/main/src/App.js
 
@@ -89,6 +90,7 @@ function ImageReg() {
       <button id="start" onClick={runModel}>
         Start
       </button>
+      <img id = "img" alt="something" src={testimg}/>
     </div>
   );
 }

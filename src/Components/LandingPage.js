@@ -18,11 +18,11 @@ class LandingPage extends Component {
         return(
 <><div className='landingpage'>
            
-           <div className='popUp'>
+           {/* <div className='popUp'>
             <h1>Confirm</h1>
              <p>Accept use of camera</p>
             <button className='popUpBtn' onClick="close">Confirm</button>
-            </div>
+            </div> */}
         
 
                <div className='title'>Solitaire</div>

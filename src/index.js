@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import ImageReg from './components/ImageReg'
+//import App from './App';
+//import ImageReg from './components/ImageReg';
 import reportWebVitals from './reportWebVitals';
+import RoboReg from './components/rf-imageReg/rf-ir';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ImageReg/>
+    <RoboReg/>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import * as tensorflow from "@tensorflow/tfjs";
-import * as coco from "@tensorflow-models/coco-ssd";
+//import * as coco from "@tensorflow-models/coco-ssd";
 import "./ImageReg.css";
 import testimg from './Udklip.PNG'
 
@@ -21,7 +21,7 @@ function ImageReg() {
   };
 
   async function modelLoad() {
-    const mlModel = await coco.load();
+    //const mlModel = await coco.load();
     setMlModel(mlModel);
   }
 

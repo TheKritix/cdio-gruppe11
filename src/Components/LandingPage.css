@@ -121,16 +121,7 @@
 
 
     
-    @keyframes fade {
-    from {
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    }
+
 
     .popup-wrap {
         background-color: rgba(0,0,0, .80);

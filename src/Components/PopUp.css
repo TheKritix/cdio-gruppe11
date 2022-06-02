@@ -1,47 +1,44 @@
 /* Popup style */
-.popupBox {
+
+/* .popupBox {
   position: fixed;
   background: #00000050;
   width: 100%;
   height: 100vh;
   top: 0;
   left: 0;
-}
+  font-family: 'Cinzel', serif;
+} */
  
-.popup {
-  position: relative;
-  width: 50%;
+
+/*the popup window design*/
+ .popup {
+  position: absolute;
+  width: 80%;
   margin: 0 auto;
   height: auto;
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: #fff;
+  background: #E2E2E2;
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
-}
- 
-
-.PopUp {
-  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
   min-width: 280px;
   max-width: 500px;
-  height: auto;
-  background: #E2E2E2;
+  animation: fade 1s ease 1 forwards;
+  z-index: 1;
   border-radius: 10px;
   padding: 0;
   margin: 0;
   border-top: 1px solid white;
-  animation: fade 1s ease 1 forwards;
-  z-index: 1;
-  }
+}
+  
 
-
+/* 
   .close{
     background: transparent;
     border: none;
@@ -53,15 +50,17 @@
     bottom: 0;
     cursor: pointer;
     border-top: 1px solid #B4B4B4;
-    }
+    } */
 
-    .PopUpBox {
+    /* makes the background blur when the popup window is showen*/
+     .PopUpBox {
       background-color: rgba(0,0,0, .80);
       width: 100%;
       height: 100%;
       position: absolute;
-    }
+    } 
 
+    /*makes the popup window fade on the screen when reloade the page*/
     @keyframes fade {
       from {
         opacity: 0;

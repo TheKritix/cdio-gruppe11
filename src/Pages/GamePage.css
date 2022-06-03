@@ -1,0 +1,22 @@
+.container-gamepage {
+    background: linear-gradient(180deg, #000, #10a329 );
+    position: absolute;
+    height: 100%;
+    width: 100%;     
+}
+
+.table-div {
+    color: white;
+}
+
+.advance-div {
+    display: flex;
+    justify-content: center;
+    margin-top: 40%;
+}
+
+.advance-button {
+    width: 450px;
+    height: 200px;
+    font-size: 18px;
+}

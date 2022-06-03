@@ -1,13 +1,13 @@
-import Card1 from "../assets/Images/card1.png";
-import Card2 from "../assets/Images/card2.png";
-import Card3 from "../assets/Images/card3.png";
-import Card4 from "../assets/Images/card4.png";
-import Card5 from "../assets/Images/card5.png";
-import Card6 from "../assets/Images/card6.png";
-import Card7 from "../assets/Images/card7.png";
-import Card8 from "../assets/Images/card8.png";
-import Card9 from "../assets/Images/card9.png";
-import Card10 from "../assets/Images/card10.png";
+import Card1 from "../Assets/Images/card1.png";
+import Card2 from "../Assets/Images/card2.png";
+import Card3 from "../Assets/Images/card3.png";
+import Card4 from "../Assets/Images/card4.png";
+import Card5 from "../Assets/Images/card5.png";
+import Card6 from "../Assets/Images/card6.png";
+import Card7 from "../Assets/Images/card7.png";
+import Card8 from "../Assets/Images/card8.png";
+import Card9 from "../Assets/Images/card9.png";
+import Card10 from "../Assets/Images/card10.png";
 import "./LandingPage.css";
 import { useState } from "react";
 import PopUp from "./PopUp";
@@ -66,7 +66,7 @@ const Landingpage = () => {
         </div>
       </div>
       <ul className="button-list">
-        <a href="http://senguash.com">
+        <a href="/gamepage">
           <button id="startButton" className="button">
             Start Game
           </button>

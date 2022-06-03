@@ -29,6 +29,7 @@
     color: rgb(255, 255, 255);
     text-shadow: 0 9px 9px rgba(0,0,0, .25);
     font-family: 'Cinzel', serif;
+    
 }
 
 .button-list{
@@ -36,12 +37,15 @@
     display: flex;
     justify-content: center;
     top: 60%;
-    height: 50px; 
+    height: 70px; 
+    width: 100%;
+     
 }
+
+
 
 .button{
     width: 200px;
-    margin-right: 40px;
     border-radius: 8px;
     font-size: 20px;
     font-family: 'Cinzel', serif;    
@@ -49,8 +53,7 @@
     background-color: rgb(255, 240, 211);
     justify-content: center;
     height: 50px;
-    margin-left: 600px;
-    margin-right: 200px;
+     
 }
     
 
@@ -185,7 +188,5 @@
     }
 
  
-.startbutton {
-   
-}
+
   

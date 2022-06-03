@@ -73,13 +73,13 @@ const Landingpage = () => {
         </div>
       </div>
       <div className="button-list">
-      <ul>
+
         <a href="http://senguash.com">
           <button id="startButton" className="button" onClick={handleStartBtn}>
             Start Game
           </button>
         </a>
-      </ul>
+
       </div>
     </>
   );

@@ -7,6 +7,8 @@ import PopUpPage from './Pages/PopUpPage';
 
 
 function App() {
+  document.title = "Solitaire"
+
   return (
     <BrowserRouter>
       <Routes>

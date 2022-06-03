@@ -1,127 +1,129 @@
 .landingpage {
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(180deg, #000, #10a329 );
-    background-size: 100% 100%;
-    animation: sky 50s ease infinite;
-    z-index: -1;
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #000, #10a329);
+  background-size: 100% 100%;
+  animation: sky 50s ease infinite;
+  z-index: -1;
+  -moz-user-select: none;
+-webkit-user-select: none;
+user-select: none;
 }
 
-
-
-
-@keyframes sky { 
-    0%   { background-position: 50% 0 }
-    50%  { background-position: 50% 100%; }
-    100% { background-position: 50% 0 }
+@keyframes sky {
+  0% {
+    background-position: 50% 0;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0;
+  }
 }
 
 .title {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 150px;
-    color: rgb(255, 255, 255);
-    text-shadow: 0 9px 9px rgba(0,0,0, .25);
-    font-family: 'Cinzel', serif;
-    
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+  font-family: "Cinzel", serif;
+
 }
 
-.button-list{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    top: 60%;
-    height: 70px; 
-    width: 100%;
-     
+.button-list {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 60%;
+  height: 70px;
+  width: 100%;
 }
 
-
-
-.button{
-    width: 200px;
-    border-radius: 8px;
-    font-size: 20px;
-    font-family: 'Cinzel', serif;    
-    box-shadow: 0px 0px 12px -2px; 
-    background-color: rgb(255, 240, 211);
-    justify-content: center;
-    height: 50px;
-     
+.button {
+  width: 200px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: "Cinzel", serif;
+  box-shadow: 0px 0px 12px -2px;
+  background-color: rgb(255, 240, 211);
+  justify-content: center;
+  height: 50px;
 }
-    
 
-  .button:hover {
-    background-color: rgb(50, 53, 52);
-    color: white;
+.button:hover {
+  background-color: rgb(50, 53, 52);
+  color: white;
 }
-  .button:active{
-    background-color: rgb(44, 43, 40);
-    transform: translate(4px);
-  }
+.button:active {
+  background-color: rgb(44, 43, 40);
+  transform: translate(4px);
+}
 
-  .deck {
-    display: block;
-    position: relative;
-    top: -10px;
-    animation: rain linear infinite;
-    transform: translate3d(0,0,0);
-    z-index: -1;
-  }
-
-
+.deck {
+  display: block;
+  position: relative;
+  top: -10px;
+  animation: rain linear infinite;
+  transform: translate3d(0, 0, 0);
+  z-index: -1;
+}
 
 .card1 {
-      animation-duration: 4s;
-  }
-  
+  animation-duration: 4s;
+}
+
 .card2 {
-    animation-duration: 5.5s;
+  animation-duration: 5.5s;
 }
 
 .card3 {
-    animation-duration: 4.1s;
+  animation-duration: 4.1s;
 }
 
 .card4 {
-    animation-duration: 6s;
+  animation-duration: 6s;
 }
 
 .card5 {
-    animation-duration: 4.5s;
+  animation-duration: 4.5s;
 }
 
 .card6 {
-    animation-duration: 4.7s;
+  animation-duration: 4.7s;
 }
 
 .card7 {
-    animation-duration: 5s;
+  animation-duration: 5s;
 }
 .card8 {
-    animation-duration: 3.5s;
+  animation-duration: 3.5s;
 }
 
 .card9 {
-    animation-duration: 3.8s;
+  animation-duration: 3.8s;
 }
 .card10 {
-    animation-duration: 4.2s;
+  animation-duration: 4.2s;
 }
 
 @keyframes rain {
-    from { top: -30%;}
-    to   { top: 100%;}
+  from {
+    top: -30%;
   }
+  to {
+    top: 100%;
+  }
+}
 
-
-    /* .popup-wrap {
+/* .popup-wrap {
         background-color: rgba(0,0,0, .80);
         width: 100%;
         height: 100%;
@@ -129,64 +131,59 @@
 
     } */
 
-    .popup-div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    min-width: 280px;
-    max-width: 500px;
-    height: auto;
-    background: #E2E2E2;
-    border-radius: 10px;
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid white;
-    animation: fade 1s ease 1 forwards;
-    z-index: 1;
-    }
+.popup-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  min-width: 280px;
+  max-width: 500px;
+  height: auto;
+  background: #e2e2e2;
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid white;
+  animation: fade 1s ease 1 forwards;
+  z-index: 1;
+}
 
-    .popup-div h1 {
-    text-align: center;
-    font-size: 1.2rem;
-    margin: 1.5rem 1rem 0.5rem;
-    }
-    .popup-div p {
-    text-align: center;
-    font-size: 1rem;
-    margin: 0 2rem 4.5rem;
-    }
-    .popup-div button {
-    background: transparent;
-    border: none;
-    color: black;
-    height: 3rem;
-    font-size: 1rem;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    cursor: pointer;
-    border-top: 1px solid #B4B4B4;
-    }
-    
-    .popup-div button:focus,
-    .popup-div button:hover {
-    font-weight: bold;
-    background: #EFEFEF;
-    border-bottom-left-radius: 10px ;
-    border-bottom-right-radius: 10px;
-    
-    }
-    .popup-div button:active {
-    background: #D6D6D6;
-    }
-    
-    .popup-div a {
-        text-decoration: none;
-        color: black
-    }
+.popup-div h1 {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 1.5rem 1rem 0.5rem;
+}
+.popup-div p {
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 2rem 4.5rem;
+}
+.popup-div button {
+  background: transparent;
+  border: none;
+  color: black;
+  height: 3rem;
+  font-size: 1rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+  border-top: 1px solid #b4b4b4;
+}
 
- 
+.popup-div button:focus,
+.popup-div button:hover {
+  font-weight: bold;
+  background: #efefef;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.popup-div button:active {
+  background: #d6d6d6;
+}
 
-  
+.popup-div a {
+  text-decoration: none;
+  color: black;
+}

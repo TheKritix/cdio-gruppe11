@@ -16,7 +16,14 @@ const Landingpage = () => {
   const [isOpen, setisOpen] = useState(true);
   const togglePopup = () => {
     setisOpen(!isOpen);
+
   };
+
+  const [startBtn, setStartBtn] = useState(false);
+  const handleStartBtn = () => {
+    setStartBtn(!startBtn);
+  };
+
 
   return (
     <>
@@ -65,13 +72,15 @@ const Landingpage = () => {
           <img src={Card10} alt="Back of card2" height="200"></img>
         </div>
       </div>
-      <ul className="button-list">
-        <a href="/gamepage">
-          <button id="startButton" className="button">
+      <div className="button-list">
+      <ul>
+        <a href="http://senguash.com">
+          <button id="startButton" className="button" onClick={handleStartBtn}>
             Start Game
           </button>
         </a>
       </ul>
+      </div>
     </>
   );
 };

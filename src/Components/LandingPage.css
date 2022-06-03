@@ -9,10 +9,12 @@
   background-size: 100% 100%;
   animation: sky 50s ease infinite;
   z-index: -1;
+  /*Make images and title not selectable */
   -moz-user-select: none;
--webkit-user-select: none;
-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
+
 
 @keyframes sky {
   0% {
@@ -26,6 +28,7 @@ user-select: none;
   }
 }
 
+/*headline*/
 .title {
   position: absolute;
   top: 35%;
@@ -35,9 +38,9 @@ user-select: none;
   color: rgb(255, 255, 255);
   text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
   font-family: "Cinzel", serif;
-
 }
 
+/*div for game button*/
 .button-list {
   position: absolute;
   display: flex;
@@ -47,6 +50,7 @@ user-select: none;
   width: 100%;
 }
 
+/*Start game button*/
 .button {
   width: 200px;
   border-radius: 8px;
@@ -67,6 +71,7 @@ user-select: none;
   transform: translate(4px);
 }
 
+/*div for cards*/
 .deck {
   display: block;
   position: relative;
@@ -76,6 +81,7 @@ user-select: none;
   z-index: -1;
 }
 
+/*time for when cards is falling down*/
 .card1 {
   animation-duration: 4s;
 }
@@ -114,6 +120,7 @@ user-select: none;
   animation-duration: 4.2s;
 }
 
+/*animation start and stop on the screen*/
 @keyframes rain {
   from {
     top: -30%;

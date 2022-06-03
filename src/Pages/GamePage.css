@@ -7,16 +7,22 @@
 
 .table-div {
     color: white;
+    border: solid 1px white;
+    height: 65%;
+    margin-top: 30px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 .advance-div {
     display: flex;
     justify-content: center;
-    margin-top: 40%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .advance-button {
-    width: 450px;
-    height: 200px;
+    width: 400px;
+    height: 150px;
     font-size: 18px;
 }

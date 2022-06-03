@@ -2,8 +2,11 @@
 
 const Card = () => {
 
+
+
     return (
         <>
+            
         </>
     )
 }

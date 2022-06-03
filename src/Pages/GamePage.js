@@ -1,6 +1,7 @@
 import "./GamePage.css";
 import "../Components/GamePage/AdvanceButton.js"
 import AdvanceButton from "../Components/GamePage/AdvanceButton.js";
+import Tableau from "../Components/GamePage/Tableau.js"
 
 
 const GamePage = () => {

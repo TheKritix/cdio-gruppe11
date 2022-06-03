@@ -1,6 +1,7 @@
 import "./GamePage.css";
 import "../Components/GamePage/AdvanceButton.js"
 import AdvanceButton from "../Components/GamePage/AdvanceButton.js";
+import PlayingCardReg from "../Components/rf-imageReg/rf-ir";
 import Tableau from "../Components/GamePage/Tableau.js"
 
 
@@ -10,7 +11,7 @@ const GamePage = () => {
         <>
             <div className="container-gamepage">    
                 <div className="table-div">
-                    Test this thing
+                    <PlayingCardReg/>
                 </div>
                 <div className="advance-div">
                     <AdvanceButton/>
@@ -18,7 +19,7 @@ const GamePage = () => {
             </div>
         </>
     )
-
+    
 }
 
 export default GamePage

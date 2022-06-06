@@ -81,8 +81,8 @@ const PlayingCardReg = () => {
   }
 
   const videoMax = {
-    height: 1080,
-    width: 1920,
+    //width: 1050,
+    height: 620,
     maxWidth: "100vw",
     facingMode: "environment",
   };

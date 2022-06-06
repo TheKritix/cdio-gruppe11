@@ -7,7 +7,6 @@
 
 .table-div {
     color: white;
-    border: solid 1px white;
     height: 65%;
     margin-top: 30px;
     margin-left: 5%;
@@ -25,4 +24,13 @@
     width: 400px;
     height: 150px;
     font-size: 18px;
+}
+
+.movelist-div {
+    color: black;
+    float: right;
+    border: solid 1px black;
+    width: 25%;
+    height: 130%;
+    background-color: gray;
 }

@@ -1,10 +1,10 @@
 import "../../Pages/GamePage.css"
 
-const AdvanceButton = () => {
+const AdvanceButton = ({cameraHandler}) => {
     
     return (
         <>
-            <button className="advance-button">
+            <button className="advance-button" onClick={cameraHandler}>
                 Advances gamestate
                        'OK'
             </button>

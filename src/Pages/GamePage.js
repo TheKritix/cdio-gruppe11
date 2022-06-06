@@ -8,6 +8,12 @@ import React, { useState, useEffect } from "react";
 
 const GamePage = () => {
 
+    const [moves, setMoves] = useState([
+        {id: 1, move: 'Move 9 of hearts to pee of poo'},
+        {id: 2, move: 'Move X of X to X of X'},
+        {id: 3, move: 'Move X of X to X of X'}
+    ])
+
     const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const isCameraOpenHandler = () => {
@@ -23,7 +29,7 @@ const GamePage = () => {
                     {isCameraOpen ? (
                         <PlayingCardReg/>
                     ) : <></>} 
-                    <MoveList/>
+                    <MoveList moves={moves}/>
                 </div>
                   
                 <div className="advance-div">

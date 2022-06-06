@@ -34,3 +34,19 @@
     height: 130%;
     background-color: gray;
 }
+
+.movelist-text {
+    padding-left: 15px;
+}
+
+.movelist-title {
+    padding-left: 15px;
+    color: black;
+}
+
+.movelist-divider {
+    background-color: black;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 5px;
+}

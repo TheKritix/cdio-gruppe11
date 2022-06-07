@@ -69,6 +69,20 @@
   border-top: 1px solid white;
   animation: fade 0.5s ease 1 forwards;
   z-index: 1;
-  align-items: center;
-
+  font-family: "Cinzel", serif;
+  
+  
 }
+h3{
+  text-align: center;
+  font-size: 30px;
+}
+
+
+.closeBtn{
+   border: 1px solid rgb(121,121,121);
+   border-radius: 50%;
+ 
+   }
+
+

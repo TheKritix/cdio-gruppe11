@@ -8,6 +8,8 @@ import React, { useState, useEffect } from "react";
 import PopUp from "../Components/PopUp";
 import { IconButton } from "@material-ui/core";
 import { Help } from "@mui/icons-material";
+import { Close } from "@mui/icons-material";
+import { color } from "@mui/system";
 
 const GamePage = () => {
   const [moves, setMoves] = useState([
@@ -48,12 +50,19 @@ const GamePage = () => {
           <PopUp
             content={
               <div className="popup-div">
+                <IconButton style= {{float: "right", color: "rgb(121,121,121)"}} size="small">
+              <Close className= "closeBtn" onClick={togglePopup}></Close>
+              </IconButton>
+                                
                 <h3>Game rules</h3>
-                <p>
-                    1. open camere
-                    2. take picture 
-                    3. get the next posible move
-                </p>
+               
+                <ol>
+                  <li> Open camera</li>
+                  <li> take picture</li>
+                  <li> get the next posible move</li>
+                </ol>
+
+              
               </div>
             }
             handleClose={togglePopup}

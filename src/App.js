@@ -8,6 +8,7 @@ import GamePage from './Pages/GamePage';
 
 
 function App() {
+  document.title = "Solitaire"
   return (
     <BrowserRouter>
       <Routes>

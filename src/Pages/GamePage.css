@@ -1,52 +1,74 @@
 .container-gamepage {
-    background: linear-gradient(180deg, #000, #10a329 );
-    position: absolute;
-    height: 100%;
-    width: 100%;     
+  background: linear-gradient(180deg, #000, #10a329);
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .table-div {
-    color: white;
-    height: 65%;
-    margin-top: 30px;
-    margin-left: 5%;
-    margin-right: 5%;
+  color: white;
+  height: 65%;
+  margin-top: 30px;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .advance-div {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .advance-button {
-    width: 400px;
-    height: 150px;
-    font-size: 18px;
+  width: 400px;
+  height: 150px;
+  font-size: 18px;
 }
 
 .movelist-div {
-    color: black;
-    float: right;
-    border: solid 1px black;
-    width: 25%;
-    height: 130%;
-    background-color: lightgray;
+  color: black;
+  float: right;
+  border: solid 1px black;
+  width: 25%;
+  height: 130%;
+  background-color: lightgray;
 }
 
 .movelist-text {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 .movelist-title {
-    padding-left: 15px;
-    color: black;
+  padding-left: 15px;
+  color: black;
 }
 
 .movelist-divider {
-    background-color: black;
-    width: 90%;
-    border: 1px solid black;
-    border-radius: 5px;
+  background-color: black;
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.button-div {
+  float: right;
+}
+
+.popup-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 50%;
+  width: 50%;
+  background: #e2e2e2;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid white;
+  animation: fade 0.5s ease 1 forwards;
+  z-index: 1;
+  align-items: center;
+
 }

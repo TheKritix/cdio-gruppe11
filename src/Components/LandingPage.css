@@ -1,3 +1,4 @@
+/* the overall landingpage */
 .landingpage {
   display: flex;
   position: relative;
@@ -5,6 +6,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  /* background color for the page */
   background: linear-gradient(180deg, #000, #10a329);
   background-size: 100% 100%;
   animation: sky 50s ease infinite;
@@ -15,7 +17,7 @@
   user-select: none;
 }
 
-
+/* position for the falling cards */
 @keyframes sky {
   0% {
     background-position: 50% 0;
@@ -62,6 +64,7 @@
   height: 50px;
 }
 
+/* color change when mouse hover the button and when the button is active */
 .button:hover {
   background-color: rgb(50, 53, 52);
   color: white;
@@ -129,4 +132,3 @@
     top: 100%;
   }
 }
-

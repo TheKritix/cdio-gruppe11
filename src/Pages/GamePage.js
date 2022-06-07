@@ -40,7 +40,7 @@ const GamePage = () => {
             classname=" helpIcon"
             display="flex"
             justifyContent="flex-end"
-            style={{ color: "white"}}
+            style={{ color: "white" }}
             onClick={togglePopup}
           >
             <Help></Help>
@@ -50,23 +50,42 @@ const GamePage = () => {
           <PopUp
             content={
               <div className="popup-div">
-                <IconButton style= {{float: "right", color: "rgb(121,121,121)"}} size="small">
-              <Close className= "closeBtn" onClick={togglePopup}></Close>
-              </IconButton>
-                                
-                <h3>Game rules</h3>
-               
-                <ol>
-                  <li>Lay up a solitaire game on your table, and use your computer camera to take a picture. You can find the general solitaire game rules in this link: <a href="https://web.engr.oregonstate.edu/~afern/papers/solitaire.pdf"> Solitaire game rules</a></li>
-                    <li> Open camera by using the button "Camera" </li>
-                  <li> Take picture of your solitaire game and click "OK" to accept the picture. The game will now begin!</li>
-                  <li>See suggestion for the next possible move.</li>
-                  <li>Once you have made your move. Take a new piture of your solitaire, and you will now get a new posible move.</li>
-                  <li>To the right you will see the list of moves made.</li>
-                  <li>Continue until your solitaire is solved or it's no longer possible to make a new move.</li>
-                </ol>
+                <IconButton
+                  style={{ float: "right", color: "rgb(121,121,121)" }}
+                  size="small"
+                >
+                  <Close className="closeBtn" onClick={togglePopup}></Close>
+                </IconButton>
 
-              
+                <h3>Game rules</h3>
+
+                <ol>
+                  <li>
+                    Lay up a solitaire game on your table, and use your computer
+                    camera to take a picture. You can find the general solitaire
+                    game rules in this link:{" "}
+                    <a href="https://web.engr.oregonstate.edu/~afern/papers/solitaire.pdf">
+                      {" "}
+                      Solitaire game rules
+                    </a>
+                  </li>
+                  <li> Open camera by using the button "Camera" </li>
+                  <li>
+                    {" "}
+                    Take picture of your solitaire game and click "OK" to accept
+                    the picture. The game will now begin!
+                  </li>
+                  <li>See suggestion for the next possible move.</li>
+                  <li>
+                    Once you have made your move. Take a new piture of your
+                    solitaire, and you will now get a new posible move.
+                  </li>
+                  <li>To the right you will see the list of moves made.</li>
+                  <li>
+                    Continue until your solitaire is solved or it's no longer
+                    possible to make a new move.
+                  </li>
+                </ol>
               </div>
             }
             handleClose={togglePopup}

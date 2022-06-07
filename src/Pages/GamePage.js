@@ -5,7 +5,6 @@ import PlayingCardReg from "../Components/rf-imageReg/rf-ir";
 import Tableau from "../Components/GamePage/Tableau.js";
 import MoveList from "../Components/GamePage/MoveList.js"
 import React, { useState, useEffect } from "react";
-import GameLogic from "../Service/AI/GameLogic";
 
 const GamePage = () => {
 
@@ -27,7 +26,6 @@ const GamePage = () => {
         <>
             <div className="container-gamepage">
                 <div className="table-div">
-                    <GameLogic></GameLogic>
                     {isCameraOpen ? (
                         <PlayingCardReg/>
                     ) : <></>} 

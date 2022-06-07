@@ -4,7 +4,6 @@
 //import pin from "./ParseInput.js"
 //console.log("Seed: "+seed);
 
-const gamelogic = () => {
 var decklist = []; // used for initializing random deck
 //var a = Array(13); // used to represent the board state
 //var moves = []; // used to hold calculated valid moves
@@ -59,7 +58,7 @@ var testInput1 = [
 	{ x: 1183, y:556, name: "4C" }
 ];
 
-const parseInput = (input, st, img_width, img_height) => {
+function parseInput(input, st, img_width, img_height) {
 	console.log(input.length);
 	//VisualizeInputData(input, img_width, img_height);
 	var output = Array(13);
@@ -1099,9 +1098,3 @@ var makeSeed = function makeSeed(length) {
 	}
 	return output;
 }
-
-
-return(<></>);
-}
-
-export default gamelogic;

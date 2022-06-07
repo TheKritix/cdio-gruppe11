@@ -11,13 +11,12 @@ const MoveList = ({moves}) => {
             </h3>
             <hr className="movelist-divider"/>
            {moves.map((move) => (
-               <p className="movelist-text">
+               <p className="movelist-text" key={move.id}>
                    {move.id}: {move.move}
                </p>
            ))}
         </div>
     )
-
 }
 
 export default MoveList; 

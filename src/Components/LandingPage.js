@@ -73,16 +73,14 @@ const Landingpage = () => {
         </div>
       </div>
       <div className="button-list">
-
-        <a href="http://senguash.com">
+        <a href="/gamepage">
           <button id="startButton" className="button" onClick={handleStartBtn}>
             Start Game
           </button>
         </a>
-
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Landingpage;

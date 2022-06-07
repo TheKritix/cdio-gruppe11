@@ -14,6 +14,15 @@ const GamePage = () => {
         {id: 3, move: 'Move X of X to X of X'}
     ])
 
+    const [cards, setCards] = useState([
+        {id: 1, prop: 'stack'},
+        {id: 2, prop: 'talon'},
+        {id: 3, prop: 'foundation1'},
+        {id: 4, prop: 'foundation2'},
+        {id: 5, prop: 'foundation3'},
+        {id: 6, prop: 'foundation4'}
+    ])
+
     const [isCameraOpen, setIsCameraOpen] = useState(false);
 
     const isCameraOpenHandler = () => {
@@ -28,10 +37,9 @@ const GamePage = () => {
                 <div className="table-div">
                     {isCameraOpen ? (
                         <PlayingCardReg/>
-                    ) : <></>} 
+                    ) : <Tableau cards={cards}/>} 
                     <MoveList moves={moves}/>
                 </div>
-                  
                 <div className="advance-div">
                     <AdvanceButton 
                         cameraHandler={isCameraOpenHandler}

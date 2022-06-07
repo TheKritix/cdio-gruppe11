@@ -6,6 +6,8 @@
 }
 
 .table-div {
+    display: flex;
+    justify-content: space-between;
     color: white;
     height: 65%;
     margin-top: 30px;
@@ -49,4 +51,9 @@
     width: 90%;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+.tableau-div {
+    display: flex;
+    flex-direction: row;
 }

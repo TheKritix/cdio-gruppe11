@@ -1,11 +1,15 @@
-import Card from "./Card.js"
+import Cards from "../../Components/GamePage/Cards.js"
+import "../../Pages/GamePage.css"
 
-const Tableau = () => {
+const Tableau = ({cards}) => {
 
     return (
-        <>
-            <Card></Card>
-        </>
+        <div className="tableau-div">
+            {cards.map((cards) => (
+               <Cards cards={cards}>
+               </Cards>
+           ))}
+        </div>
     )
 }
 

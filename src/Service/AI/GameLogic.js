@@ -1,3 +1,4 @@
+
 //var seed = makeid(16);
 //var seedDigest = [];
 //import pin from "./ParseInput.js"
@@ -58,7 +59,7 @@ var testInput1 = [
 	{ x: 1183, y:556, name: "4C" }
 ];
 
-var parseInput = function parseInput(input, st, img_width, img_height) {
+const parseInput = (input, st, img_width, img_height) => {
 	console.log(input.length);
 	//VisualizeInputData(input, img_width, img_height);
 	var output = Array(13);
@@ -1099,17 +1100,8 @@ var makeSeed = function makeSeed(length) {
 	return output;
 }
 
-//parseInput(testInput1, state, 1280, 720);
-console.log(state);
-var sum1 = 0;
-			for (var i=0; i < state.a.length; i++) {
-				sum1 += state.a[i].length;
-			}
-console.log(sum1);
-
 
 return(<></>);
-
 }
 
 export default gamelogic;

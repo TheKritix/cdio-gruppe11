@@ -1,12 +1,12 @@
 import Webcam from "react-webcam";
 import React, { useEffect } from "react";
 import "./rf-ir.css";
-import Parser from "../../Service/AI/GameLogic"
+//import gamelogic from "../../Service/AI/GameLogic"
 
 const PlayingCardReg = () => {
   var PCRegModel;
   const pKeys =
-    "rf_Ch8V23a9vwcxpSdXd7a6xqTj5B53"; /*"rf_hB1FG8hLbwhs49HoSSxyjNek1up1"*/
+    "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3"; /*"rf_hB1FG8hLbwhs49HoSSxyjNek1up1"*/
   const loadModel = "playing-cards-ow27d";
   const versionModel = 1;
 
@@ -76,10 +76,12 @@ const PlayingCardReg = () => {
           ctx.stroke();
         }
       }
-      console.log(Parser)
-      console.log(Parser.parseInput)
-      console.log(predModel)
-      Parser.parseInput(predModel)
+      console.log(window)
+      console.log("--------")
+      // console.log(gamelogic)
+      // console.log(gamelogic.parseInput)
+      // console.log(predModel)
+      //gamelogic.parseInput(predModel)
     }
 
     setTimeout(() => runModel(), 1000);

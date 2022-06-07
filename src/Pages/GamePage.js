@@ -35,6 +35,7 @@ const GamePage = () => {
   return (
     <>
       <div className="container-gamepage">
+        {/* button for game rules (questionmark) */}
         <div className="button-div">
           <IconButton
             classname=" helpIcon"
@@ -46,10 +47,13 @@ const GamePage = () => {
             <Help></Help>
           </IconButton>
         </div>
+
+        {/* popup window for game rules. */}
         {isOpen && (
           <PopUp
             content={
               <div className="popup-div">
+                {/* close button in popup window */}
                 <IconButton
                   style={{ float: "right", color: "rgb(121,121,121)" }}
                   size="small"
@@ -57,6 +61,7 @@ const GamePage = () => {
                   <Close className="closeBtn" onClick={togglePopup}></Close>
                 </IconButton>
 
+                {/* headline and list of game rules in popup */}
                 <h3>Game rules</h3>
 
                 <ol>

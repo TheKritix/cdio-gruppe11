@@ -3,6 +3,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  font-family: "Cinzel", serif;
 }
 
 .table-div {
@@ -24,6 +25,7 @@
   width: 400px;
   height: 150px;
   font-size: 18px;
+  font-family: "Cinzel", serif;
 }
 
 .movelist-div {
@@ -50,10 +52,13 @@
   border: 1px solid black;
   border-radius: 5px;
 }
+
+/* game rule button */
 .button-div {
   float: right;
 }
 
+/* css for popup window */
 .popup-div {
   position: absolute;
   top: 50%;
@@ -70,19 +75,16 @@
   animation: fade 0.5s ease 1 forwards;
   z-index: 1;
   font-family: "Cinzel", serif;
-  
-  
 }
-h3{
+
+/* headline in popup window */
+h3 {
   text-align: center;
   font-size: 30px;
 }
 
-
-.closeBtn{
-   border: 1px solid rgb(121,121,121);
-   border-radius: 50%;
- 
-   }
-
-
+/* close button in popup window */
+.closeBtn {
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 50%;
+}

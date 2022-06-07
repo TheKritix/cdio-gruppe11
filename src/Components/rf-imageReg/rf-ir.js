@@ -1,6 +1,7 @@
 import Webcam from "react-webcam";
 import React, { useEffect } from "react";
 import "./rf-ir.css";
+import Parser from "../../Service/AI/GameLogic"
 
 const PlayingCardReg = () => {
   var PCRegModel;
@@ -75,6 +76,10 @@ const PlayingCardReg = () => {
           ctx.stroke();
         }
       }
+      console.log(Parser)
+      console.log(Parser.parseInput)
+      console.log(predModel)
+      Parser.parseInput(predModel)
     }
 
     setTimeout(() => runModel(), 1000);

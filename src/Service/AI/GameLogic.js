@@ -2,6 +2,8 @@
 //var seedDigest = [];
 //import pin from "./ParseInput.js"
 //console.log("Seed: "+seed);
+
+const gamelogic = () => {
 var decklist = []; // used for initializing random deck
 //var a = Array(13); // used to represent the board state
 //var moves = []; // used to hold calculated valid moves
@@ -11,6 +13,15 @@ var state = {
 	a: Array(13) ,
 	moves: []
 }
+
+const searchDepth = 3;
+var hasInit = false;
+var autoEnable = true;
+// nice seed: jZ3fcxlGWwmxXtcrS4hIZ8R0apeTZ9pLDiTrcXYenV1Cuow8H2KK1vNVRrPY0Y2M
+// better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
+var c = Array(12);
+
+c = [60,-65,50,-45,15,1075,90,-80,5,10000,20,80];
 
 const deltaX = 3; //%
 const deltaY = 2; //%
@@ -47,21 +58,107 @@ var testInput1 = [
 	{ x: 1183, y:556, name: "4C" }
 ];
 
-parseInput(testInput1, state, 1280, 720);
-console.log(state);
-var sum1 = 0;
-			for (var i=0; i < state.a.length; i++) {
-				sum1 += state.a[i].length;
+var parseInput = function parseInput(input, st, img_width, img_height) {
+	console.log(input.length);
+	//VisualizeInputData(input, img_width, img_height);
+	var output = Array(13);
+	
+	for (var i=0; i<output.length; i++) { // initialize board structure
+		output[i] = [];
+	}
+	for (var i = 0; i < input.length; i++) {
+		for (var z = 0; z < input.length; z++) {
+			if ( Math.abs(input[i].x - input[z].x)/img_width < deltaX/100) {
+				input[z].x = input[i].x;
 			}
-console.log(sum1);
-const searchDepth = 3;
-var hasInit = false;
-var autoEnable = true;
-// nice seed: jZ3fcxlGWwmxXtcrS4hIZ8R0apeTZ9pLDiTrcXYenV1Cuow8H2KK1vNVRrPY0Y2M
-// better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
-var c = Array(12);
+			if ( Math.abs(input[i].y - input[z].y)/img_height < deltaY/100) {
+				input[z].y = input[i].y;
+			}
+		}
+	    }
+	input.sort((a ,b) => a.y - b.y);
+	input.sort((a ,b) => a.x - b.x);
+	console.log(input);
+	
+	output[11].push(convert(input.shift()));
+	
+	var foundation = 1;
+	while(input[0].y == output[11][0].y && foundation <= 4) {
+		output[6+foundation].push(convert(input.shift()));
+		foundation++;
+	}
+	var tableau = 0;
+	var x_prev;
+	while(input.length > 0 && tableau < 7) {
+		x_prev = input[0].x;
+		output[tableau].push(convert(input.shift()));
+		if (input.length > 0) {
+			if (input[0].x != x_prev) {
+				tableau++;
+			}
+		}
+	}
 
-c = [60,-65,50,-45,15,1075,90,-80,5,10000,20,80];
+	if (Boolean(st.initialized) == false) {
+		st.initialized = true;
+		st.a = JSON.parse(JSON.stringify(output)); // deep copy object
+		var sum = 0;
+		while (sum < 52 - 1) {
+			sum = 0;
+			for (var i=0; i < st.a.length; i++) {
+				sum += st.a[i].length;
+			}
+			st.a[11].push(new Card());
+		}
+		console.log(sum);
+	}
+
+	console.log(output);
+	return output;
+}
+
+var VisualizeInputData = function VisualizeInputData(input,img_width,img_height) {
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	var scalar_w = (640 / img_width);
+	var scalar_h = (480 / img_height);
+	for (var i=0; i < input.length; i++) {
+		ctx.fillText(input[i].name, input[i].x*scalar_w, input[i].y*scalar_h);
+	}
+}
+var convert = function convert(card_data) {
+	var c = new Card;
+	c.faceup = true;
+	switch(card_data.name[0]) {
+		case 'A': c.value = 1; break;
+		case '2': c.value = 2; break;
+		case '3': c.value = 3; break;
+		case '4': c.value = 4; break;
+		case '5': c.value = 5; break;
+		case '6': c.value = 6; break;
+		case '7': c.value = 7; break;
+		case '8': c.value = 8; break;
+		case '9': c.value = 9; break;
+		case 'T': c.value = 10; break;
+		case 'J': c.value = 11; break;
+		case 'Q': c.value = 12; break;
+		case 'K': c.value = 13; break;
+		case '[': c.faceup = false; break;
+		default: c.value = 0; c.faceup = false; break;
+		}
+	
+
+	switch(card_data.name[1]) {
+		case 'H': c.suit = 0; break;
+		case 'S': c.suit = 1; break;
+		case 'D': c.suit = 2; break;
+		case 'C': c.suit = 3; break;
+		case ']': c.faceup = false; break;
+		default: c.suit = -1; c.faceup = false; break;
+		}
+	c.assignName();
+	return c;
+}
 
 class Card {
 	constructor() {
@@ -118,16 +215,6 @@ class Card {
 		    } else {
 			this.img = "./cards/"+this.suit+this.value+".png";
 		    }
-	}
-}
-
-var VisualizeInputData = function VisualizeInputData(input,img_width,img_height) {
-	var canvas = document.getElementById("myCanvas");
-	var ctx = canvas.getContext("2d");
-	var scalar_w = (640 / img_width);
-	var scalar_h = (480 / img_height);
-	for (var i=0; i < input.length; i++) {
-		ctx.fillText(input[i].name, input[i].x*scalar_w, input[i].y*scalar_h);
 	}
 }
 
@@ -810,6 +897,7 @@ var sortMoves = function sortMoves(st) {
 	st.moves.sort((a, b) => b.score-a.score);
 }
 var advanceGamestate = function advanceGamestate() {
+	parseInput(testInput1, state, 1280, 720);
 	faceControl(state);
 	printGameState(state);
 	identifyMoves(state);
@@ -1011,96 +1099,17 @@ var makeSeed = function makeSeed(length) {
 	return output;
 }
 
-var parseInput = function parseInput(input, st, img_width, img_height) {
-	console.log(input.length);
-	VisualizeInputData(input, img_width, img_height);
-	var output = Array(13);
-	
-	for (var i=0; i<output.length; i++) { // initialize board structure
-		output[i] = [];
-	}
-	for (var i = 0; i < input.length; i++) {
-		for (var z = 0; z < input.length; z++) {
-			if ( Math.abs(input[i].x - input[z].x)/img_width < deltaX/100) {
-				input[z].x = input[i].x;
+//parseInput(testInput1, state, 1280, 720);
+console.log(state);
+var sum1 = 0;
+			for (var i=0; i < state.a.length; i++) {
+				sum1 += state.a[i].length;
 			}
-			if ( Math.abs(input[i].y - input[z].y)/img_height < deltaY/100) {
-				input[z].y = input[i].y;
-			}
-		}
-	    }
-	input.sort((a ,b) => a.y - b.y);
-	input.sort((a ,b) => a.x - b.x);
-	console.log(input);
-	
-	output[11].push(convert(input.shift()));
-	
-	var foundation = 1;
-	while(input[0].y == output[11][0].y && foundation <= 4) {
-		output[6+foundation].push(convert(input.shift()));
-		foundation++;
-	}
-	var tableau = 0;
-	var x_prev;
-	while(input.length > 0 && tableau < 7) {
-		x_prev = input[0].x;
-		output[tableau].push(convert(input.shift()));
-		if (input.length > 0) {
-			if (input[0].x != x_prev) {
-				tableau++;
-			}
-		}
-	}
+console.log(sum1);
 
-	if (Boolean(st.initialized) == false) {
-		st.initialized = true;
-		st.a = JSON.parse(JSON.stringify(output)); // deep copy object
-		var sum = 0;
-		while (sum < 52 - 1) {
-			sum = 0;
-			for (var i=0; i < st.a.length; i++) {
-				sum += st.a[i].length;
-			}
-			st.a[11].push(new Card());
-		}
-		console.log(sum);
-	}
 
-	console.log(output);
-	return output;
+return(<></>);
+
 }
 
-var convert = function convert(card_data) {
-	var c = new Card;
-	c.faceup = true;
-	switch(card_data.name[0]) {
-		case 'A': c.value = 1; break;
-		case '2': c.value = 2; break;
-		case '3': c.value = 3; break;
-		case '4': c.value = 4; break;
-		case '5': c.value = 5; break;
-		case '6': c.value = 6; break;
-		case '7': c.value = 7; break;
-		case '8': c.value = 8; break;
-		case '9': c.value = 9; break;
-		case 'T': c.value = 10; break;
-		case 'J': c.value = 11; break;
-		case 'Q': c.value = 12; break;
-		case 'K': c.value = 13; break;
-		case '[': c.faceup = false; break;
-		default: c.value = 0; c.faceup = false; break;
-		}
-	
-
-	switch(card_data.name[1]) {
-		case 'H': c.suit = 0; break;
-		case 'S': c.suit = 1; break;
-		case 'D': c.suit = 2; break;
-		case 'C': c.suit = 3; break;
-		case ']': c.faceup = false; break;
-		default: c.suit = -1; c.faceup = false; break;
-		}
-	c.assignName();
-	return c;
-}
-
+export default gamelogic;

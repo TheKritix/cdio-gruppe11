@@ -7,8 +7,8 @@ import CardContent from '@mui/material/CardContent';
 const Cards = ({cards}) => {
     return (
         <Card style={{
-            height: 90,
-            width: 70,
+            height: 120,
+            width: 100,
             margin: 8,
             backgroundColor: 'lightgray',
         }}>

@@ -15,12 +15,13 @@ const GamePage = () => {
     ])
 
     const [cards, setCards] = useState([
-        {id: 1, prop: 'stack'},
-        {id: 2, prop: 'talon'},
-        {id: 3, prop: 'foundation1'},
-        {id: 4, prop: 'foundation2'},
-        {id: 5, prop: 'foundation3'},
-        {id: 6, prop: 'foundation4'}
+        {id: 1, prop: 'H3'},
+        {id: 2, prop: 'S4'},
+        {id: 3, prop: 'HA'},
+        {id: 4, prop: 'C2'},
+        {id: 5, prop: 'DQ'},
+        {id: 6, prop: 'D8'},
+        {id: 7, prop: 'SK'}
     ])
 
     const [isCameraOpen, setIsCameraOpen] = useState(false);

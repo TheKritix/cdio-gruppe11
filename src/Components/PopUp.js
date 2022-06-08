@@ -8,7 +8,6 @@ const PopUp = props => {
         <div className="PopUpBox">
             <div className="PopUp">
                 {props.content}
-              { /* <span className="close" onClick={props.handleClose}></span>*/}
             </div>
         </div>
     )

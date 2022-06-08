@@ -87,3 +87,38 @@
     flex-direction: row;
 }
 
+/* game rule button */
+.button-div {
+  float: right;
+}
+
+/* css for popup window */
+.popup-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 50%;
+  width: 50%;
+  background: #e2e2e2;
+  border-radius: 5px;
+  padding-right: 5px;
+  border-top: 1px solid white;
+  animation: fade 0.5s ease 1 forwards;
+  z-index: 1;
+  font-family: "Cinzel", serif;
+  
+}
+
+/* headline in popup window */
+h3 {
+  text-align: center;
+  font-size: 30px;
+}
+
+/* close button in popup window */
+.closeBtn {
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 50%;
+}

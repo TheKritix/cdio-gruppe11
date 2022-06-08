@@ -18,12 +18,6 @@ const GamePage = () => {
     { id: 3, move: "Move X of X to X of X" },
   ]);
 
-    const [moves, setMoves] = useState([
-        {id: 1, move: 'Move 9 of hearts to pee of poo'},
-        {id: 2, move: 'Move X of X to X of X'},
-        {id: 3, move: 'Move X of X to X of X'}
-    ])
-
     const [cards, setCards] = useState([
         {id: 1, prop: 'H3'},
         {id: 2, prop: 'S4'},

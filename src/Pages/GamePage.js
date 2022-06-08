@@ -45,14 +45,14 @@ const GamePage = () => {
 
     return (
         <>
-            <div className="container-gamepage">
+        <div className="container-gamepage">
                {/* button for game rules (questionmark) */}
         <div className="button-div">
           <IconButton
-            classname=" helpIcon"
-            display="flex"
-            justifyContent="flex-end"
-            style={{ color: "white" }}
+            classname=" helpIcon" 
+            display="flex" 
+            justifyContent="flex-end" 
+            style={{ color: "white" }} 
             onClick={togglePopup}
           >
             <Help></Help>

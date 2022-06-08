@@ -13,34 +13,12 @@ import { useState } from "react";
 import PopUp from "./PopUp";
 
 const Landingpage = () => {
-  const [isOpen, setisOpen] = useState(true);
-  const togglePopup = () => {
-    setisOpen(!isOpen);
 
-  };
-
-  const [startBtn, setStartBtn] = useState(false);
-  const handleStartBtn = () => {
-    setStartBtn(!startBtn);
-  };
 
 
   return (
     <>
-      {isOpen && (
-        <PopUp 
-          
-          content={
-            <div className="popup-div">
-              <h1>Welcome to Solitaire</h1>
-              <p>Take a picture of you solitaire and get the best next move.</p>
-              <button className="close" onClick={togglePopup}>Confirm</button>
-            </div>
-          }
-        
-        ></PopUp>
-      )}
-
+     
       <div className="landingpage">
         <div className="title">Solitaire</div>
 
@@ -74,7 +52,7 @@ const Landingpage = () => {
       </div>
       <div className="button-list">
         <a href="/gamepage">
-          <button id="startButton" className="button" onClick={handleStartBtn}>
+          <button id="startButton" className="button" >
             Start Game
           </button>
         </a>

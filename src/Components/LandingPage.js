@@ -73,16 +73,14 @@ const Landingpage = () => {
         </div>
       </div>
       <div className="button-list">
-      <ul>
         <a href="/gamepage">
           <button id="startButton" className="button" onClick={handleStartBtn}>
             Start Game
           </button>
         </a>
-      </ul>
       </div>
     </>
-  );
-};
+  )
+}
 
 export default Landingpage;

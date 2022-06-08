@@ -70,8 +70,7 @@
   width: 50%;
   background: #e2e2e2;
   border-radius: 5px;
-  padding: 0;
-  margin: 0;
+  padding-right: 5px;
   border-top: 1px solid white;
   animation: fade 0.5s ease 1 forwards;
   z-index: 1;

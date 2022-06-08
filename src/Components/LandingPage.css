@@ -1,3 +1,4 @@
+/* the overall landingpage */
 .landingpage {
   display: flex;
   position: relative;
@@ -5,6 +6,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  /* background color for the page */
   background: linear-gradient(180deg, #000, #10a329);
   background-size: 100% 100%;
   animation: sky 50s ease infinite;
@@ -15,7 +17,7 @@
   user-select: none;
 }
 
-
+/* position for the falling cards */
 @keyframes sky {
   0% {
     background-position: 50% 0;
@@ -62,6 +64,7 @@
   height: 50px;
 }
 
+/* color change when mouse hover the button and when the button is active */
 .button:hover {
   background-color: rgb(50, 53, 52);
   color: white;
@@ -128,69 +131,4 @@
   to {
     top: 100%;
   }
-}
-
-/* .popup-wrap {
-        background-color: rgba(0,0,0, .80);
-        width: 100%;
-        height: 100%;
-        position: absolute;
-
-    } */
-
-.popup-div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  min-width: 280px;
-  max-width: 500px;
-  height: auto;
-  background: #e2e2e2;
-  border-radius: 10px;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid white;
-  animation: fade 1s ease 1 forwards;
-  z-index: 1;
-}
-
-.popup-div h1 {
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 1.5rem 1rem 0.5rem;
-}
-.popup-div p {
-  text-align: center;
-  font-size: 1rem;
-  margin: 0 2rem 4.5rem;
-}
-.popup-div button {
-  background: transparent;
-  border: none;
-  color: black;
-  height: 3rem;
-  font-size: 1rem;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  cursor: pointer;
-  border-top: 1px solid #b4b4b4;
-}
-
-.popup-div button:focus,
-.popup-div button:hover {
-  font-weight: bold;
-  background: #efefef;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.popup-div button:active {
-  background: #d6d6d6;
-}
-
-.popup-div a {
-  text-decoration: none;
-  color: black;
 }

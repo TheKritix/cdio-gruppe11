@@ -1,8 +1,10 @@
+/* the overall gamepage */
 .container-gamepage {
-    background: linear-gradient(180deg, #000, #10a329 );
-    position: absolute;
-    height: 100%;
-    width: 100%;     
+  background: linear-gradient(180deg, #000, #10a329);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  font-family: "Cinzel", serif;
 }
 
 .table-div {
@@ -17,34 +19,35 @@
 }
 
 .advance-div {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .advance-button {
-    width: 400px;
-    height: 150px;
-    font-size: 18px;
+  width: 400px;
+  height: 150px;
+  font-size: 18px;
+  font-family: "Cinzel", serif;
 }
 
 .movelist-div {
-    color: black;
-    float: right;
-    border: solid 1px black;
-    width: 25%;
-    height: 130%;
-    background-color: lightgray;
+  color: black;
+  float: right;
+  border: solid 1px black;
+  width: 25%;
+  height: 130%;
+  background-color: lightgray;
 }
 
 .movelist-text {
-    padding-left: 15px;
+  padding-left: 15px;
 }
 
 .movelist-title {
-    padding-left: 15px;
-    color: black;
+  padding-left: 15px;
+  color: black;
 }
 
 .movelist-divider {

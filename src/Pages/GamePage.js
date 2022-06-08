@@ -66,9 +66,9 @@ const GamePage = () => {
 
                 <ol>
                   <li>
-                    Lay up a solitaire game on your table, and use your computer
+                    Lay up a solitaire on your table, and use your computers
                     camera to take a picture. You can find the general solitaire
-                    game rules in this link:{" "}
+                    rules through this link:{" "}
                     <a href="https://web.engr.oregonstate.edu/~afern/papers/solitaire.pdf">
                       {" "}
                       Solitaire game rules
@@ -77,13 +77,13 @@ const GamePage = () => {
                   <li> Open camera by using the button "Camera" </li>
                   <li>
                     {" "}
-                    Take picture of your solitaire game and click "OK" to accept
+                    Take a  picture of your solitaire and click "OK" to accept
                     the picture. The game will now begin!
                   </li>
-                  <li>See suggestion for the next possible move.</li>
+                  <li>Our Algoritme will suggest the next possible move.</li>
                   <li>
                     Once you have made your move. Take a new piture of your
-                    solitaire, and you will now get a new posible move.
+                    solitaire, and the next possible move will be suggested. 
                   </li>
                   <li>To the right you will see the list of moves made.</li>
                   <li>

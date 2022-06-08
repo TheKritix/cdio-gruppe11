@@ -6,6 +6,7 @@
 }
 
 .table-div {
+    border: 1px solid white;
     display: flex;
     justify-content: space-between;
     color: white;

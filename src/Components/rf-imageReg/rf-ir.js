@@ -81,6 +81,7 @@ const PlayingCardReg = () => {
       // console.log(gamelogic)
       // console.log(gamelogic.parseInput)
       // console.log(predModel)
+      window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
       //gamelogic.parseInput(predModel)
     }
 

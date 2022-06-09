@@ -3,6 +3,7 @@
 //var seedDigest = [];
 //import pin from "./ParseInput.js"
 //console.log("Seed: "+seed);
+var tmpTracker = 0;
 
 var decklist = []; // used for initializing random deck
 //var a = Array(13); // used to represent the board state
@@ -11,9 +12,12 @@ var stmp = 0; // global variable for seed digest
 var state = {
 	initialized: false,
 	a: Array(13) ,
-	moves: []
+	moves: [] ,
+	moveHistory: []
 }
-
+for (var i=0; i<state.a.length; i++) { // initialize board structure
+	state.a[i] = [];
+}
 const searchDepth = 3;
 var hasInit = false;
 var autoEnable = true;
@@ -21,45 +25,61 @@ var autoEnable = true;
 // better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
 var c = Array(12);
 
-c = [60,-65,50,-45,15,1075,90,-80,5,10000,20,80];
+c = [60,-65,50,-45,15,1075,90,-80,5,17,20,80]; // changed 10000 to 17
 
 const deltaX = 3; //%
-const deltaY = 2; //%
+const deltaY = 5; //%
+var movedCardX;
+var movedCardY;
+var testInput = []
 
-var testInput1 = [
-	{ x: 82, y:34, name: "[]" },
-	{ x: 310, y:136, name: "[]" },
-	{ x: 85, y:138, name: "JD" },
-	{ x: 519, y:200, name: "[]"},
+
+testInput[0]=[
+	{ x: 85, y:138, name: "KC" },
 	{ x: 316, y:196, name: "JC"},
-	{ x: 1190, y:134, name: "[]"},
-	{ x: 522, y:265, name: "AH" },
-	{ x: 1042, y:201, name: "[]" },
-	{ x: 894, y:334, name: "[]" },
-	{ x: 890, y:264, name: "[]" },
-	{ x: 892, y:199, name: "[]" },
-	{ x: 707, y:199, name: "[]" },
-	{ x: 706, y:270, name: "[]" },
-	{ x: 1184, y:420, name: "[]" },
-	{ x: 1183, y:500, name: "[]" },
+	{ x: 522, y:265, name: "2H" },
 	{ x: 707, y:337, name: "QS" },
 	{ x: 891, y:416, name: "7C" },
-	{ x: 1046, y:420, name: "[]" },
-	{ x: 1047, y:334, name: "[]" },
-	{ x: 1045, y:270, name: "[]" },
-	{ x: 500, y:140, name: "[]" },
-	{ x: 714, y:142, name: "[]" },
-	{ x: 884, y:139, name: "[]" },
-	{ x: 1176, y:203, name: "[]" },
-	{ x: 1187, y:268, name: "[]" },
-	{ x: 1184, y:333, name: "[]" },
 	{ x: 1046, y:497, name: "3D" },
-	{ x: 1051, y:147, name: "[]" },
 	{ x: 1183, y:556, name: "4C" }
 ];
+testInput[1]=[
+	{ x: 85, y:138, name: "KC" },
+	{ x: 316, y:196, name: "JC"},
+	{ x: 522, y:265, name: "2H" },
+	{ x: 707, y:337, name: "QS" },
+	{ x: 891, y:416, name: "7C" },
+	{ x: 1186, y:604, name: "3D" },
+	{ x: 1183, y:556, name: "4C" },
+	{ x: 1046, y:417, name: "TH" }
+];
+testInput[2]=[
+	{ x: 85, y:138, name: "KC" },
+	{ x: 316, y:196, name: "JC"},
+	{ x: 315, y:264, name: "TH" },
+	{ x: 522, y:265, name: "2H" },
+	{ x: 707, y:337, name: "QS" },
+	{ x: 891, y:416, name: "7C" },
+	{ x: 1186, y:604, name: "3D" },
+	{ x: 1183, y:556, name: "4C" },
+	{ x: 1046, y:336, name: "2D" }
+];
+
+function parseRawFromModel(input) {
+	var output = [];
+	for (var i=0; i<input.length; i++) {
+		output[i].x = input[i].bbox.x;
+		output[i].y = input[i].bbox.y;
+		output[i].width = input[i].bbox.width;
+		output[i].height = input[i].bbox.height;
+		output[i].name = input[i].class;
+		output[i].conf = input[i].confidence;
+	}
+	return output;	
+}
 
 function parseInput(input, st, img_width, img_height) {
-	console.log(input.length);
+	console.log("Input length at beginning of parse:" + input.length);
 	//VisualizeInputData(input, img_width, img_height);
 	var output = Array(13);
 	
@@ -80,7 +100,61 @@ function parseInput(input, st, img_width, img_height) {
 	input.sort((a ,b) => a.x - b.x);
 	console.log(input);
 	
-	output[11].push(convert(input.shift()));
+	
+	if (Boolean(st.initialized) === false) {
+		st.initialized = true;
+		for (var i=0; i<7; i++) {
+			for (var j=0; j<i; j++) {
+				output[i].push(new Card());
+			}
+			
+		}
+		
+		var sum = 0;
+		while (sum < 52 - 1) {
+			sum = 0;
+			for (var i=0; i < output.length; i++) {
+				sum += output[i].length;
+			}
+			output[11].push(new Card());
+		}
+
+		var tableau = 0;
+		var x_prev;
+		while(input.length > 0 && tableau < 7) {
+		x_prev = input[0].x;
+		output[tableau].push(convert(input.shift()));
+		if (input.length > 0) {
+			if (input[0].x != x_prev) {
+				tableau++;
+			}
+		}
+	}
+		st.a = JSON.parse(JSON.stringify(output)); // deep copy object
+	} 
+	else {
+		if (st.moveHistory[0].type === 1) {
+			for (var i=0; i < input.length; i++) {
+				input[i].height = 50;
+				console.log("inputx:" + input[i].x + "  srcX:"+movedCardX+"  img_width:"+img_width);
+				if (Math.abs(input[i].x - movedCardX)/img_width < deltaX/100) { 
+					console.log("Testing");
+					if (Math.abs(movedCardY - input[i].y - input[i].height)/img_height < deltaY/100) {
+						console.log(convert(input[i]));
+						console.log("x:"+st.moveHistory[0].srcX+"  y:"+st.moveHistory[0].srcY);
+						st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
+						//st.a[5].push(convert(input[i]));
+					}
+				}
+			}
+		} else if (st.moveHistory[0].type === 2) {
+			st.a[12][st.a[12].length-1] = convert(input[0]);
+		}
+	}
+	
+
+
+	/*output[11].push(convert(input.shift()));
 	
 	var foundation = 1;
 	while(input[0].y == output[11][0].y && foundation <= 4) {
@@ -97,23 +171,8 @@ function parseInput(input, st, img_width, img_height) {
 				tableau++;
 			}
 		}
-	}
+	}*/
 
-	if (Boolean(st.initialized) == false) {
-		st.initialized = true;
-		st.a = JSON.parse(JSON.stringify(output)); // deep copy object
-		var sum = 0;
-		while (sum < 52 - 1) {
-			sum = 0;
-			for (var i=0; i < st.a.length; i++) {
-				sum += st.a[i].length;
-			}
-			st.a[11].push(new Card());
-		}
-		console.log(sum);
-	}
-
-	console.log(output);
 	return output;
 }
 
@@ -129,8 +188,10 @@ var VisualizeInputData = function VisualizeInputData(input,img_width,img_height)
 var convert = function convert(card_data) {
 	var c = new Card;
 	c.faceup = true;
+	c.originX = card_data.x;
+	c.originY = card_data.y;
 	switch(card_data.name[0]) {
-		case 'A': c.value = 1; break;
+		case 'A': case 'a': c.value = 1; break;
 		case '2': c.value = 2; break;
 		case '3': c.value = 3; break;
 		case '4': c.value = 4; break;
@@ -167,6 +228,8 @@ class Card {
 		var cardName;
 		var faceup = false;
 		var img;
+		var originX;
+		var originY;
 	}
 	assignName() {
 		this.cardName = "";
@@ -229,6 +292,7 @@ class LegalMove {
 		//var useOffset; // dicates whether cards below are to be moves
 		var score; // AI scoring of move
 		var real;
+		var type; // 0 for no card unveiled, 1 for tableau card unveiled, 2 for new stock card
 	}
 }    
 var randFromDigest = function() {
@@ -253,9 +317,6 @@ var init = function init(st,seed) {
 	//decklist = decklist.sort((a, b) => 0.5 - Math.random()); // old shuffle
 	//decklist = shuffle(decklist,seed); // shuffle attempt 2
 	decklist = decklist.sort((a, b) => randFromDigest(stmp)); // shuffle attempt 3
-	for (var i=0; i<st.a.length; i++) { // initialize board structure
-		st.a[i] = [];
-	}
 	for (var i = 0; i < 7; i++) {
 		for (var z = 0; z < i+1; z++) {
 			st.a[i].push(decklist.pop());
@@ -618,10 +679,18 @@ var identifyMoves = function identifyMoves(st) {
 		m.srcY = srcY;
 		m.dst = dst;
 		m.moveUnderneath = moveUnderneath;
+		m.type = 0;
 		if (m.srcX == 11 && m.dst != 12) {
 			m.real = 0;
 		} else {
 			m.real = 1;
+		}
+		if (srcY > 0 && categorize(srcX) === 0) {
+			if (Boolean(st.a[srcX][srcY-1].faceup) == false) {
+				m.type = 1;
+			}
+		} else if (srcX === 12) {
+			m.type = 2;
 		}
 		st.moves.push(m);
 	}
@@ -772,6 +841,9 @@ var identifyMoves = function identifyMoves(st) {
 	}
 }*/
 var executeMove = function executeMove(st,x) {
+	movedCardX = st.a[st.moves[x].srcX][st.moves[x].srcY].originX;
+	movedCardY = st.a[st.moves[x].srcX][st.moves[x].srcY].originY;
+	st.moveHistory.unshift(st.moves[x]); // Add move to history
 	if (st.moves[x].srcX === 11 && st.moves[x].dst === 12) {
 		if ((st.a[11].length + st.a[12].length) > 0) {
 			for (var i=0; i<3; i++) {
@@ -895,9 +967,20 @@ var checkIfWin = function checkIfWin(st) {
 }
 var sortMoves = function sortMoves(st) {
 	st.moves.sort((a, b) => b.score-a.score);
+	console.log(st.moves[0]);
+}
+
+function advanceGS(model, screen_width, screen_height) {
+	parseInput(parseRawFromModel(model), state, screen_width, screen_height);
+	identifyMoves(state);
+	evals(state);
+	sortMoves(state);
+	executeMove(state,0);
+	console.log(state.a);
+	return;
 }
 var advanceGamestate = function advanceGamestate() {
-	parseInput(testInput1, state, 1280, 720);
+	parseInput(testInput[0], state, 1280, 720);
 	faceControl(state);
 	printGameState(state);
 	identifyMoves(state);
@@ -989,9 +1072,8 @@ var initializeAuto = async function initializeAuto() {
 		console.log(" Wins: "+wins+"/"+runs+" c: "+c);
 	}
 
-var breakAuto = function breakAuto() {
-	autoEnable = false;
-}	
+
+	
 
 var sha256 = function sha256(ascii) { // from https://gist.github.com/bryanchow/1649353
 		function rightRotate(value, amount) {

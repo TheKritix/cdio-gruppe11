@@ -1,12 +1,11 @@
 import Webcam from "react-webcam";
 import React, { useEffect } from "react";
 import "./rf-ir.css";
-//import gamelogic from "../../Service/AI/GameLogic"
 
 const PlayingCardReg = () => {
   var PCRegModel;
   const pKeys =
-    "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3"; /*"rf_hB1FG8hLbwhs49HoSSxyjNek1up1"*/
+    "rf_hB1FG8hLbwhs49HoSSxyjNek1up1"; /*"rf_hB1FG8hLbwhs49HoSSxyjNek1up1"*/
   const loadModel = "playing-cards-ow27d";
   const versionModel = 1;
 
@@ -76,16 +75,13 @@ const PlayingCardReg = () => {
           ctx.stroke();
         }
       }
-      console.log(window)
-      console.log("--------")
-      // console.log(gamelogic)
-      // console.log(gamelogic.parseInput)
-      // console.log(predModel)
-      //gamelogic.parseInput(predModel)
+      //Advance for GameLogic.js Script
+      window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     }
 
     setTimeout(() => runModel(), 1000);
-  }
+  
+}
 
   const videoMax = {
     //width: 1050,

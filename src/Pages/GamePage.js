@@ -14,7 +14,17 @@ const GamePage = () => {
         {id: 3, move: 'Move X of X to X of X'}
     ])
 
-    const [isCameraOpen, setIsCameraOpen] = useState(false);
+    const [cards, setCards] = useState([
+        {id: 1, prop: 'H3'},
+        {id: 2, prop: 'S4'},
+        {id: 3, prop: 'HA'},
+        {id: 4, prop: 'C2'},
+        {id: 5, prop: 'DQ'},
+        {id: 6, prop: 'D8'},
+        {id: 7, prop: 'SK'}
+    ])
+
+    const [isCameraOpen, setIsCameraOpen] = useState(true);
 
     const isCameraOpenHandler = () => {
         setIsCameraOpen((isCameraOpen) => {
@@ -28,14 +38,13 @@ const GamePage = () => {
                 <div className="table-div">
                     {isCameraOpen ? (
                         <PlayingCardReg/>
-                    ) : <></>} 
+                    ) : <Tableau cards={cards}/>} 
                     <MoveList moves={moves}/>
                 </div>
-                  
                 <div className="advance-div">
-                    <AdvanceButton 
+                    {/* <AdvanceButton
                         cameraHandler={isCameraOpenHandler}
-                    />
+                    /> */}
                 </div>
             </div>
         </>

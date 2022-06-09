@@ -1,6 +1,8 @@
 import Webcam from "react-webcam";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
+import "../../Pages/GamePage.css";
 
 const PlayingCardReg = () => {
   var PCRegModel;
@@ -8,6 +10,9 @@ const PlayingCardReg = () => {
     "rf_hB1FG8hLbwhs49HoSSxyjNek1up1"; /*"rf_hB1FG8hLbwhs49HoSSxyjNek1up1"*/
   const loadModel = "playing-cards-ow27d";
   const versionModel = 1;
+
+  const [predModelState, setPredModelState] = useState();
+  const [webcamCompState, setWebcamCompState] = useState();
 
   useEffect(() => {
     window.roboflow
@@ -31,6 +36,7 @@ const PlayingCardReg = () => {
 
   async function runModel() {
     var predModel;
+    
     await PCRegModel.detect(document.getElementById("feed")).then(function (
       predictions
     ) {
@@ -77,12 +83,24 @@ const PlayingCardReg = () => {
         }
       }
       //Advance for GameLogic.js Script
-      window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
+      //Skal køre på click af advance button.
+
+      setPredModelState(predModel);
+      setWebcamCompState(webcamCompState);
+
+      //callAdvanceGS(predModel, webcamComp)
+      //window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     }
 
-    setTimeout(() => runModel(), 1000);
-  
+    setTimeout(() => runModel(), 1000);  
 }
+
+  const callAdvanceGS = () => {
+    window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight)
+
+  }
+
+
 
   const videoMax = {
     //width: 1050,
@@ -95,12 +113,13 @@ const PlayingCardReg = () => {
   const webcamComp = React.useRef(null);
 
   return (
-    <div>
+    <div className="camera-container-div">
       <div id="overlay">
         <canvas id="canvas" width={1280} height={720} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} />
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
+        <AdvanceButton cameraHandler={callAdvanceGS}/>
       </div>
     </div>
   );

@@ -23,7 +23,7 @@ const PlayingCardReg = () => {
         PCRegModel = model;
 
         //Shitty solution for it to wait for the Camera to wake up, but works.
-        setTimeout(1000)
+        setTimeout(2000)
 
         runModel();
       });

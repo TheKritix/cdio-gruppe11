@@ -102,10 +102,12 @@ function parseInput(input, st, img_width, img_height) {
 	input.sort((a ,b) => a.y - b.y);
 	input.sort((a ,b) => a.x - b.x);
 	
-	for (var i=0; i<input.length; i++) {
+	var modifier = 0;
+	for (var i=0; (i+modifier)<input.length; i++) {
 		for (var z=0; z<i; z++) {
-			if (input[z].class === input[i].class && i!==z) {
+			if ((input[z].class === input[i].class) && i!==z) {
 				input.splice(i,1);
+				modifier++;
 			}
 		}
 	}

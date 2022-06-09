@@ -100,7 +100,7 @@ function parseInput(input, st, img_width, img_height) {
 		}
 	    }*/
 	input.sort((a ,b) => a.x - b.x);
-	input.sort((a ,b) => a.y - b.y);
+	//input.sort((a ,b) => a.y - b.y);
 	
 	
 	var modifier = 0;

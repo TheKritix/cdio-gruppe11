@@ -11,7 +11,7 @@ const MoveList = ({moves}) => {
             </h3>
             <hr className="movelist-divider"/>
            {moves.map((move) => (
-               <p className="movelist-text">
+               <p key={move.id}className="movelist-text">
                    {move.id}: {move.move}
                </p>
            ))}

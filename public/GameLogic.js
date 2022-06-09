@@ -102,16 +102,33 @@ function parseInput(input, st, img_width, img_height) {
 	input.sort((a ,b) => a.bbox.y - b.bbox.y);
 	input.sort((a ,b) => a.bbox.x - b.bbox.x);
 	
-	
+	/*
 	var modifier = 0;
 	for (var i=0; (i+modifier)<input.length; i++) {
 		for (var z=0; z<i; z++) {
-			if ((input[z].class === input[i].class) && i!==z) {
+			if ((input[z].class == input[i].class) && i!==z) {
 				input.splice(i,1);
 				modifier++;
 			}
 		}
+	}*/
+
+	//remove duplicates
+	var tmp = [];
+	for (var i=0; i<input.length; i++) {
+		var isUnique = true;
+		for (var z=0; z<tmp.length; z++) {
+			if (input[z].class == input[i].class) {
+				isUnique = false;
+			}
+		}
+		if (isUnique) {
+			tmp.push(input[i]);
+		}
 	}
+	input = JSON.parse(JSON.stringify(tmp)); //overwrite old input array with cleaned input array
+
+
 
 	//console.log(input);
 	
@@ -151,7 +168,7 @@ function parseInput(input, st, img_width, img_height) {
 		if (st.moveHistory[0].type === 1) {
 			for (var i=0; i < input.length; i++) {
 				console.log("inputx:" + input[i].bbox.x + "  srcX:"+movedCardX+"  img_width:"+img_width);
-				if (Math.abs(input[i].bbox.x - movedCardX)/img_width < deltaX/100) { 
+				if (Math.abs((input[i].bbox.x - movedCardX)/img_width) < deltaX/100) { 
 					console.log("Testing");
 					if ((Math.abs(movedCardY - input[i].bbox.y - input[i].bbox.height)/img_height) < deltaY/100) {
 						console.log(convert(input[i]));

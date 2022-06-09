@@ -971,7 +971,7 @@ var sortMoves = function sortMoves(st) {
 }
 
 function advanceGS(model, screen_width, screen_height) {
-	parseInput(testInput[tmpTracker++], state, screen_width, screen_height);
+	parseInput(model, state, screen_width, screen_height);
 	identifyMoves(state);
 	evals(state);
 	sortMoves(state);
@@ -979,9 +979,6 @@ function advanceGS(model, screen_width, screen_height) {
 	console.log(state.a);
 	return;
 }
-advanceGS(0,1280,720);
-advanceGS(0,1280,720);
-advanceGS(0,1280,720);
 var advanceGamestate = function advanceGamestate() {
 	parseInput(testInput[0], state, 1280, 720);
 	faceControl(state);

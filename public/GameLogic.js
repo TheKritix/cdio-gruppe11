@@ -592,7 +592,8 @@ const stck = document.createElement('table');
 	stck.style.width = '75px';
 	//stck.style.border = '1px solid black'; // show element position for debugging
 	stck.style.position = 'absolute';
-	stck.style.marginBottom = '200px'
+	stck.style.marginBottom = '200px';
+	stck.style.top = '900px';
 		const trs = stck.insertRow();
 		for (var i = 3; i >= 0; i--) {
 			const tds = trs.insertCell();
@@ -638,6 +639,7 @@ const tbl = document.createElement('table');
 	  //tbl.style.border = '1px solid black'; // show element position for debugging
 	tbl.style.position = 'absolute';
 	tbl.style.marginTop = '300px';
+	tbl.style.top = '900px';
 	for (var y = 0; y < 21; y++) { // 21 is max height of a solitaire game
 		const tr = tbl.insertRow();
 		for (var x = 0; x < 7; x++) {

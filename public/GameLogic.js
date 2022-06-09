@@ -102,7 +102,7 @@ function parseInput(input, st, img_width, img_height) {
 	input.sort((a ,b) => a.bbox.y - b.bbox.y);
 	input.sort((a ,b) => a.bbox.x - b.bbox.x);
 	
-	
+	/*
 	var modifier = 0;
 	for (var i=0; (i+modifier)<input.length; i++) {
 		for (var z=0; z<i; z++) {
@@ -111,14 +111,14 @@ function parseInput(input, st, img_width, img_height) {
 				modifier++;
 			}
 		}
-	}
+	}*/
 
 	//remove duplicates
 	var tmp = [];
 	for (var i=0; i<input.length; i++) {
 		var isUnique = true;
 		for (var z=0; z<tmp.length; z++) {
-			if (input[z].class == input[i].class && i!==z) {
+			if (tmp[z].class == input[i].class) {
 				isUnique = false;
 			}
 		}

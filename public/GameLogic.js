@@ -27,8 +27,8 @@ var c = Array(12);
 
 c = [60,-65,50,-45,15,1075,90,-80,5,17,20,80]; // changed 10000 to 17
 
-const deltaX = 1; //%
-const deltaY = 5; //%
+const deltaX = 2; //%
+const deltaY = 10; //%
 var movedCardX;
 var movedCardY;
 var testInput = []
@@ -150,11 +150,10 @@ function parseInput(input, st, img_width, img_height) {
 	else {
 		if (st.moveHistory[0].type === 1) {
 			for (var i=0; i < input.length; i++) {
-				input[i].bbox.height = 50;
 				console.log("inputx:" + input[i].x + "  srcX:"+movedCardX+"  img_width:"+img_width);
 				if (Math.abs(input[i].x - movedCardX)/img_width < deltaX/100) { 
 					console.log("Testing");
-					if (Math.abs(movedCardY - input[i].bbox.y - input[i].bbox.height)/img_height < deltaY/100) {
+					if ((Math.abs(movedCardY - input[i].bbox.y - input[i].bbox.height)/img_height) < deltaY/100) {
 						console.log(convert(input[i]));
 						console.log("x:"+st.moveHistory[0].srcX+"  y:"+st.moveHistory[0].srcY);
 						st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));

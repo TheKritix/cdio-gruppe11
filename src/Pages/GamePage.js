@@ -8,12 +8,6 @@ import React, { useState, useEffect } from "react";
 
 const GamePage = () => {
 
-    const [moves, setMoves] = useState([
-        {id: 1, move: 'Move 9 of hearts to pee of poo'},
-        {id: 2, move: 'Move X of X to X of X'},
-        {id: 3, move: 'Move X of X to X of X'}
-    ])
-
     const [cards, setCards] = useState([
         {id: 1, prop: 'H3'},
         {id: 2, prop: 'S4'},
@@ -35,17 +29,15 @@ const GamePage = () => {
     return (
         <>
             <div className="container-gamepage">
-                <div className="table-div">
-                    {isCameraOpen ? (
-                        <PlayingCardReg/>
-                    ) : <Tableau cards={cards}/>} 
-                    <MoveList moves={moves}/>
-                </div>
-                <div className="advance-div">
-                    {/* <AdvanceButton
+                {isCameraOpen ? (
+                    <PlayingCardReg/>
+                ) : <Tableau cards={cards}/>} 
+                    {/* <MoveList moves={moves}/> */}
+                {/* <div className="advance-div">
+                    <AdvanceButton
                         cameraHandler={isCameraOpenHandler}
-                    /> */}
-                </div>
+                    />
+                </div> */}
             </div>
         </>
     )

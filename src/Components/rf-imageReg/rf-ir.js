@@ -1,4 +1,5 @@
 import Webcam from "react-webcam";
+import MoveList from "../../Components/GamePage/MoveList.js"
 import React, { useEffect, useState } from "react";
 import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
@@ -13,6 +14,9 @@ const PlayingCardReg = () => {
 
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();
+  const [moveList, setMoveList] = useState([{
+    desc: "",
+  }]);
 
   useEffect(() => {
     window.roboflow
@@ -94,11 +98,17 @@ const PlayingCardReg = () => {
     setTimeout(() => runModel(), 1000);  
 }
 
-  const callAdvanceGS = () => {
-    window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight)
+    const addMoveToList = (st) => {
+      const moveObject = {
+        desc: st.desc,
+      }
+      setMoveList(moveList.concat(moveObject))
+    }  
 
+    const callAdvanceGS = () => {
+      var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
+      addMoveToList(st.moves[0]);
   }
-
 
 
   const videoMax = {
@@ -112,12 +122,15 @@ const PlayingCardReg = () => {
   const webcamComp = React.useRef(null);
 
   return (
-    <div className="camera-container-div">
+    <div className="table-div">
       <div id="overlay">
-        <canvas id="canvas" width={1280} height={720} />
+        <canvas id="canvas" width={1280} height={620} />
       </div>
       <div id="webcamLayer">
         <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
+      </div>
+      <MoveList moveList={moveList}/>
+      <div className="advance-div">
         <AdvanceButton cameraHandler={callAdvanceGS}/>
       </div>
     </div>

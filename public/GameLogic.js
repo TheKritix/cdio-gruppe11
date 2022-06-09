@@ -979,7 +979,7 @@ function advanceGS(model, screen_width, screen_height) {
 	sortMoves(state);
 	executeMove(state,0);
 	console.log(state.a);
-	return;
+	return state;
 }
 var advanceGamestate = function advanceGamestate() {
 	parseInput(testInput[0], state, 1280, 720);

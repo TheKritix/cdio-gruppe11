@@ -1,8 +1,15 @@
 import "../../Pages/GamePage.css"
+import {useState, useEffect} from "react"
 
 
+const MoveList = ({moveList}) => {
 
-const MoveList = ({moves}) => {
+    console.log(moveList);
+
+    const [moves, setMoves] = useState(moveList);
+    
+
+    
 
     return (
         <div className="movelist-div">
@@ -10,9 +17,9 @@ const MoveList = ({moves}) => {
                 List of moves made: 
             </h3>
             <hr className="movelist-divider"/>
-           {moves.map((move) => (
-               <p className="movelist-text" key={move.id}>
-                   {move.id}: {move.move}
+           {moveList.map((move) => (
+               <p className="movelist-text">
+                    {move.desc}
                </p>
            ))}
         </div>

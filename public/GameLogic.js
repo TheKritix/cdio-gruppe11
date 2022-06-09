@@ -27,7 +27,7 @@ var c = Array(12);
 
 c = [60,-65,50,-45,15,1075,90,-80,5,17,20,80]; // changed 10000 to 17
 
-const deltaX = 3; //%
+const deltaX = 1; //%
 const deltaY = 5; //%
 var movedCardX;
 var movedCardY;
@@ -88,6 +88,7 @@ function parseInput(input, st, img_width, img_height) {
 	for (var i=0; i<output.length; i++) { // initialize board structure
 		output[i] = [];
 	}
+	/*
 	for (var i = 0; i < input.length; i++) {
 		for (var z = 0; z < input.length; z++) {
 			if ( Math.abs(input[i].bbox.x - input[z].bbox.x)/img_width < deltaX/100) {
@@ -97,10 +98,19 @@ function parseInput(input, st, img_width, img_height) {
 				input[z].bbox.y = input[i].bbox.y;
 			}
 		}
-	    }
+	    }*/
 	input.sort((a ,b) => a.y - b.y);
 	input.sort((a ,b) => a.x - b.x);
-	console.log(input);
+	
+	for (var i=0; i<input.length; i++) {
+		for (var z=0; z<i; z++) {
+			if (input[z].class === input[i].class && i!==z) {
+				input.splice(i,1);
+			}
+		}
+	}
+
+	//console.log(input);
 	
 	
 	if (Boolean(st.initialized) === false) {

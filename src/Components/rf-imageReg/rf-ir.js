@@ -1,7 +1,6 @@
 import Webcam from "react-webcam";
 import React, { useEffect } from "react";
 import "./rf-ir.css";
-//import gamelogic from "../../Service/AI/GameLogic"
 
 const PlayingCardReg = () => {
   var PCRegModel;
@@ -76,13 +75,8 @@ const PlayingCardReg = () => {
           ctx.stroke();
         }
       }
-      console.log(window)
-      console.log("--------")
-      // console.log(gamelogic)
-      // console.log(gamelogic.parseInput)
-      // console.log(predModel)
+      //Advance for GameLogic.js Script
       window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
-      //gamelogic.parseInput(predModel)
     }
 
     setTimeout(() => runModel(), 1000);

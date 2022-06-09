@@ -1,7 +1,6 @@
 import Webcam from "react-webcam";
 import React, { useEffect } from "react";
 import "./rf-ir.css";
-//import gamelogic from "../../Service/AI/GameLogic"
 
 const PlayingCardReg = () => {
   var PCRegModel;
@@ -22,9 +21,10 @@ const PlayingCardReg = () => {
       .then(function (model) {
         console.log("Bitch ass model loaded");
         PCRegModel = model;
-        //   model.detect(document.getElementById("feed")).then(function(predictions) {
-        //     console.log("Predictions:", predictions);
-        // });
+
+        //Shitty solution for it to wait for the Camera to wake up, but works.
+        setTimeout(2000)
+
         runModel();
       });
   }, []);
@@ -76,13 +76,8 @@ const PlayingCardReg = () => {
           ctx.stroke();
         }
       }
-      console.log(window)
-      console.log("--------")
-      // console.log(gamelogic)
-      // console.log(gamelogic.parseInput)
-      // console.log(predModel)
+      //Advance for GameLogic.js Script
       window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
-      //gamelogic.parseInput(predModel)
     }
 
     setTimeout(() => runModel(), 1000);

@@ -24,7 +24,7 @@ const GamePage = () => {
         {id: 7, prop: 'SK'}
     ])
 
-    const [isCameraOpen, setIsCameraOpen] = useState(false);
+    const [isCameraOpen, setIsCameraOpen] = useState(true);
 
     const isCameraOpenHandler = () => {
         setIsCameraOpen((isCameraOpen) => {
@@ -42,9 +42,9 @@ const GamePage = () => {
                     <MoveList moves={moves}/>
                 </div>
                 <div className="advance-div">
-                    <AdvanceButton 
+                    {/* <AdvanceButton
                         cameraHandler={isCameraOpenHandler}
-                    />
+                    /> */}
                 </div>
             </div>
         </>

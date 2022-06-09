@@ -66,16 +66,18 @@ testInput[2]=[
 ];
 
 function parseRawFromModel(input) {
-	var output = [];
+	var outputArray = [];
 	for (var i=0; i<input.length; i++) {
-		output[i].x = input[i].bbox.x;
-		output[i].y = input[i].bbox.y;
-		output[i].width = input[i].bbox.width;
-		output[i].height = input[i].bbox.height;
-		output[i].name = input[i].class;
-		output[i].conf = input[i].confidence;
+		var output;
+		output.x = input[i].bbox.x;
+		output.y = input[i].bbox.y;
+		output.width = input[i].bbox.width;
+		output.height = input[i].bbox.height;
+		output.name = input[i].class;
+		output.conf = input[i].confidence;
+		outputArray.push(output);
 	}
-	return output;	
+	return outputArray;	
 }
 
 function parseInput(input, st, img_width, img_height) {

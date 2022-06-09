@@ -21,9 +21,10 @@ const PlayingCardReg = () => {
       .then(function (model) {
         console.log("Bitch ass model loaded");
         PCRegModel = model;
-        //   model.detect(document.getElementById("feed")).then(function(predictions) {
-        //     console.log("Predictions:", predictions);
-        // });
+
+        //Shitty solution for it to wait for the Camera to wake up, but works.
+        setTimeout(1000)
+
         runModel();
       });
   }, []);

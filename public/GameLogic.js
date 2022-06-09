@@ -150,8 +150,8 @@ function parseInput(input, st, img_width, img_height) {
 	else {
 		if (st.moveHistory[0].type === 1) {
 			for (var i=0; i < input.length; i++) {
-				console.log("inputx:" + input[i].x + "  srcX:"+movedCardX+"  img_width:"+img_width);
-				if (Math.abs(input[i].x - movedCardX)/img_width < deltaX/100) { 
+				console.log("inputx:" + input[i].bbox.x + "  srcX:"+movedCardX+"  img_width:"+img_width);
+				if (Math.abs(input[i].bbox.x - movedCardX)/img_width < deltaX/100) { 
 					console.log("Testing");
 					if ((Math.abs(movedCardY - input[i].bbox.y - input[i].bbox.height)/img_height) < deltaY/100) {
 						console.log(convert(input[i]));

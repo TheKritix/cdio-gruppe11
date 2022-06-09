@@ -6,6 +6,9 @@
 }
 
 .table-div {
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
     color: white;
     height: 65%;
     margin-top: 30px;
@@ -50,3 +53,41 @@
     border: 1px solid black;
     border-radius: 5px;
 }
+
+.card-row-div {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.foundation-div {
+    float: right;
+    display: flex;
+    flex-direction: row;
+}
+
+.tableau-div {
+    width: 100%;
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+}
+
+.top-row-div {
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stack-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.camera-container-div {
+    display: flex;
+}
+

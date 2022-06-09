@@ -90,11 +90,11 @@ function parseInput(input, st, img_width, img_height) {
 	}
 	for (var i = 0; i < input.length; i++) {
 		for (var z = 0; z < input.length; z++) {
-			if ( Math.abs(input[i].x - input[z].x)/img_width < deltaX/100) {
-				input[z].x = input[i].x;
+			if ( Math.abs(input[i].bbox.x - input[z].bbox.x)/img_width < deltaX/100) {
+				input[z].bbox.x = input[i].bbox.x;
 			}
-			if ( Math.abs(input[i].y - input[z].y)/img_height < deltaY/100) {
-				input[z].y = input[i].y;
+			if ( Math.abs(input[i].bbox.y - input[z].bbox.y)/img_height < deltaY/100) {
+				input[z].bbox.y = input[i].bbox.y;
 			}
 		}
 	    }
@@ -124,10 +124,10 @@ function parseInput(input, st, img_width, img_height) {
 		var tableau = 0;
 		var x_prev;
 		while(input.length > 0 && tableau < 7) {
-		x_prev = input[0].x;
+		x_prev = input[0].bbox.x;
 		output[tableau].push(convert(input.shift()));
 		if (input.length > 0) {
-			if (input[0].x != x_prev) {
+			if (input[0].bbox.x != x_prev) {
 				tableau++;
 			}
 		}
@@ -137,11 +137,11 @@ function parseInput(input, st, img_width, img_height) {
 	else {
 		if (st.moveHistory[0].type === 1) {
 			for (var i=0; i < input.length; i++) {
-				input[i].height = 50;
+				input[i].bbox.height = 50;
 				console.log("inputx:" + input[i].x + "  srcX:"+movedCardX+"  img_width:"+img_width);
 				if (Math.abs(input[i].x - movedCardX)/img_width < deltaX/100) { 
 					console.log("Testing");
-					if (Math.abs(movedCardY - input[i].y - input[i].height)/img_height < deltaY/100) {
+					if (Math.abs(movedCardY - input[i].bbox.y - input[i].bbox.height)/img_height < deltaY/100) {
 						console.log(convert(input[i]));
 						console.log("x:"+st.moveHistory[0].srcX+"  y:"+st.moveHistory[0].srcY);
 						st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
@@ -190,9 +190,9 @@ var VisualizeInputData = function VisualizeInputData(input,img_width,img_height)
 var convert = function convert(card_data) {
 	var c = new Card;
 	c.faceup = true;
-	c.originX = card_data.x;
-	c.originY = card_data.y;
-	switch(card_data.name[0]) {
+	c.originX = card_data.bbox.x;
+	c.originY = card_data.bbox.y;
+	switch(card_data.class[0]) {
 		case 'A': case 'a': c.value = 1; break;
 		case '2': c.value = 2; break;
 		case '3': c.value = 3; break;
@@ -211,7 +211,7 @@ var convert = function convert(card_data) {
 		}
 	
 
-	switch(card_data.name[1]) {
+	switch(card_data.class[1]) {
 		case 'H': c.suit = 0; break;
 		case 'S': c.suit = 1; break;
 		case 'D': c.suit = 2; break;
@@ -973,7 +973,7 @@ var sortMoves = function sortMoves(st) {
 }
 
 function advanceGS(model, screen_width, screen_height) {
-	parseInput(parseRawFromModel(model), state, screen_width, screen_height);
+	parseInput(model, state, screen_width, screen_height);
 	identifyMoves(state);
 	evals(state);
 	sortMoves(state);

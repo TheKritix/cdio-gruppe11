@@ -99,8 +99,8 @@ function parseInput(input, st, img_width, img_height) {
 			}
 		}
 	    }*/
-	input.sort((a ,b) => a.x - b.x);
-	//input.sort((a ,b) => a.y - b.y);
+	input.sort((a ,b) => a.bbox.y - b.bbox.y);
+	input.sort((a ,b) => a.bbox.x - b.bbox.x);
 	
 	
 	var modifier = 0;

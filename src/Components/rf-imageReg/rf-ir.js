@@ -91,11 +91,12 @@ const PlayingCardReg = () => {
       //window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     }
 
-    setTimeout(() => runModel(), 5000);  
+    setTimeout(() => runModel(), 1000);  
 }
 
-  const callAdvanceGS = (predModel, webcamComp) => {
-    window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight)
+  const callAdvanceGS = () => {
+    window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight)
+
   }
 
 
@@ -116,7 +117,7 @@ const PlayingCardReg = () => {
         <canvas id="canvas" width={1280} height={720} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} />
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
         <AdvanceButton cameraHandler={callAdvanceGS}/>
       </div>
     </div>

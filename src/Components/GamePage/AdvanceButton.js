@@ -5,8 +5,7 @@ const AdvanceButton = ({cameraHandler}) => {
     return (
         <>
             <button className="advance-button" onClick={cameraHandler}>
-                Advances gamestate
-                       'OK'
+                Take picture of Solitaire
             </button>
         </>
     )

@@ -1,13 +1,19 @@
 #canvas {
     background-color: transparent;
+    width: 35%;
+    height: 35%;
 }
 
 #overlay {
     position: absolute;
     z-index: 10;
+    width: 35%;
+    height: 35%;
 }
 
 #webcamLayer {
     position: absolute;
     display: flex;
+    width: 35%;
+    height: 35%;
 }

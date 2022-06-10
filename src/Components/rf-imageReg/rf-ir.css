@@ -1,13 +1,21 @@
 #canvas {
     background-color: transparent;
+    width: 35%;
+    height: 35%;
 }
 
+/* div for cam */
 #overlay {
     position: absolute;
     z-index: 10;
+    width: 35%;
+    height: 35%;
 }
 
+/* Cam layout */
 #webcamLayer {
-    border: 1px solid black;
-    position: absolute;
+    display: flex;
+    width: 35%;
+    height: 35%;
+    float: right;
 }

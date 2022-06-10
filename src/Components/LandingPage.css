@@ -15,21 +15,8 @@
   user-select: none;
 }
 
-
-@keyframes sky {
-  0% {
-    background-position: 50% 0;
-  }
-  50% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 50% 0;
-  }
-}
-
-/*headline*/
-.title {
+ /*headline*/
+ .title {
   position: absolute;
   top: 35%;
   left: 50%;
@@ -62,6 +49,7 @@
   height: 50px;
 }
 
+
 .button:hover {
   background-color: rgb(50, 53, 52);
   color: white;
@@ -70,6 +58,19 @@
   background-color: rgb(44, 43, 40);
   transform: translate(4px);
 }
+
+@keyframes sky {
+  0% {
+    background-position: 50% 0;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0;
+  }
+}
+
 
 /*div for cards*/
 .deck {
@@ -120,6 +121,7 @@
   animation-duration: 4.2s;
 }
 
+
 /*animation start and stop on the screen*/
 @keyframes rain {
   from {
@@ -130,67 +132,206 @@
   }
 }
 
-/* .popup-wrap {
-        background-color: rgba(0,0,0, .80);
-        width: 100%;
-        height: 100%;
-        position: absolute;
+/* END OF LANDINGPAGE */
 
-    } */
 
-.popup-div {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  min-width: 280px;
-  max-width: 500px;
-  height: auto;
-  background: #e2e2e2;
-  border-radius: 10px;
-  padding: 0;
-  margin: 0;
-  border-top: 1px solid white;
-  animation: fade 1s ease 1 forwards;
-  z-index: 1;
-}
+/* SCALE OF LANDINGPAGE BEGIN */
+@media only screen and (max-width: 1230px) {
 
-.popup-div h1 {
-  text-align: center;
-  font-size: 1.2rem;
-  margin: 1.5rem 1rem 0.5rem;
-}
-.popup-div p {
-  text-align: center;
-  font-size: 1rem;
-  margin: 0 2rem 4.5rem;
-}
-.popup-div button {
-  background: transparent;
-  border: none;
-  color: black;
-  height: 3rem;
-  font-size: 1rem;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  cursor: pointer;
-  border-top: 1px solid #b4b4b4;
-}
+  /*headline*/
+  .title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+    font-family: "Cinzel", serif;
+    font-size: 150px;
+    
+  }
+  
+  /*div for game button*/
+  .button-list {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 60%;
+    height: 70px;
+    width: 100%;
+  }
+  
+  /*Start game button*/
+  .button {
+    width: 200px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: "Cinzel", serif;
+    box-shadow: 0px 0px 12px -2px;
+    background-color: rgb(255, 240, 211);
+    justify-content: center;
+    height: 50px;
+  }
+  
+  
+  .button:hover {
+    background-color: rgb(50, 53, 52);
+    color: white;
+  }
+  .button:active {
+    background-color: rgb(44, 43, 40);
+    transform: translate(4px);
+  }
+  
+  }
 
-.popup-div button:focus,
-.popup-div button:hover {
-  font-weight: bold;
-  background: #efefef;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-.popup-div button:active {
-  background: #d6d6d6;
-}
+@media only screen and (max-width: 1139px) {
 
-.popup-div a {
-  text-decoration: none;
-  color: black;
-}
+  /*headline*/
+  .title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 130px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+    font-family: "Cinzel", serif;
+  }
+  
+  /*div for game button*/
+  .button-list {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 60%;
+    height: 70px;
+    width: 100%;
+  }
+  
+  /*Start game button*/
+  .button {
+    width: 200px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: "Cinzel", serif;
+    box-shadow: 0px 0px 12px -2px;
+    background-color: rgb(255, 240, 211);
+    justify-content: center;
+    height: 50px;
+  }
+  
+  
+  .button:hover {
+    background-color: rgb(50, 53, 52);
+    color: white;
+  }
+  .button:active {
+    background-color: rgb(44, 43, 40);
+    transform: translate(4px);
+  }
+
+  img{
+    height: 160px;
+  }
+  }
+
+  @media only screen and (max-width: 600px) {
+    /*headline*/
+    .title {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 90px;
+      color: rgb(255, 255, 255);
+      text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+      font-family: "Cinzel", serif;
+    }
+    
+    /*div for game button*/
+    .button-list {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      top: 60%;
+      height: 70px;
+      width: 100%;
+    }
+    
+    /*Start game button*/
+    .button {
+      width: 200px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-family: "Cinzel", serif;
+      box-shadow: 0px 0px 12px -2px;
+      background-color: rgb(255, 240, 211);
+      justify-content: center;
+      height: 50px;
+    }
+    
+    
+    .button:hover {
+      background-color: rgb(50, 53, 52);
+      color: white;
+    }
+    .button:active {
+      background-color: rgb(44, 43, 40);
+      transform: translate(4px);
+    }
+
+    img{
+      height: 110px;
+    }
+    }
+
+   
+
+  @media only screen and (max-width: 421px) {
+    /*headline*/
+    .title {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 150px;
+      color: rgb(255, 255, 255);
+      text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+      font-family: "Cinzel", serif;
+    }
+    
+    /*div for game button*/
+    .button-list {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      top: 60%;
+      height: 70px;
+      width: 100%;
+    }
+    
+    /*Start game button*/
+    .button {
+      width: 200px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-family: "Cinzel", serif;
+      box-shadow: 0px 0px 12px -2px;
+      background-color: rgb(255, 240, 211);
+      justify-content: center;
+      height: 50px;
+    }
+    
+    
+    .button:hover {
+      background-color: rgb(50, 53, 52);
+      color: white;
+    }
+    .button:active {
+      background-color: rgb(44, 43, 40);
+      transform: translate(4px);
+    }
+    }
+
+   

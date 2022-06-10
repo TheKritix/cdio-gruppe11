@@ -179,6 +179,7 @@ function parseInput(input, st, img_width, img_height) {
 				}
 			}
 		} else if (st.moveHistory[0].type === 2) {
+			input.sort((a ,b) => a.bbox.y - b.bbox.y);
 			st.a[12][st.a[12].length-1] = convert(input[0]);
 		}
 	}
@@ -611,23 +612,23 @@ const stck = document.createElement('table');
 	stck.style.marginBottom = '200px';
 	stck.style.top = '900px';
 		const trs = stck.insertRow();
-		for (var i = 3; i >= 0; i--) {
+		for (var i = 0; i < 2; i++) {
 			const tds = trs.insertCell();
 			const cs = document.createElement("img");
-			if (i==3) {
-				cs.style.marginRight = '60px';
-				if (st.a[11].length > 0)
+			cs.style.marginRight = '60px';
+			if (i==0) {
+			if (st.a[11].length > 0)
 				cs.src = "./cards/back.png";
 				else
 				cs.src = "./cards/base.png";
 			} else {
-				if (st.a[12].length > i)
-				cs.src = st.a[12][st.a[12].length-i-1].img;
+			if (st.a[12].length > 0)
+				cs.src = st.a[12][st.a[12].length-1].img;
 				else
 				cs.src = "./cards/base.png";
-				cs.style.marginLeft = '-60px';
-			}
+			cs.style.marginLeft = '-60px';
 			cs.style.width = '75px';
+			}
 			tds.appendChild(cs);
 		}
 		for (var i = 0; i < 4; i++) {
@@ -722,7 +723,7 @@ var identifyMoves = function identifyMoves(st) {
 			if (Boolean(st.a[srcX][srcY-1].faceup) == false) {
 				m.type = 1;
 			}
-		} else if (srcX === 12) {
+		} else if (srcX == 12) {
 			m.type = 2;
 		}
 		st.moves.push(m);

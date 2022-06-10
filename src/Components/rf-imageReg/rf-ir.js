@@ -7,9 +7,9 @@ import "../../Pages/GamePage.css";
 const PlayingCardReg = () => {
   var PCRegModel;
   const pKeys =
-    "rf_hB1FG8hLbwhs49HoSSxyjNek1up1"; /*"rf_hB1FG8hLbwhs49HoSSxyjNek1up1"*/
-  const loadModel = "playing-cards-ow27d";
-  const versionModel = 1;
+  "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";//"rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
+  const loadModel = "spilekort";//"playing-cards-ow27d";
+  const versionModel = 3;//1;
 
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();

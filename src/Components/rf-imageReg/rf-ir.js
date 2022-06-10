@@ -16,6 +16,7 @@ const PlayingCardReg = () => {
   const [webcamCompState, setWebcamCompState] = useState();
   const [moveList, setMoveList] = useState([{
     desc: "",
+    id: 0,
   }]);
 
   useEffect(() => {
@@ -101,6 +102,7 @@ const PlayingCardReg = () => {
     const addMoveToList = (st) => {
       const moveObject = {
         desc: st.desc,
+        id: moveList.length 
       }
       setMoveList(moveList.concat(moveObject))
     }  

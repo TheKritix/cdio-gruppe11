@@ -41,68 +41,68 @@ const GamePage = () => {
         <>
             <div className="container-gamepage">
                    {/* button for game rules (questionmark) */}
-        <div className="button-div">
-          <IconButton
-            classname=" helpIcon" 
-            display="flex" 
-            justifyContent="flex-end" 
-            style={{ color: "white" }} 
-            onClick={togglePopup}
-          >
-            <Help></Help>
-          </IconButton>
-        </div>
+                <div className="button-div">
+                    <IconButton
+                    classname=" helpIcon" 
+                    display="flex" 
+                    justifyContent="flex-end" 
+                    style={{ color: "white" }} 
+                    onClick={togglePopup}
+                    >
+                    <Help></Help>
+                    </IconButton>
+                </div>
 
-        {/* popup window for game rules. */}
-        {isOpen && (
-          <PopUp
-            content={
-              <div className="popup-div">
-                {/* close button in popup window */}
-                <IconButton
-                  style={{ float: "right", color: "rgb(121,121,121)" }}
-                  size="small"
-                >
-                  <Close className="closeBtn" onClick={togglePopup}></Close>
-                </IconButton>
+                {/* popup window for game rules. */}
+                {isOpen && (
+                    <PopUp
+                    content={
+                        <div className="popup-div">
+                        {/* close button in popup window */}
+                        <IconButton
+                            style={{ float: "right", color: "rgb(121,121,121)" }}
+                            size="small"
+                        >
+                            <Close className="closeBtn" onClick={togglePopup}></Close>
+                        </IconButton>
 
-                {/* headline and list of game rules in popup */}
-                <h3>Game rules</h3>
+                        {/* headline and list of game rules in popup */}
+                        <h3>Game rules</h3>
 
-                <ol>
-                  <li>
-                    Lay up a solitaire on your table, and use your computers
-                    camera to take a picture. You can find the general solitaire
-                    rules through this link:{" "}
-                    <a href="https://web.engr.oregonstate.edu/~afern/papers/solitaire.pdf">
-                      {" "}
-                      Solitaire game rules
-                    </a>
-                  </li>
-                  <li> Open camera by using the button "Camera" </li>
-                  <li>
-                    {" "}
-                    Take a  picture of your solitaire and click "OK" to accept
-                    the picture. The game will now begin!
-                  </li>
-                  <li>Our Algoritme will suggest the next possible move.</li>
-                  <li>
-                    Once you have made your move. Take a new piture of your
-                    solitaire, and the next possible move will be suggested. 
-                  </li>
-                  <li>To the right you will see the list of moves made.</li>
-                  <li>
-                    Continue until your solitaire is solved or it's no longer
-                    possible to make a new move.
-                  </li>
-                </ol>
-              </div>
-            }
-            handleClose={togglePopup}
-          />
-        )}
+                        <ol>
+                            <li>
+                            Lay up a solitaire on your table, and use your computers
+                            camera to take a picture. You can find the general solitaire
+                            rules through this link:{" "}
+                            <a href="https://web.engr.oregonstate.edu/~afern/papers/solitaire.pdf">
+                                {" "}
+                                Solitaire game rules
+                            </a>
+                            </li>
+                            <li> Open camera by using the button "Camera" </li>
+                            <li>
+                            {" "}
+                            Take a  picture of your solitaire and click "OK" to accept
+                            the picture. The game will now begin!
+                            </li>
+                            <li>Our Algoritme will suggest the next possible move.</li>
+                            <li>
+                            Once you have made your move. Take a new piture of your
+                            solitaire, and the next possible move will be suggested. 
+                            </li>
+                            <li>To the right you will see the list of moves made.</li>
+                            <li>
+                            Continue until your solitaire is solved or it's no longer
+                            possible to make a new move.
+                            </li>
+                        </ol>
+                        </div>
+                    }
+                    handleClose={togglePopup}
+                    />
+                )}
 
-                {isCameraOpen ? (
+                {isCameraOpen && !isOpen ? (
                     <PlayingCardReg/>
                 ) : <Tableau cards={cards}/>} 
                     {/* <MoveList moves={moves}/> */}

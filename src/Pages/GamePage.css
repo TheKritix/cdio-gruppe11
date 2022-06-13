@@ -6,44 +6,6 @@
     font-family: "Cinzel", serif;
 }
 
-.card-row-div {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-}
-
-.foundation-div {
-    float: right;
-    display: flex;
-    flex-direction: row;
-}
-
-.tableau-div {
-    width: 100%;
-    border: 1px solid white;
-    display: flex;
-    flex-direction: column;
-}
-
-.top-row-div {
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.stack-div {
-    display: flex;
-    flex-direction: row;
-}
-
-.camera-container-div {
-    border: 1px solid white;
-    height: 100%;
-    width: 100%;
-}
 
 
 /* game rule button */

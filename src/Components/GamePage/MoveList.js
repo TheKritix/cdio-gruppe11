@@ -21,10 +21,12 @@ const MoveList = ({moveList}) => {
     
     return (
         <div className="movelist-div">
-            <h3 className="movelist-title">
-                List of moves made: 
-            </h3>
-            <hr className="movelist-divider"/>
+            <div className="movelist-top">
+                <h3 className="movelist-title">
+                    List of moves made: 
+                </h3>
+                <hr className="movelist-divider"/>
+            </div>
            {moveList.filter((move) => (move.id > 0)).map((move) => (
                <p className="movelist-text" key={move.id}>
                     {move.id}: {move.desc}

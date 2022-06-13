@@ -61,6 +61,14 @@
     padding-left: 15px;
 }
 
+.movelist-top {
+    background-color: lightgray;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    padding-top: 5px;
+}
+
 .movelist-title {
     padding-left: 15px;
     color: black;

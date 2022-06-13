@@ -49,7 +49,6 @@ const PlayingCardReg = () => {
       predictions
     ) {
       predModel = predictions;
-      console.log("Predictions:", predictions);
     });
 
     var overlay = document.getElementById("canvas");
@@ -105,7 +104,7 @@ const PlayingCardReg = () => {
 
   const callAdvanceGS = () => {
     window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight)
-
+    console.log("Predictions:", predModelState);
   }
 
 

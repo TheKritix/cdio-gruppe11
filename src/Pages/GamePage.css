@@ -48,7 +48,15 @@
   border: solid 1px black;
   width: 45%;
   height: 100%;
+  -ms-overflow-style: none; /* Edge, Internet Explorer */
+  scrollbar-width: none; /* Firefox */
+  overflow-y: scroll;
 }
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 /* text in movelist */
 .movelist-text {
   padding-left: 15px;
@@ -117,6 +125,163 @@ h3 {
     justify-content: space-between;
 } */
 
-
 /* SCALE OF SCREEN START*/
 
+@media only screen and (max-width: 421px) {
+  /* div from rf-ir.js this is the big div of the page */
+  .table-div {
+    color: white;
+    height: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    display: flex;
+  }
+
+  .advance-div {
+    align-self: center;
+  }
+
+  /* take piture of solitaire button */
+  .advance-button {
+    width: 400px;
+    height: 150px;
+    border-radius: 8px;
+    font-size: 20px;
+    box-shadow: 0px 0px 12px -2px;
+    background-color: rgb(255, 240, 211);
+    font-family: "Cinzel", serif;
+  }
+
+  /* list of move made start*/
+  .movelist-div {
+    color: rgb(255, 240, 211);
+    border: solid 1px black;
+    width: 45%;
+    height: 100%;
+  }
+  /* text in movelist */
+  .movelist-text {
+    padding-left: 15px;
+  }
+  /* 
+  headline in movelist */
+  .movelist-title {
+    padding-left: 15px;
+    color: rgb(255, 240, 211);
+  }
+
+  /* contains the border between the headline and the text */
+  .movelist-divider {
+    background-color: black;
+    width: 90%;
+    border: 1px solid rgb(255, 240, 211);
+    border-radius: 5px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  /* div from rf-ir.js this is the big div of the page */
+  .table-div {
+    color: white;
+    height: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-top: 2%;
+    display: flex;
+  }
+
+  .advance-div {
+    align-self: center;
+  }
+
+  /* take piture of solitaire button */
+  .advance-button {
+    width: 300px;
+    height: 80px;
+    border-radius: 8px;
+    font-size: 20px;
+    box-shadow: 0px 0px 12px -2px;
+    background-color: rgb(255, 240, 211);
+    font-family: "Cinzel", serif;
+  }
+
+  /* list of move made start*/
+  .movelist-div {
+    color: rgb(255, 240, 211);
+    border: solid 1px black;
+    width: 45%;
+    height: 100%;
+  }
+  /* text in movelist */
+  .movelist-text {
+    padding-left: 15px;
+  }
+  /* 
+      headline in movelist */
+  .movelist-title {
+    padding-left: 15px;
+    color: rgb(255, 240, 211);
+  }
+
+  /* contains the border between the headline and the text */
+  .movelist-divider {
+    background-color: black;
+    width: 90%;
+    border: 1px solid rgb(255, 240, 211);
+    border-radius: 5px;
+  }
+
+  @media only screen and (max-width: 1139px) {
+    /* div from rf-ir.js this is the big div of the page */
+    .table-div {
+      color: white;
+      height: 90%;
+      margin-left: 2%;
+      margin-right: 2%;
+      margin-top: 2%;
+      display: flex;
+    }
+
+    .advance-div {
+      align-self: center;
+    }
+
+    /* take piture of solitaire button */
+    .advance-button {
+      width: 300px;
+      height: 100px;
+      border-radius: 8px;
+      font-size: 20px;
+      box-shadow: 0px 0px 12px -2px;
+      background-color: rgb(255, 240, 211);
+      font-family: "Cinzel", serif;
+    }
+
+    /* list of move made start*/
+    .movelist-div {
+      color: rgb(255, 240, 211);
+      border: solid 1px black;
+      width: 45%;
+      height: 100%;
+    }
+    /* text in movelist */
+    .movelist-text {
+      padding-left: 15px;
+    }
+    /* 
+          headline in movelist */
+    .movelist-title {
+      padding-left: 15px;
+      color: rgb(255, 240, 211);
+    }
+
+    /* contains the border between the headline and the text */
+    .movelist-divider {
+      background-color: black;
+      width: 90%;
+      border: 1px solid rgb(255, 240, 211);
+      border-radius: 5px;
+    }
+  }
+}

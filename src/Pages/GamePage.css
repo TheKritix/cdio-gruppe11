@@ -48,7 +48,8 @@
 
 /* game rule button */
 .button-div {
-    float: right;
+    display: flex;
+    justify-content: space-between;
   }
   
   /* css for popup window */
@@ -67,8 +68,19 @@
     animation: fade 0.5s ease 1 forwards;
     z-index: 20;
     font-family: "Cinzel", serif;
-    
   }
+
+  /*Restart button*/
+  .restart-btn{
+    height: 5%;
+    width: fit-content;
+    background-color: rgb(255, 240, 211);
+    border-radius: 5%;
+    margin-left: 1%;
+    margin-top: 1%;
+    font-family: "Cinzel", serif;
+  }
+
 
   .helpIcon{
       z-index: 200;
@@ -86,3 +98,5 @@
     border-radius: 50%;
    
   }
+
+  

@@ -32,10 +32,9 @@
 }
 
 .movelist-div {
-  border: solid 1px black;
+  border: solid 1px transparent;
   width: 100%;
   height: 100%;
-  padding-bottom: 5%;
 }
 
 /* hides white scrollbar */
@@ -59,6 +58,7 @@
 /*headline in movelist */
 .movelist-title {
   padding-left: 15px;
+  margin-top: 0%;
   color: rgb(255, 240, 211);
 }
 

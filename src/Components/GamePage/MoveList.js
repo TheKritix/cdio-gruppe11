@@ -31,7 +31,7 @@ const MoveList = ({moveList}) => {
             <div className="movelist-content">
             {moveList.filter((move) => (move.id > 0)).map((move) => (
                 <p className="movelist-text" key={move.id}>
-                        {move.id}: {move.desc}
+                        {move.id}. {move.desc}
                 </p>
             ))}
             <div ref={movesEndRef}/>

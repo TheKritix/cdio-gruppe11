@@ -114,6 +114,18 @@ const PlayingCardReg = () => {
   }
 
 
+  //source: https://www.codegrepper.com/code-examples/javascript/react+detect+screen+size
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
+
+  //finder window størrelse
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+
   const videoMax = {
     //width: 1050,
     height: 620,
@@ -128,10 +140,14 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
       <div id="overlay">
-        <canvas id="canvas" width={1280} height={620} />
+        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
+            width: "65%",
+            objectFit: "fill",
+            position: "absolute"
+          }}/>
       </div>
       <div className="advance-div">
         <AdvanceButton cameraHandler={callAdvanceGS}/>

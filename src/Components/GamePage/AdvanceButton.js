@@ -1,4 +1,4 @@
-import "../../Pages/GamePage.css"
+import "../../Components/rf-imageReg/rf-ir.css"
 
 const AdvanceButton = ({cameraHandler}) => {
     

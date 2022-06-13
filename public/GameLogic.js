@@ -182,9 +182,9 @@ function parseInput(input, st, img_width, img_height) {
 			var index = 0;
 			var maxDistance = Infinity;
 			for (var i=0; i<input.length; i++) {
-				if (Math.sqrt(input[i].bbox.x^2 + input[i].bbox.y^2) < maxDistance) {
+				if (Math.sqrt(input[i].bbox.x*input[i].bbox.x + input[i].bbox.y*input[i].bbox.y) < maxDistance) {
 					index = i;
-					maxDistance = Math.sqrt(input[i].bbox.x^2 + input[i].bbox.y^2);
+					maxDistance = Math.sqrt(input[i].bbox.x*input[i].bbox.x + input[i].bbox.y*input[i].bbox.y);
 				}
 			}
 			st.a[12].splice(st.a[12].length-1,1,convert(input[index]));

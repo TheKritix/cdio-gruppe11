@@ -1,120 +1,122 @@
 #canvas {
-    border: 1px solid white;
-    background-color: transparent;
-    height: 100%;
-    width: 100%;
+  border: 1px solid white;
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
 }
 
 /* div for cam */
 #overlay {
-    border: 1px solid white;
-    position: absolute;
-    z-index: 10;
-    width: 65%;
+  border: 1px solid white;
+  position: absolute;
+  z-index: 10;
+  width: 65%;
 }
 
 /* Cam layout */
 #webcamLayer {
-    border: 1px solid white;
-    width: 35%;
-    height: 35%;
+  border: 1px solid white;
+  width: 35%;
+  height: 35%;
 }
 
+/* the content in the movelist */
 .movelist-content {
-    overflow-y: scroll;
-    height: 85%;
-    margin-left: 15px;
-}
+  overflow-y: scroll;
+  height: 85%;
+  margin-left: 15px;
 
+  /* hide scrollbar */
+  -ms-overflow-style: none; /* Edge, Internet Explorer */
+  scrollbar-width: none; /* Firefox */
+}
 
 .movelist-div {
-    border: solid 1px black;
-    width: 100%;
-    height: 100%;
+  border: solid 1px black;
+  width: 100%;
+  height: 100%;
 }
 
 /* hides white scrollbar */
 ::-webkit-scrollbar {
-    display: none;
+  display: none; /* Chrome, Safari, Opera */
 }
 
+/* text in movelist */
 .movelist-text {
-    padding-left: 15px;
-    color: rgb(255, 240, 211);
+  padding-left: 15px;
+  color: rgb(255, 240, 211);
 }
 
 .movelist-top {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    padding-top: 5px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  padding-top: 5px;
 }
 
+/*headline in movelist */
 .movelist-title {
-    padding-left: 15px;
-    color: rgb(255, 240, 211);
+  padding-left: 15px;
+  color: rgb(255, 240, 211);
 }
 
+/* contains the border between the headline and the text */
 .movelist-divider {
-    width: 90%;
-    color: rgb(255, 240, 211);
-    border: solid 1px rgb(255, 240, 211);
-
+  width: 90%;
+  color: rgb(255, 240, 211);
+  border: solid 1px rgb(255, 240, 211);
 }
-.movelist-line{
-    width:90%;
-    border: 1px solid black;
-    border-radius: 5px;
-
+.movelist-line {
+  width: 90%;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
+/*this is the big div of the page */
 .table-div {
-    display: flex;
-    justify-content: space-between;
-    height: 90%;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 2%;
+  display: flex;
+  justify-content: space-between;
+  height: 90%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
 }
 
 /* button */
 .advance-div {
-    align-self: center;
-    width: 30%;
-    height: 20%;
+  align-self: center;
+  width: 30%;
+  height: 20%;
 }
 
 /* take piture of solitaire button */
 .advance-button {
-    width: 100%;
-    height: 80%;
-    border-radius: 8px;
-    font-size: 20px;
-    box-shadow: 0px 0px 12px -2px;
-    background-color: rgb(255, 240, 211);
-    font-family: "Cinzel", serif;
+  width: 100%;
+  height: 80%;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0px 0px 12px -2px;
+  background-color: rgb(255, 240, 211);
+  font-family: "Cinzel", serif;
 }
 
 /* change color on take picture button */
 .advance-button:hover {
-    background-color: rgb(50, 53, 52);
-    color: white;
-  }
-  .advance-button:active {
-    background-color: rgb(44, 43, 40);
-    transform: translate(4px);
-  }
+  background-color: rgb(50, 53, 52);
+  color: white;
+}
+.advance-button:active {
+  background-color: rgb(44, 43, 40);
+  transform: translate(4px);
+}
 
-  .left{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 70%;
-  }
-  .right{
-    width: 30%;
-  }
-
-
-
-  
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+}
+.right {
+  width: 30%;
+}

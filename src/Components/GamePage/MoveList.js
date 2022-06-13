@@ -17,7 +17,7 @@ const MoveList = ({moveList}) => {
             <hr className="movelist-divider"/>
            {moveList.filter((move) => (move.id > 0)).map((move) => (
                <p className="movelist-text" key={move.id}>
-                    {move.id}: {move.desc}
+                    {move.id}. {move.desc}
                </p>
            ))}
         </div>

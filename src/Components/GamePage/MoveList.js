@@ -6,8 +6,6 @@ const MoveList = ({moveList}) => {
 
     console.log(moveList);
 
-    const [moves, setMoves] = useState(moveList);
-
     
     return (
         <div className="movelist-div">

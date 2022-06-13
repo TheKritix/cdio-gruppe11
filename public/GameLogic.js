@@ -179,9 +179,15 @@ function parseInput(input, st, img_width, img_height) {
 				}
 			}
 		} else if (st.moveHistory[0].type === 2) {
-			console.log("This code was run");
-			input.sort((a ,b) => a.bbox.y - b.bbox.y);
-			st.a[12].splice(st.a[12].length-1,1,convert(input[0]));
+			var index = 0;
+			var maxDistance = Infinity;
+			for (var i=0; i<input.length; i++) {
+				if (Math.sqrt(input[i].bbox.x^2 + input[i].bbox.y^2) < maxDistance) {
+					index = i;
+					maxDistance = Math.sqrt(input[i].bbox.x^2 + input[i].bbox.y^2);
+				}
+			}
+			st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
 		}
 	}
 	
@@ -220,6 +226,15 @@ var VisualizeInputData = function VisualizeInputData(input,img_width,img_height)
 }
 var convert = function convert(card_data) {
 	var c = new Card;
+	if (card_data.class === "10H") {
+		card_data.class = "TH"
+	} else if (card_data.class === "10S") {
+		card_data.class = "TS"
+	} else if (card_data.class === "10D") {
+		card_data.class = "TD"
+	} else if (card_data.class === "10C") {
+		card_data.class = "TC"
+	}
 	c.faceup = true;
 	c.originX = card_data.bbox.x;
 	c.originY = card_data.bbox.y;

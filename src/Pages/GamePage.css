@@ -18,9 +18,8 @@
 
 /* button */
 .advance-div {
-    float: left;
-    margin-bottom: 5%;
-    margin-left: 15%;
+   align-self: center;
+  
     
 }
 
@@ -50,7 +49,7 @@
     color: rgb(255, 240, 211);
     border: solid 1px black;
     width: 45%;
-    height: 50%;
+    height: 100%;
    
 }
 

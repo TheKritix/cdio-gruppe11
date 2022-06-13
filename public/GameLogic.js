@@ -724,7 +724,7 @@ var identifyMoves = function identifyMoves(st) {
 			if (Boolean(st.a[srcX][srcY-1].faceup) == false) {
 				m.type = 1;
 			}
-		} else if (srcX == 11) {
+		} else if (srcX == 11 || srcX == 12) {
 			m.type = 2;
 		}
 		st.moves.push(m);

@@ -24,7 +24,7 @@ const MoveList = ({moveList}) => {
         <div className="movelist-div">
             <div className="movelist-top">
                     <h3 className="movelist-title">
-                        List of moves made: 
+                        Moves made: 
                     </h3>
                     <hr className="movelist-divider"/>
                 </div>

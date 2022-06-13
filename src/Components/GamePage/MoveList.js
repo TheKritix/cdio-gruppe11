@@ -1,10 +1,20 @@
 import "../../Pages/GamePage.css"
-import {useState, useEffect} from "react"
-
+import {useRef, useEffect} from "react"
+ 
 
 const MoveList = ({moveList}) => {
-
     
+
+    const movesEndRef = useRef(null);
+
+    const scrollToLast = () => {
+        movesEndRef.current?.scrollIntoView({ behavior: "smooth"})
+    }
+
+    useEffect(() => {
+        scrollToLast()
+    }, [moveList]);
+
     //for debugging
     console.log(moveList);
 
@@ -20,6 +30,7 @@ const MoveList = ({moveList}) => {
                     {move.id}: {move.desc}
                </p>
            ))}
+           <div ref={movesEndRef}/>
         </div>
     )
 }

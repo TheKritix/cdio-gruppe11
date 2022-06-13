@@ -53,6 +53,8 @@
     width: 23%;
     height: 60%;
     background-color: lightgray;
+    overflow-y: scroll;
+    white-space: nowrap;
 }
 
 .movelist-text {

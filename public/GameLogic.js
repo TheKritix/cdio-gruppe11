@@ -180,7 +180,7 @@ function parseInput(input, st, img_width, img_height) {
 			}
 		} else if (st.moveHistory[0].type === 2) {
 			input.sort((a ,b) => a.bbox.y - b.bbox.y);
-			st.a[12][st.a[12].length-1] = convert(input[0]);
+			st.a[12].splice(st.a[12].length-1,1,convert(input[0]));
 		}
 	}
 	
@@ -878,7 +878,7 @@ var executeMove = function executeMove(st,x) {
 	movedCardX = st.a[st.moves[x].srcX][st.moves[x].srcY].originX;
 	movedCardY = st.a[st.moves[x].srcX][st.moves[x].srcY].originY;
 	st.moveHistory.unshift(st.moves[x]); // Add move to history
-	if (st.moves[x].srcX === 11 && st.moves[x].dst === 12) {
+	if (st.moves[x].srcX == 11 && st.moves[x].dst == 12) {
 		if ((st.a[11].length + st.a[12].length) > 0) {
 			for (var i=0; i<3; i++) {
 				if (st.a[11].length > 0) {

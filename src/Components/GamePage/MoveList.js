@@ -7,6 +7,7 @@ const MoveList = ({moveList}) => {
     //source for scroll: https://codesandbox.io/s/scrolltobottomexample-f90lz
     const movesEndRef = useRef(null);
 
+    //comment
     const scrollToLast = () => {
         movesEndRef.current?.scrollIntoView({ behavior: "smooth"})
     }

@@ -126,6 +126,10 @@ const PlayingCardReg = () => {
 
   return (
     <div className="table-div">
+      <div className="advance-div">
+        <AdvanceButton cameraHandler={callAdvanceGS}/>
+      </div>
+      <div className="right_div">
       <div id="overlay">
         <canvas id="canvas" width={1280} height={620} />
       </div>
@@ -133,8 +137,6 @@ const PlayingCardReg = () => {
         <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
       </div>
       <MoveList moveList={moveList}/>
-      <div className="advance-div">
-        <AdvanceButton cameraHandler={callAdvanceGS}/>
       </div>
     </div>
   );

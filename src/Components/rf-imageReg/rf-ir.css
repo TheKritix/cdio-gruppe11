@@ -15,7 +15,16 @@
 /* Cam layout */
 #webcamLayer {
     display: flex;
-    width: 35%;
-    height: 35%;
+    width: 37%;
+    height: 37%;
     float: right;
+}
+
+.right_div{
+    margin-top:2%;
+    display: flex;
+    flex-direction: column;
+   justify-content: space-between;
+   margin-left: 300px;
+
 }

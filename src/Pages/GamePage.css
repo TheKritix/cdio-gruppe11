@@ -40,18 +40,28 @@
     background-color: rgb(50, 53, 52);
     color: white;
   }
-  .advance-button:active {
+
+.advance-button:active {
     background-color: rgb(44, 43, 40);
     transform: translate(4px);
   }
 
-  .movelist-div {
+.movelist-content {
+    overflow-y: scroll;
+    height: 77%;
+    margin-left: 15px;
+}
+
+.movelist-div {
     border: solid 1px black;
     width: 35%;
     height: 60%;
-    overflow-y: scroll;
-    white-space: nowrap;
 }
+
+/* hides white scrollbar */
+::-webkit-scrollbar {
+    display: none;
+  }
 
 .movelist-text {
     padding-left: 15px;
@@ -59,7 +69,6 @@
 }
 
 .movelist-top {
-    background-color: linear-gradient(180deg, #000, #10a329 );
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;

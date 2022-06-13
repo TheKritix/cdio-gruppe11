@@ -41,6 +41,11 @@ const GamePage = () => {
         <>
             <div className="container-gamepage">
                    {/* button for game rules (questionmark) */}
+
+                <div className="buttons" >
+                    <div className="restart">
+                        <button className="restartBtn">Restart</button>
+                    </div>
                 <div className="button-div">
                     <IconButton
                     classname=" helpIcon" 
@@ -51,6 +56,8 @@ const GamePage = () => {
                     >
                     <Help></Help>
                     </IconButton>
+                </div>
+
                 </div>
 
                 {/* popup window for game rules. */}

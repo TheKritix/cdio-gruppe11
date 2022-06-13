@@ -42,17 +42,28 @@
   transform: translate(4px);
 }
 
+.restartBtn{
+    background-color: rgb(255, 240, 211);
+    color: black;
+    width: 60px;
+    height: 30px;
+}
+
+
 /* list of move made start*/
 .movelist-div {
   color: rgb(255, 240, 211);
   border: solid 1px black;
   width: 45%;
   height: 100%;
+
+  /* hide scrollbar */
   -ms-overflow-style: none; /* Edge, Internet Explorer */
   scrollbar-width: none; /* Firefox */
   overflow-y: scroll;
 }
 
+/* hide scrollbar */
 ::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }

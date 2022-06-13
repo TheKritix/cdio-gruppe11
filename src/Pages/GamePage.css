@@ -45,23 +45,21 @@
     transform: translate(4px);
   }
 
-
-.movelist-div {
-    color: black;
+  .movelist-div {
     border: solid 1px black;
-    width: 23%;
+    width: 35%;
     height: 60%;
-    background-color: lightgray;
     overflow-y: scroll;
     white-space: nowrap;
 }
 
 .movelist-text {
     padding-left: 15px;
+    color: rgb(255, 240, 211);
 }
 
 .movelist-top {
-    background-color: lightgray;
+    background-color: linear-gradient(180deg, #000, #10a329 );
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
@@ -70,13 +68,12 @@
 
 .movelist-title {
     padding-left: 15px;
-    color: black;
+    color: rgb(255, 240, 211);
 }
 
 .movelist-divider {
-    background-color: black;
     width: 90%;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 240, 211);
     border-radius: 5px;
 }
 

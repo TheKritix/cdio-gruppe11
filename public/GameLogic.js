@@ -179,6 +179,7 @@ function parseInput(input, st, img_width, img_height) {
 				}
 			}
 		} else if (st.moveHistory[0].type === 2) {
+			console.log("This code was run");
 			input.sort((a ,b) => a.bbox.y - b.bbox.y);
 			st.a[12].splice(st.a[12].length-1,1,convert(input[0]));
 		}
@@ -723,7 +724,7 @@ var identifyMoves = function identifyMoves(st) {
 			if (Boolean(st.a[srcX][srcY-1].faceup) == false) {
 				m.type = 1;
 			}
-		} else if (srcX == 12) {
+		} else if (srcX == 11) {
 			m.type = 2;
 		}
 		st.moves.push(m);

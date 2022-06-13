@@ -1,151 +1,118 @@
 .container-gamepage {
-    background: linear-gradient(180deg, #000, #10a329 );
-    position: absolute;
-    height: 100%;
-    width: 100%;     
-    font-family: "Cinzel", serif;
+  background: linear-gradient(180deg, #000, #10a329);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  font-family: "Cinzel", serif;
 }
 
+/* div from rf-ir.js this is the big div of the page */
 .table-div {
-    color: white;
-    height: 90%;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 2%;
-    display: flex;
- 
+  color: white;
+  height: 90%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
+  display: flex;
 }
 
 /* button */
 .advance-div {
-   align-self: center;
-  
-    
+  align-self: center;
 }
 
 /* take piture of solitaire button */
 .advance-button {
-    width: 400px;
-    height: 150px;
-    border-radius: 8px;
-    font-size: 20px;
-    box-shadow: 0px 0px 12px -2px;
-    background-color: rgb(255, 240, 211);
-    font-family: "Cinzel", serif;
+  width: 400px;
+  height: 150px;
+  border-radius: 8px;
+  font-size: 20px;
+  box-shadow: 0px 0px 12px -2px;
+  background-color: rgb(255, 240, 211);
+  font-family: "Cinzel", serif;
 }
 
 /* change color on take picture button */
 .advance-button:hover {
-    background-color: rgb(50, 53, 52);
-    color: white;
-  }
-  .advance-button:active {
-    background-color: rgb(44, 43, 40);
-    transform: translate(4px);
-  }
+  background-color: rgb(50, 53, 52);
+  color: white;
+}
+.advance-button:active {
+  background-color: rgb(44, 43, 40);
+  transform: translate(4px);
+}
 
-
+/* list of move made start*/
 .movelist-div {
-    color: rgb(255, 240, 211);
-    border: solid 1px black;
-    width: 45%;
-    height: 100%;
-   
+  color: rgb(255, 240, 211);
+  border: solid 1px black;
+  width: 45%;
+  height: 100%;
 }
-
+/* text in movelist */
 .movelist-text {
-    padding-left: 15px;
+  padding-left: 15px;
 }
-
+/* 
+headline in movelist */
 .movelist-title {
-    padding-left: 15px;
-    color: rgb(255, 240, 211);
+  padding-left: 15px;
+  color: rgb(255, 240, 211);
 }
 
+/* contains the border between the headline and the text */
 .movelist-divider {
-    background-color: black;
-    width: 90%;
-    border: 1px solid rgb(255, 240, 211);
-    border-radius: 5px;
+  background-color: black;
+  width: 90%;
+  border: 1px solid rgb(255, 240, 211);
+  border-radius: 5px;
+}
+/* list of move made end */
+
+/* game rule button */
+.button-div {
+  float: right;
 }
 
-.card-row-div {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
+/* css for popup window */
+.popup-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 50%;
+  width: 50%;
+  background: #e2e2e2;
+  border-radius: 5px;
+  padding-right: 5px;
+  border-top: 1px solid white;
+  animation: fade 0.5s ease 1 forwards;
+  z-index: 20;
+  font-family: "Cinzel", serif;
 }
 
-.foundation-div {
-    float: right;
-    display: flex;
-    flex-direction: row;
+.helpIcon {
+  z-index: 200;
 }
 
-.tableau-div {
-    width: 100%;
-    border: 1px solid white;
-    display: flex;
-    flex-direction: column;
+/* headline in popup window */
+h3 {
+  text-align: center;
+  font-size: 30px;
 }
 
-.top-row-div {
+/* close button in popup window */
+.closeBtn {
+  border: 1px solid rgb(121, 121, 121);
+  border-radius: 50%;
+}
+
+/* .top-row-div {
     margin-left: 25px;
     margin-right: 25px;
     margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.stack-div {
-    display: flex;
-    flex-direction: row;
-}
-
-.camera-container-div {
-    border: 1px solid white;
-    height: 100%;
-    width: 100%;
-}
-
-
-/* game rule button */
-.button-div {
-    float: right;
-  }
-  
-  /* css for popup window */
-  .popup-div {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 50%;
-    width: 50%;
-    background: #e2e2e2;
-    border-radius: 5px;
-    padding-right: 5px;
-    border-top: 1px solid white;
-    animation: fade 0.5s ease 1 forwards;
-    z-index: 20;
-    font-family: "Cinzel", serif;
-    
-  }
-
-  .helpIcon{
-      z-index: 200;
-  }
-  
-  /* headline in popup window */
-  h3 {
-    text-align: center;
-    font-size: 30px;
-  }
-  
-  /* close button in popup window */
-  .closeBtn {
-    border: 1px solid rgb(121, 121, 121);
-    border-radius: 50%;
-   
-  }
+} */

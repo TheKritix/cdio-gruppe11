@@ -4,6 +4,8 @@ import {useState, useEffect} from "react"
 
 const MoveList = ({moveList}) => {
 
+    
+    //for debugging
     console.log(moveList);
 
     

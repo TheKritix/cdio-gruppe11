@@ -155,7 +155,11 @@ const PlayingCardReg = () => {
         <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
+            width: "65%",
+            objectFit: "fill",
+            position: "absolute"
+          }}/>
       </div>
       <div className="advance-div">
         <AdvanceButton cameraHandler={callAdvanceGS}/>

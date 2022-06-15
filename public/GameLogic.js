@@ -19,7 +19,7 @@ var state = {
 for (var i=0; i<state.a.length; i++) { // initialize board structure
 	state.a[i] = [];
 }
-const searchDepth = 3;
+const searchDepth = 4;
 var hasInit = false;
 var autoEnable = true;
 // nice seed: jZ3fcxlGWwmxXtcrS4hIZ8R0apeTZ9pLDiTrcXYenV1Cuow8H2KK1vNVRrPY0Y2M
@@ -512,9 +512,12 @@ var evals = function evals(st) {
 				s += c[8];
 				
 				if (x2 == 12) {
+					// ENFORCE DRAW PILE RULE
 					if (st.a[11].length+st.a[12].length == 3 && hasEnforcedDrawPileRule == false) {
-						s += 100000;
+						s += 100000; 
 						hasEnforcedDrawPileRule = true;
+					} else if ( st.a[11].length+st.a[12].length <= 3 && hasEnforcedDrawPileRule == true) {
+						s += -100000;
 					}
 					for (var z=0; z<st.a[11].length; z++) {
 						if (Boolean(st.a[11][z].faceup) == false) {

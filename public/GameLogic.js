@@ -27,8 +27,8 @@ var c = Array(12);
 
 c = [60,-65,50,-45,15,1075,90,-80,5,17,20,80]; // changed 10000 to 17
 
-const deltaX = 5; //%
-const deltaY = 5; //%
+const deltaX = 3; //%
+const deltaY = 3; //%
 var movedCardX;
 var movedCardY;
 var testInput = []

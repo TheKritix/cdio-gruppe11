@@ -7,18 +7,18 @@ import "../../Pages/GamePage.css";
 
 const PlayingCardReg = () => {
   //Test Flow Model
-  var PCRegModel;
-  const pKeys =
-  "rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
-  const loadModel = "playing-cards-ow27d";
-  const versionModel = 1;
-
-  //Prod model
   // var PCRegModel;
   // const pKeys =
-  // "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
-  // const loadModel = "spilekort";
-  // const versionModel = 3;
+  // "rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
+  // const loadModel = "playing-cards-ow27d";
+  // const versionModel = 1;
+
+  //Prod model
+  var PCRegModel;
+  const pKeys =
+  "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
+  const loadModel = "spilekort";
+  const versionModel = 6;
 
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();
@@ -43,7 +43,9 @@ const PlayingCardReg = () => {
         //Shitty solution for it to wait for the Camera to wake up, but works.
         setTimeout(200)
 
-        runModel();
+        try {runModel();}
+        catch {runModel();}
+        
       });
   }, []);
 
@@ -69,8 +71,8 @@ const PlayingCardReg = () => {
     if (predModel.length > 0) {
       for (let n = 0; n < predModel.length; n++) {
         if (predModel[n].confidence > 0.6) {
-          let bboxLeft = predModel[n].bbox.x;
-          let bboxTop = predModel[n].bbox.y;
+          let bboxLeft = predModel[n].bbox.x-(predModel[n].bbox.width/2);
+          let bboxTop = predModel[n].bbox.y-(predModel[n].bbox.height/2);
           let bboxWidth = predModel[n].bbox.width;
           let bboxHeight = predModel[n].bbox.height;
 
@@ -79,10 +81,12 @@ const PlayingCardReg = () => {
           ctx.fillStyle = predModel[n].color;
 
           ctx.fillText(
-            predModel[n].class +
-              ": " +
-              Math.round(parseFloat(predModel[n].confidence) * 100) +
-              "%",
+            predModel[n].class 
+            // +
+            //   ": " +
+            //   Math.round(parseFloat(predModel[n].confidence) * 100) +
+            //   "%"
+              ,
             bboxLeft,
             bboxTop
           );
@@ -153,11 +157,7 @@ const PlayingCardReg = () => {
         <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
-            width: "65%",
-            objectFit: "fill",
-            position: "absolute"
-          }}/>
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
       </div>
       <div className="advance-div">
         <AdvanceButton cameraHandler={callAdvanceGS}/>

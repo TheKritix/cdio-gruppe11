@@ -176,12 +176,13 @@ function parseInput(input, st, img_width, img_height) {
 					(Math.abs(movedCardY - input[i].bbox.y + input[i].bbox.height*0.5)/img_height < deltaY/100)))		
 				{
 					var match = false;
+					var tmp = convert(input[i]);
 					for (var j=0; j<13; j++) {
 						for (var z=0; z<st.a[j].length; z++) {
-							if (Boolean(st.a[j][z].faceup) == true) {
-								var tmp = convert(input[i]);
+							if (st.a[j][z].faceup) {
 								if (st.a[j][z].name == tmp.name) {
 									match = true;
+									console.log("match = true;");
 								}
 							}
 						}
@@ -196,9 +197,23 @@ function parseInput(input, st, img_width, img_height) {
 				var index1 = 0;
 				var maxDistance1 = Infinity;
 				for (var i=0; i < input.length; i++) {
+					var tmp1 = convert(input[i]);
 					if (Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2)) < maxDistance1) {
-						index1 = i;
-						maxDistance1 = Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2));
+						var match1 = false;
+						for (var j=0; j<13; j++) {
+							for (var z=0; z<st.a[j].length; z++) {
+								if (st.a[j][z].faceup) {
+									if (st.a[j][z].name == tmp1.name) {
+										match1 = true;
+										console.log("match1 = true;");
+									}
+								}
+							}
+						}
+						if (match1 == false) {
+							index1 = i;
+							maxDistance1 = Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2));
+						}
 					}
 				}
 				st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[index1]));

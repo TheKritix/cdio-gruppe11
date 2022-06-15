@@ -44,6 +44,7 @@ const PlayingCardReg = () => {
         setTimeout(200)
 
         runModel();
+        setWindowDimensions(getWindowDimensions());
       });
   }, []);
 

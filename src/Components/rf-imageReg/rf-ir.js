@@ -43,9 +43,14 @@ const PlayingCardReg = () => {
         //Shitty solution for it to wait for the Camera to wake up, but works.
         setTimeout(200)
 
+<<<<<<< HEAD
         try {runModel();}
         catch {runModel();}
         
+=======
+        runModel();
+        setWindowDimensions(getWindowDimensions());
+>>>>>>> 59046a625d9d3d86a37f9178c57b0711bdc9f95c
       });
   }, []);
 
@@ -123,7 +128,6 @@ const PlayingCardReg = () => {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st.moves[0]);
-    //for debugging
     console.log(moveList);
 }
 
@@ -154,7 +158,7 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
       <div id="overlay">
-        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
+        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
       </div>
       <div id="webcamLayer">
         <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>

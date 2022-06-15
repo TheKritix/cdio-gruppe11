@@ -179,7 +179,7 @@ function parseInput(input, st, img_width, img_height) {
 					for (var j=0; j<13; j++) {
 						for (var z=0; z<st.a[j].length; z++) {
 							if (Boolean(st.a[j][z].faceup) == true) {
-								var tmp = convert(input[j]);
+								var tmp = convert(input[i]);
 								if (st.a[j][z].name == tmp.name) {
 									match = true;
 								}

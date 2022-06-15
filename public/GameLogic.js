@@ -166,6 +166,7 @@ function parseInput(input, st, img_width, img_height) {
 	} 
 	else {
 		if (st.moveHistory[0].type === 1) {
+			var success = false;
 			for (var i=0; i < input.length; i++) {
 				console.log("inputx:" + input[i].bbox.x + "  srcX:"+movedCardX+"  img_width:"+img_width);
 				if  (((Math.abs((input[i].bbox.x - movedCardX)/img_width) < deltaX/100) &&
@@ -176,15 +177,27 @@ function parseInput(input, st, img_width, img_height) {
 					console.log(convert(input[i]));
 					console.log("x:"+st.moveHistory[0].srcX+"  y:"+st.moveHistory[0].srcY);
 					st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
+					success = true;
 				}
+			}
+			if (success == false) {
+				var index0 = 0;
+				var maxDistance0 = Infinity;
+				for (var i=0; i < input.length; i++) {
+					if (Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2)) < maxDistance0) {
+						index0 = i;
+						maxDistance0 = Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2));
+					}
+				}
+				st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[index0]));
 			}
 		} else if (st.moveHistory[0].type === 2) {
 			var index = 0;
 			var maxDistance = Infinity;
 			for (var i=0; i<input.length; i++) {
-				if (Math.sqrt(input[i].bbox.x*input[i].bbox.x + input[i].bbox.y*input[i].bbox.y) < maxDistance) {
+				if (Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2)) < maxDistance) {
 					index = i;
-					maxDistance = Math.sqrt(input[i].bbox.x*input[i].bbox.x + input[i].bbox.y*input[i].bbox.y);
+					maxDistance = Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2));
 				}
 			}
 			st.a[12].splice(st.a[12].length-1,1,convert(input[index]));

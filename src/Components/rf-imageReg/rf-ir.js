@@ -44,8 +44,8 @@ const PlayingCardReg = () => {
         setTimeout(200)
 
         runModel();
-        setWindowDimensions(getWindowDimensions());
       });
+      setWindowDimensions(getWindowDimensions());
   }, []);
 
   async function runModel() {
@@ -140,7 +140,7 @@ const PlayingCardReg = () => {
 
   const videoMax = {
     width: windowDimensions.width * 0.65,
-    //height: windowDimensions.height * 0.65,
+    height: windowDimensions.height * 0.65,
     maxWidth: "100vw",
     facingMode: "environment",
   };
@@ -155,7 +155,7 @@ const PlayingCardReg = () => {
         <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} preload="none" style={{
             width: "65%",
             objectFit: "fill",
             position: "absolute"

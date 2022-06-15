@@ -9,6 +9,7 @@ var decklist = []; // used for initializing random deck
 //var a = Array(13); // used to represent the board state
 //var moves = []; // used to hold calculated valid moves
 var stmp = 0; // global variable for seed digest
+var hasEnforcedDrawPileRule = false;
 var state = {
 	initialized: false,
 	a: Array(13) ,
@@ -174,22 +175,33 @@ function parseInput(input, st, img_width, img_height) {
 					|| ((Math.abs((input[i].bbox.x - movedCardX + input[i].bbox.x*3)/img_width) < deltaX/100) &&
 					(Math.abs(movedCardY - input[i].bbox.y + input[i].bbox.height*0.5)/img_height < deltaY/100)))		
 				{
-					console.log(convert(input[i]));
-					console.log("x:"+st.moveHistory[0].srcX+"  y:"+st.moveHistory[0].srcY);
-					st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
-					success = true;
+					var match = false;
+					for (var j=0; j<13; j++) {
+						for (var z=0; z<st.a[j].length; z++) {
+							if (Boolean(st.a[j][z].faceup) == true) {
+								var tmp = convert(input[j]);
+								if (st.a[j][z].name == tmp.name) {
+									match = true;
+								}
+							}
+						}
+					}
+					if (match == false) {
+						st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
+						success = true;
+					}
 				}
 			}
 			if (success == false) {
-				var index0 = 0;
-				var maxDistance0 = Infinity;
+				var index1 = 0;
+				var maxDistance1 = Infinity;
 				for (var i=0; i < input.length; i++) {
-					if (Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2)) < maxDistance0) {
-						index0 = i;
-						maxDistance0 = Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2));
+					if (Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2)) < maxDistance1) {
+						index1 = i;
+						maxDistance1 = Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2));
 					}
 				}
-				st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[index0]));
+				st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[index1]));
 			}
 		} else if (st.moveHistory[0].type === 2) {
 			var index = 0;
@@ -498,7 +510,12 @@ var evals = function evals(st) {
 			break;
 			case 2: // source stockpile == cycle stock
 				s += c[8];
+				
 				if (x2 == 12) {
+					if (st.a[11].length+st.a[12].length == 3 && hasEnforcedDrawPileRule == false) {
+						s += 100000;
+						hasEnforcedDrawPileRule = true;
+					}
 					for (var z=0; z<st.a[11].length; z++) {
 						if (Boolean(st.a[11][z].faceup) == false) {
 							s += c[9];

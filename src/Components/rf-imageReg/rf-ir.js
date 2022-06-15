@@ -140,7 +140,7 @@ const PlayingCardReg = () => {
 
   const videoMax = {
     width: windowDimensions.width * 0.65,
-    height: windowDimensions.width * 0.365,
+    height: windowDimensions.height * 0.65,
     maxWidth: "100vw",
     facingMode: "environment",
   };
@@ -152,7 +152,7 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
       <div id="overlay">
-        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
+        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
       </div>
       <div id="webcamLayer">
         <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{

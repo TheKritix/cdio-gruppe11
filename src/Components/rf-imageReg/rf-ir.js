@@ -139,8 +139,8 @@ const PlayingCardReg = () => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   const videoMax = {
-    //width: 1050,
-    height: 620,
+    width: windowDimensions.width * 0.65,
+    height: windowDimensions.width * 0.365,
     maxWidth: "100vw",
     facingMode: "environment",
   };
@@ -166,7 +166,7 @@ const PlayingCardReg = () => {
       </div>
       </div>
       <div className="right">
-      <MoveList moveList={moveList}/>
+        <MoveList moveList={moveList}/>
       </div>
     </div>
   );

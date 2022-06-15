@@ -43,9 +43,9 @@ const GamePage = () => {
         <div className="button-div">
           <button className="restart-btn">Restart</button>
           <IconButton
-            classname=" helpIcon"
+            className=" helpIcon"
             display="flex"
-            justifyContent="flex-end"
+            justifycontent="flex-end"
             style={{ color: "white" }}
             onClick={togglePopup}
           >

@@ -1,5 +1,5 @@
 #canvas {
-  /* border: 1px solid white; */
+  border: 1px solid white;
   background-color: transparent;
   height: 100%;
   width: 100%;
@@ -22,7 +22,7 @@
 
 /* the content in the movelist */
 .movelist-content {
-  font-size: 2vh;
+  font-size: 3vh;
   overflow-y: scroll;
   height: 85%;
   margin-left: 15px;
@@ -58,7 +58,7 @@
 
 /*headline in movelist */
 .movelist-title {
-  font-size: 3vh;
+  font-size: 4vh;
   padding-left: 15px;
   margin-top: 0%;
   color: rgb(255, 240, 211);

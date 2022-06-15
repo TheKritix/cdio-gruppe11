@@ -6,18 +6,18 @@ import "../../Pages/GamePage.css";
 
 const PlayingCardReg = () => {
   //Test Flow Model
-  var PCRegModel;
-  const pKeys =
-  "rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
-  const loadModel = "playing-cards-ow27d";
-  const versionModel = 1;
-
-  //Prod model
   // var PCRegModel;
   // const pKeys =
-  // "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
-  // const loadModel = "spilekort";
-  // const versionModel = 3;
+  // "rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
+  // const loadModel = "playing-cards-ow27d";
+  // const versionModel = 1;
+
+  //Prod model
+  var PCRegModel;
+  const pKeys =
+  "rf_hB1FG8hLbwhs49HoSSxyjNek1up1";//"rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
+  const loadModel = "spilekort";
+  const versionModel = 6;
 
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();
@@ -74,10 +74,12 @@ const PlayingCardReg = () => {
           ctx.fillStyle = predModel[n].color;
 
           ctx.fillText(
-            predModel[n].class +
-              ": " +
-              Math.round(parseFloat(predModel[n].confidence) * 100) +
-              "%",
+            predModel[n].class 
+            // +
+            //   ": " +
+            //   Math.round(parseFloat(predModel[n].confidence) * 100) +
+            //   "%"
+              ,
             bboxLeft,
             bboxTop
           );

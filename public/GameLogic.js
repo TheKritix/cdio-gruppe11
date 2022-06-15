@@ -1027,13 +1027,13 @@ var sortMoves = function sortMoves(st) {
 function advanceGS(model, screen_width, screen_height) {
 	parseInput(model, state, screen_width, screen_height);
 	console.log(state);
-	printGameState(state);
+	//printGameState(state);
 	identifyMoves(state);
 	evals(state);
 	sortMoves(state);
 	executeMove(state,0);
 	console.log(state.a);
-	return;
+	return state;
 }
 var advanceGamestate = function advanceGamestate() {
 	parseInput(testInput[0], state, 1280, 720);

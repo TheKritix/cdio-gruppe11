@@ -3,91 +3,62 @@
     position: absolute;
     height: 100%;
     width: 100%;     
+    font-family: "Cinzel", serif;
 }
 
-.table-div {
-    border: 1px solid white;
+
+
+/* game rule button */
+.button-div {
     display: flex;
     justify-content: space-between;
-    color: white;
-    height: 65%;
-    margin-top: 30px;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.advance-div {
-    display: flex;
-    justify-content: center;
-    margin-top: 5%;
-    margin-bottom: 5%;
-}
-
-.advance-button {
-    width: 400px;
-    height: 150px;
-    font-size: 18px;
-}
-
-.movelist-div {
-    color: black;
-    float: right;
-    border: solid 1px black;
-    width: 25%;
-    height: 130%;
-    background-color: lightgray;
-}
-
-.movelist-text {
-    padding-left: 15px;
-}
-
-.movelist-title {
-    padding-left: 15px;
-    color: black;
-}
-
-.movelist-divider {
-    background-color: black;
-    width: 90%;
-    border: 1px solid black;
+  }
+  
+  /* css for popup window */
+  .popup-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 50%;
+    width: 50%;
+    background: #e2e2e2;
     border-radius: 5px;
-}
+    padding-right: 5px;
+    border-top: 1px solid white;
+    animation: fade 0.5s ease 1 forwards;
+    z-index: 20;
+    font-family: "Cinzel", serif;
+  }
 
-.card-row-div {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
-}
+  /*Restart button*/
+  .restart-btn{
+    height: 5%;
+    width: fit-content;
+    background-color: rgb(255, 240, 211);
+    border-radius: 5%;
+    margin-left: 1%;
+    margin-top: 1%;
+    font-family: "Cinzel", serif;
+  }
 
-.foundation-div {
-    float: right;
-    display: flex;
-    flex-direction: row;
-}
 
-.tableau-div {
-    width: 100%;
-    border: 1px solid white;
-    display: flex;
-    flex-direction: column;
-}
+  .helpIcon{
+      z-index: 200;
+  }
+  
+  /* headline in popup window */
+  h3 {
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  /* close button in popup window */
+  .closeBtn {
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 50%;
+   
+  }
 
-.top-row-div {
-    margin-left: 25px;
-    margin-right: 25px;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.stack-div {
-    display: flex;
-    flex-direction: row;
-}
-
-.camera-container-div {
-    display: flex;
-}
-
+  

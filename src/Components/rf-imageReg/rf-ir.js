@@ -1,4 +1,5 @@
 import Webcam from "react-webcam";
+import MoveList from "../../Components/GamePage/MoveList.js"
 import React, { useEffect, useState } from "react";
 import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
@@ -21,6 +22,10 @@ const PlayingCardReg = () => {
 
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();
+  const [moveList, setMoveList] = useState([{
+    desc: "",
+    id: 0,
+  }]);
 
   useEffect(() => {
     window.roboflow
@@ -102,12 +107,34 @@ const PlayingCardReg = () => {
     setTimeout(() => runModel(), 1000);  
 }
 
+  const addMoveToList = (st) => {
+    const moveObject = {
+      desc: st.desc,
+      id: moveList.length 
+    }
+    setMoveList(moveList.concat(moveObject))
+}  
+
   const callAdvanceGS = () => {
-    window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight)
+    var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
+    addMoveToList(st.moves[0]);
+    //for debugging
+    console.log(moveList);
+}
+
+
+  //source: https://www.codegrepper.com/code-examples/javascript/react+detect+screen+size
+  function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
   }
 
-
+  //finder window størrelse
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   const videoMax = {
     //width: 1050,
@@ -120,13 +147,24 @@ const PlayingCardReg = () => {
   const webcamComp = React.useRef(null);
 
   return (
-    <div className="camera-container-div">
+    <div className="table-div">
+      <div className="left">
       <div id="overlay">
-        <canvas id="canvas" width={1280} height={720} />
+        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax}/>
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
+            width: "65%",
+            objectFit: "fill",
+            position: "absolute"
+          }}/>
+      </div>
+      <div className="advance-div">
         <AdvanceButton cameraHandler={callAdvanceGS}/>
+      </div>
+      </div>
+      <div className="right">
+      <MoveList moveList={moveList}/>
       </div>
     </div>
   );

@@ -64,8 +64,8 @@ const PlayingCardReg = () => {
     if (predModel.length > 0) {
       for (let n = 0; n < predModel.length; n++) {
         if (predModel[n].confidence > 0.6) {
-          let bboxLeft = predModel[n].bbox.x;
-          let bboxTop = predModel[n].bbox.y;
+          let bboxLeft = predModel[n].bbox.x-(predModel[n].bbox.width/2);
+          let bboxTop = predModel[n].bbox.y-(predModel[n].bbox.height/2);
           let bboxWidth = predModel[n].bbox.width;
           let bboxHeight = predModel[n].bbox.height;
 

@@ -7,7 +7,7 @@
 
 /* div for cam */
 #overlay {
-  /* border: 1px solid white; */
+  border: 1px solid blue;
   position: absolute;
   z-index: 10;
   width: 65%;
@@ -50,8 +50,8 @@
 }
 
 .movelist-top {
-  position: -webkit-sticky; /* Safari */
-  position: sticky;
+  /* position: -webkit-sticky; /* Safari */
+  /* position: sticky; */
   top: 0;
   padding-top: 5px;
 }

@@ -26,8 +26,35 @@ const PlayingCardReg = () => {
     desc: "",
     id: 0,
   }]);
-
+  const [cameraIsLoaded, setCameraIsLoaded] = useState();
+  
   useEffect(() => {
+    // window.roboflow
+    //   .auth({
+    //     publishable_key: pKeys,
+    //   })
+    //   .load({
+    //     model: loadModel,
+    //     version: versionModel,
+    //   })
+    //   .then(function (model) {
+    //     console.log("Bitch ass model loaded");
+    //     PCRegModel = model;
+
+    //     //Shitty solution for it to wait for the Camera to wake up, but works.
+    //     setTimeout(200)
+
+    //     runModel();
+    //     setWindowDimensions(getWindowDimensions());
+    //   });
+    //document.getElementById("feed").addEventListener('onUserMedia', roboflowFunc());
+    //document.getElementById("feed").addEventListener('loadeddata', roboflowFunc());
+    setWindowDimensions(getWindowDimensions());
+  }, []);
+
+  //from useEffect
+  function roboflowFunc() {
+    console.log("loadeddata event")
     window.roboflow
       .auth({
         publishable_key: pKeys,
@@ -45,8 +72,7 @@ const PlayingCardReg = () => {
 
         runModel();
       });
-      setWindowDimensions(getWindowDimensions());
-  }, []);
+  }
 
   async function runModel() {
     var predModel;
@@ -119,6 +145,7 @@ const PlayingCardReg = () => {
 }  
 
   const callAdvanceGS = () => {
+    roboflowFunc();
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st.moves[0]);
@@ -140,7 +167,7 @@ const PlayingCardReg = () => {
 
   const videoMax = {
     width: windowDimensions.width * 0.65,
-    height: windowDimensions.height * 0.65,
+    height: windowDimensions.width * 0.365,
     maxWidth: "100vw",
     facingMode: "environment",
   };
@@ -152,14 +179,14 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
       <div id="overlay">
-        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.height * 0.65} />
+        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
       </div>
       <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} preload="none" style={{
+        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
             width: "65%",
             objectFit: "fill",
             position: "absolute"
-          }}/>
+          }}/>  
       </div>
       <div className="advance-div">
         <AdvanceButton cameraHandler={callAdvanceGS}/>

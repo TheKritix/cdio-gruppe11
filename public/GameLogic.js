@@ -182,12 +182,13 @@ function parseInput(input, st, img_width, img_height) {
 							if (st.a[j][z].faceup) {
 								if (st.a[j][z].name == tmp.name) {
 									match = true;
-									console.log("match = true;");
+									console.log("match = true; " + tmp.name);
 								}
 							}
 						}
 					}
 					if (match == false) {
+						console.log(input[i].class);
 						st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
 						success = true;
 					}
@@ -205,7 +206,7 @@ function parseInput(input, st, img_width, img_height) {
 								if (st.a[j][z].faceup) {
 									if (st.a[j][z].name == tmp1.name) {
 										match1 = true;
-										console.log("match1 = true;");
+										console.log("match1 = true; " + tmp1.name);
 									}
 								}
 							}

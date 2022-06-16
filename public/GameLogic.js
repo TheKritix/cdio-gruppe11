@@ -612,13 +612,9 @@ var evals = function evals(st) {
 			*/
 			executeMove(sim,move);
 			
-			//var deckShift = 0;
-			while (sim.a[12].length > 3) {
-				for (var i=0; i<3; i++) {
-					sim.a[11].unshift(sim.a[12][0]);
-					sim.a[12].shift();
-				}
-				//deckShift += 1;
+			while (sim.a[12].length > 1) {
+				sim.a[11].unshift(sim.a[12][0]);
+				sim.a[12].shift();
 			}
 		
 			identifyMoves(sim);
@@ -903,7 +899,7 @@ var identifyMoves = function identifyMoves(st) {
 	// consider all cards in stock as options
 		for (var x = 0; x < 7; x++) {
 			if (st.a[11].length > 0) {
-				for (var y=st.a[11].length-3; y>0; y-=3) {
+				for (var y=st.a[11].length-1; y>0; y--) { // for (var y=st.a[11].length-3; y>0; y-=3)
 				try {
 				if (st.a[11][y].faceup) {
 				// if card is king
@@ -982,6 +978,11 @@ var executeMove = function executeMove(st,x) {
 			st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
 			}
 		}
+		console.log("Start of stock print");
+		for (var i = 0; i < st.a[11].length; i++) {
+			console.log(st.a[11][i].name);
+		}
+		console.log("End of stock print");
 	}
 }
 /*

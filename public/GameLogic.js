@@ -664,10 +664,10 @@ var printGameState = function printGameState(st) {
 
 	console.log("Start of stock print");
 	for (var i = 0; i < st.a[11].length; i++) {
-		console.log(st.a[11][i].name);
+		console.log(st.a[11][i].cardName);
 	}
 	console.log("End of stock print");
-	
+
 	// stacks
 	const elements = document.getElementById('stacks'); // clear table before rebuilding
 	elements?.remove();

@@ -143,13 +143,19 @@ const PlayingCardReg = () => {
     }
     setMoveList(moveList.concat(moveObject))
 }  
+  const [mlStart, setMlStart] = useState(false)
 
   const callAdvanceGS = () => {
+    if (mlStart === false) {
     roboflowFunc();
+    setMlStart(current => !current)
+    }
+    else {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st.moves[0]);
     console.log(moveList);
+    }
 }
 
 

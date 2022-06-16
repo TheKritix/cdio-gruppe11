@@ -947,22 +947,21 @@ var executeMove = function executeMove(st,x) {
 	movedCardX = st.a[st.moves[x].srcX][st.moves[x].srcY].originX;
 	movedCardY = st.a[st.moves[x].srcX][st.moves[x].srcY].originY;
 	} catch(e) {
-		console.log("x:" + st.moves[x].srcX + "  y:" + st.moves[x].srcY);
+		//console.log("x:" + st.moves[x].srcX + "  y:" + st.moves[x].srcY);
 	}
 	st.moveHistory.unshift(st.moves[x]); // Add move to history
 	if (st.moves[x].srcX == 11 && st.moves[x].dst == 12) {
 		if ((st.a[11].length + st.a[12].length) > 0) {
-			for (var i=0; i<3; i++) {
-				if (st.a[11].length > 0) {
-					//console.log("11:"+st.a[11].length + " 12:" + st.a[12].length);
-					st.a[12].push(st.a[11][st.a[11].length-1]);
-					st.a[11].pop(st.a[11].length-1);
-				} else {
-					for (var z=st.a[12].length; z>0; z--) {
-						st.a[11].unshift(st.a[12][0]);
-						st.a[12].shift();
-					}
-					i--;
+			if (st.a[11].length >= 3) {
+				for (var i=0; i<3; i++) {
+					st.a[12].push(st.a[11].pop(st.a[11].length-1));
+				}
+			} else {
+				while (st.a[12].length > 0) {
+					st.a[11].splice(0,0,st.a[12].shift());
+				}
+				for (var i=0; i<3; i++) {
+					st.a[12].push(st.a[11].pop(st.a[11].length-1));
 				}
 			}
 		}	

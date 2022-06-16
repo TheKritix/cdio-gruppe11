@@ -661,6 +661,13 @@ var evals = function evals(st) {
 	}
 }
 var printGameState = function printGameState(st) {
+
+	console.log("Start of stock print");
+	for (var i = 0; i < st.a[11].length; i++) {
+		console.log(st.a[11][i].name);
+	}
+	console.log("End of stock print");
+	
 	// stacks
 	const elements = document.getElementById('stacks'); // clear table before rebuilding
 	elements?.remove();
@@ -979,11 +986,6 @@ var executeMove = function executeMove(st,x) {
 			st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
 			}
 		}
-		console.log("Start of stock print");
-		for (var i = 0; i < st.a[11].length; i++) {
-			console.log(st.a[11][i].name);
-		}
-		console.log("End of stock print");
 	}
 }
 /*

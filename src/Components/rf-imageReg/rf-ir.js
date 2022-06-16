@@ -18,7 +18,7 @@ const PlayingCardReg = () => {
   const pKeys =
   "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
   const loadModel = "spilekort";
-  const versionModel = 6;
+  const versionModel = 7;
 
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();

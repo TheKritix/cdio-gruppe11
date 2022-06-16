@@ -180,9 +180,9 @@ function parseInput(input, st, img_width, img_height) {
 					for (var j=0; j<13; j++) {
 						for (var z=0; z<st.a[j].length; z++) {
 							if (st.a[j][z].faceup) {
-								if (st.a[j][z].name == tmp.name) {
+								if (st.a[j][z].cardName == tmp.cardName) {
 									match = true;
-									console.log("match = true; " + tmp.name);
+									console.log("match = true; " + tmp.cardName);
 								}
 							}
 						}
@@ -204,9 +204,9 @@ function parseInput(input, st, img_width, img_height) {
 						for (var j=0; j<13; j++) {
 							for (var z=0; z<st.a[j].length; z++) {
 								if (st.a[j][z].faceup) {
-									if (st.a[j][z].name == tmp1.name) {
+									if (st.a[j][z].cardName == tmp1.cardName) {
 										match1 = true;
-										console.log("match1 = true; " + tmp1.name);
+										console.log("match1 = true; " + tmp1.cardName);
 									}
 								}
 							}

@@ -9,6 +9,7 @@ var decklist = []; // used for initializing random deck
 //var a = Array(13); // used to represent the board state
 //var moves = []; // used to hold calculated valid moves
 var stmp = 0; // global variable for seed digest
+var hasEnforcedDrawPileRule = false;
 var state = {
 	initialized: false,
 	a: Array(13) ,
@@ -18,7 +19,7 @@ var state = {
 for (var i=0; i<state.a.length; i++) { // initialize board structure
 	state.a[i] = [];
 }
-const searchDepth = 3;
+const searchDepth = 4;
 var hasInit = false;
 var autoEnable = true;
 // nice seed: jZ3fcxlGWwmxXtcrS4hIZ8R0apeTZ9pLDiTrcXYenV1Cuow8H2KK1vNVRrPY0Y2M
@@ -27,8 +28,8 @@ var c = Array(12);
 
 c = [60,-65,50,-45,15,1075,90,-80,5,17,20,80]; // changed 10000 to 17
 
-const deltaX = 5; //%
-const deltaY = 5; //%
+const deltaX = 3; //%
+const deltaY = 3; //%
 var movedCardX;
 var movedCardY;
 var testInput = []
@@ -166,6 +167,7 @@ function parseInput(input, st, img_width, img_height) {
 	} 
 	else {
 		if (st.moveHistory[0].type === 1) {
+			var success = false;
 			for (var i=0; i < input.length; i++) {
 				console.log("inputx:" + input[i].bbox.x + "  srcX:"+movedCardX+"  img_width:"+img_width);
 				if  (((Math.abs((input[i].bbox.x - movedCardX)/img_width) < deltaX/100) &&
@@ -173,18 +175,57 @@ function parseInput(input, st, img_width, img_height) {
 					|| ((Math.abs((input[i].bbox.x - movedCardX + input[i].bbox.x*3)/img_width) < deltaX/100) &&
 					(Math.abs(movedCardY - input[i].bbox.y + input[i].bbox.height*0.5)/img_height < deltaY/100)))		
 				{
-					console.log(convert(input[i]));
-					console.log("x:"+st.moveHistory[0].srcX+"  y:"+st.moveHistory[0].srcY);
-					st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
+					var match = false;
+					var tmp = convert(input[i]);
+					for (var j=0; j<13; j++) {
+						for (var z=0; z<st.a[j].length; z++) {
+							if (st.a[j][z].faceup) {
+								if (st.a[j][z].cardName == tmp.cardName) {
+									match = true;
+									console.log("match = true; " + tmp.cardName);
+								}
+							}
+						}
+					}
+					if (match == false) {
+						console.log(input[i].class);
+						st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[i]));
+						success = true;
+					}
 				}
+			}
+			if (success == false) {
+				var index1 = 0;
+				var maxDistance1 = Infinity;
+				for (var i=0; i < input.length; i++) {
+					var tmp1 = convert(input[i]);
+					if (Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2)) < maxDistance1) {
+						var match1 = false;
+						for (var j=0; j<13; j++) {
+							for (var z=0; z<st.a[j].length; z++) {
+								if (st.a[j][z].faceup) {
+									if (st.a[j][z].cardName == tmp1.cardName) {
+										match1 = true;
+										console.log("match1 = true; " + tmp1.cardName);
+									}
+								}
+							}
+						}
+						if (match1 == false) {
+							index1 = i;
+							maxDistance1 = Math.sqrt(Math.pow(input[i].bbox.x-movedCardX,2)+ Math.pow(input[i].bbox.y-movedCardY,2));
+						}
+					}
+				}
+				st.a[st.moveHistory[0].srcX].splice(st.moveHistory[0].srcY-1,1,convert(input[index1]));
 			}
 		} else if (st.moveHistory[0].type === 2) {
 			var index = 0;
 			var maxDistance = Infinity;
 			for (var i=0; i<input.length; i++) {
-				if (Math.sqrt(input[i].bbox.x*input[i].bbox.x + input[i].bbox.y*input[i].bbox.y) < maxDistance) {
+				if (Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2)) < maxDistance) {
 					index = i;
-					maxDistance = Math.sqrt(input[i].bbox.x*input[i].bbox.x + input[i].bbox.y*input[i].bbox.y);
+					maxDistance = Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2));
 				}
 			}
 			st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
@@ -485,7 +526,15 @@ var evals = function evals(st) {
 			break;
 			case 2: // source stockpile == cycle stock
 				s += c[8];
+				
 				if (x2 == 12) {
+					// ENFORCE DRAW PILE RULE
+					if (st.a[11].length+st.a[12].length == 3 && hasEnforcedDrawPileRule == false) {
+						s += 100000; 
+						hasEnforcedDrawPileRule = true;
+					} else if ( st.a[11].length+st.a[12].length <= 3 && hasEnforcedDrawPileRule == true) {
+						s += -100000;
+					}
 					for (var z=0; z<st.a[11].length; z++) {
 						if (Boolean(st.a[11][z].faceup) == false) {
 							s += c[9];
@@ -564,13 +613,9 @@ var evals = function evals(st) {
 			*/
 			executeMove(sim,move);
 			
-			//var deckShift = 0;
-			while (sim.a[12].length > 3) {
-				for (var i=0; i<3; i++) {
-					sim.a[11].unshift(sim.a[12][0]);
-					sim.a[12].shift();
-				}
-				//deckShift += 1;
+			while (sim.a[12].length > 1) {
+				sim.a[11].unshift(sim.a[12][0]);
+				sim.a[12].shift();
 			}
 		
 			identifyMoves(sim);
@@ -616,6 +661,13 @@ var evals = function evals(st) {
 	}
 }
 var printGameState = function printGameState(st) {
+
+	console.log("Start of stock print");
+	for (var i = 0; i < st.a[11].length; i++) {
+		console.log(st.a[11][i].cardName);
+	}
+	console.log("End of stock print");
+
 	// stacks
 	const elements = document.getElementById('stacks'); // clear table before rebuilding
 	elements?.remove();
@@ -855,7 +907,7 @@ var identifyMoves = function identifyMoves(st) {
 	// consider all cards in stock as options
 		for (var x = 0; x < 7; x++) {
 			if (st.a[11].length > 0) {
-				for (var y=st.a[11].length-3; y>0; y-=3) {
+				for (var y=st.a[11].length-1; y>0; y--) { // for (var y=st.a[11].length-3; y>0; y-=3)
 				try {
 				if (st.a[11][y].faceup) {
 				// if card is king
@@ -1033,7 +1085,7 @@ function advanceGS(model, screen_width, screen_height) {
 	sortMoves(state);
 	executeMove(state,0);
 	console.log(state.a);
-	return state;
+	return;
 }
 var advanceGamestate = function advanceGamestate() {
 	parseInput(testInput[0], state, 1280, 720);

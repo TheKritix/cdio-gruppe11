@@ -10,8 +10,9 @@
 
 /* game rule button */
 .button-div {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
+    float: right;
   }
   
   /* css for popup window */

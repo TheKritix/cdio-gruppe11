@@ -143,12 +143,7 @@ function parseInput(input, st, img_width, img_height) {
 			
 		}
 		
-		var sum = 0;
-		while (sum < 52 - 1) {
-			sum = 0;
-			for (var i=0; i < output.length; i++) {
-				sum += output[i].length;
-			}
+		for (i = 0; i < 24; i++) {
 			output[11].push(new Card());
 		}
 
@@ -977,14 +972,14 @@ var executeMove = function executeMove(st,x) {
 		offset = (st.a[st.moves[x].srcX].length - 1) - st.moves[x].srcY;
 	}
 	if (st.moves[x].srcX == 11 && st.moves[x].dst != 12) {
-		st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,offset+1));
+		st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,1));
 	} else {
-		//for (var i = 0; i <= offset; i++) {
-			//st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.a[st.moves[x].srcX].length-1-(offset-i)]);
-			//st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
-			st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,offset+1));
+		for (var i = 0; i <= offset; i++) {
+			st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.a[st.moves[x].srcX].length-1-(offset-i)]);
+			st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
+			//st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,offset+1));
 			}
-		//}
+		}
 	}
 }
 /*

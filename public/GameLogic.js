@@ -950,7 +950,7 @@ var executeMove = function executeMove(st,x) {
 		//console.log("x:" + st.moves[x].srcX + "  y:" + st.moves[x].srcY);
 	}
 	st.moveHistory.unshift(st.moves[x]); // Add move to history
-	if (st.moves[x].srcX == 11 && st.moves[x].dst == 12) {
+	if (st.moves[x].srcX == 11 && st.moves[x].dst == 12) { // cycle stock
 		if ((st.a[11].length + st.a[12].length) > 0) {
 			if (st.a[11].length >= 3) {
 				for (var i=0; i<3; i++) {
@@ -977,14 +977,14 @@ var executeMove = function executeMove(st,x) {
 		offset = (st.a[st.moves[x].srcX].length - 1) - st.moves[x].srcY;
 	}
 	if (st.moves[x].srcX == 11 && st.moves[x].dst != 12) {
-		st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.moves[x].srcY]);
-		st.a[st.moves[x].srcX].splice(st.moves[x].srcY,1);	
+		st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,offset+1));
 	} else {
-		for (var i = 0; i <= offset; i++) {
-			st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.a[st.moves[x].srcX].length-1-(offset-i)]);
-			st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
+		//for (var i = 0; i <= offset; i++) {
+			//st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.a[st.moves[x].srcX].length-1-(offset-i)]);
+			//st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
+			st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,offset+1));
 			}
-		}
+		//}
 	}
 }
 /*
@@ -1086,6 +1086,9 @@ function advanceGS(model, screen_width, screen_height) {
 	console.log(state.a);
 	return;
 }
+
+// below this point is deprecated
+
 var advanceGamestate = function advanceGamestate() {
 	parseInput(testInput[0], state, 1280, 720);
 	faceControl(state);

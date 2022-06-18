@@ -1079,7 +1079,7 @@ function advanceGS(model, screen_width, screen_height) {
 	sortMoves(state);
 	executeMove(state,0);
 	console.log(state.a);
-	return;
+	return state;
 }
 
 // below this point is deprecated

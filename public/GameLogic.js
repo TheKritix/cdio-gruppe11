@@ -311,8 +311,8 @@ class Card {
 		var suit;
 		var cardName;
 		var faceup = false;
-		var img;
-		var originX;
+		var img; // image link for visual representation
+		var originX; // coordinates for where the card was found by image rec
 		var originY;
 	}
 	assignName() {
@@ -371,11 +371,9 @@ class LegalMove {
 		var srcX; // source of card to be moved
 		var srcY;
 		var dst; // destination of card to be moved
-		var moveUnderneath;
-		//var offset; // if multiple cards are to be moved how many
-		//var useOffset; // dicates whether cards below are to be moves
+		var moveUnderneath; // bool for whether multiple cards are moved
 		var score; // AI scoring of move
-		var real;
+		var real; // whether the move is legal
 		var type; // 0 for no card unveiled, 1 for tableau card unveiled, 2 for new stock card
 	}
 }    
@@ -1079,7 +1077,7 @@ function advanceGS(model, screen_width, screen_height) {
 	sortMoves(state);
 	executeMove(state,0);
 	console.log(state.a);
-	return;
+	return state;
 }
 
 // below this point is deprecated

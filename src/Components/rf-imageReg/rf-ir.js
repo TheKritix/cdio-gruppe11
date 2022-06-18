@@ -26,8 +26,26 @@ const PlayingCardReg = () => {
     desc: "",
     id: 0,
   }]);
-  const [cameraIsLoaded, setCameraIsLoaded] = useState();
-  
+  const [cameraIsLoaded, setCameraIsLoaded] = useState(false);
+
+  //checks if camera is live and then calls roboflow function
+  //source: https://stackoverflow.com/questions/50311525/check-if-webcam-is-already-activated
+  const isCamActive = () => {
+    navigator.mediaDevices.getUserMedia({video: true})
+    .then(function(stream){
+      var result = stream.getVideoTracks().some(function (track) {
+        return track.enabled && track.readyState === 'live';
+      });
+      if(result){
+      console.log("camera loaded")
+      //timeout just to test if it works
+        setTimeout(() => {
+          roboflowFunc();
+        }, 4000);
+      }
+    }).catch(function(err) {console.log(err.name + ": " + err.message + "... no cam bruv"); });
+  }
+
   useEffect(() => {
     // window.roboflow
     //   .auth({
@@ -47,14 +65,13 @@ const PlayingCardReg = () => {
     //     runModel();
     //     setWindowDimensions(getWindowDimensions());
     //   });
-    //document.getElementById("feed").addEventListener('onUserMedia', roboflowFunc());
-    //document.getElementById("feed").addEventListener('loadeddata', roboflowFunc());
+    isCamActive();
     setWindowDimensions(getWindowDimensions());
   }, []);
 
+  
   //from useEffect
   function roboflowFunc() {
-    console.log("loadeddata event")
     window.roboflow
       .auth({
         publishable_key: pKeys,
@@ -143,19 +160,12 @@ const PlayingCardReg = () => {
     }
     setMoveList(moveList.concat(moveObject))
 }  
-  const [mlStart, setMlStart] = useState(false)
 
   const callAdvanceGS = () => {
-    if (mlStart === false) {
-    roboflowFunc();
-    setMlStart(current => !current)
-    }
-    else {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st.moves[0]);
     console.log(moveList);
-    }
 }
 
 
@@ -185,7 +195,7 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
       <div id="overlay">
-        <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
+        <canvas id="canvas" width={windowDimensions.width * 0.65}height={windowDimensions.width * 0.365} />
       </div>
       <div id="webcamLayer">
         <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{

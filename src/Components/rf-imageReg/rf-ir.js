@@ -29,6 +29,7 @@ const PlayingCardReg = () => {
     id: 0,
   }]);
   const [loading, setLoading] = useState(false);
+  const [finishedLoading, setFinishedLoading] = useState(false);
   //finder window størrelse
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
@@ -95,7 +96,11 @@ const PlayingCardReg = () => {
 
         runModel();
       })
-      .then(setLoading(false));
+      .then(setFinishedLoading(true))
+      .then(
+        setTimeout(() => {
+          setLoading(false);
+        }, 2000))
   }
 
   async function runModel() {
@@ -199,8 +204,8 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
         <div id="overlay">
-          {loading 
-          ? (<Loader loading={loading} width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>)   
+          {loading
+          ? (<Loader loading={loading} finishedLoading={finishedLoading} width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>)   
           : (<canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />)
           }
         </div>

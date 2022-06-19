@@ -7,10 +7,14 @@
 
 /* div for cam */
 #overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid blue;
   position: absolute;
   z-index: 10;
   width: 65%;
+  height: 65%;
 }
 
 /* Cam layout */

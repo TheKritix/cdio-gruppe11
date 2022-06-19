@@ -1,9 +1,11 @@
 import Webcam from "react-webcam";
 import MoveList from "../../Components/GamePage/MoveList.js"
+import Loader from "../../Components/GamePage/Loader.js"
 import React, { useEffect, useState } from "react";
 import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
 import "../../Pages/GamePage.css";
+import SyncLoader from "react-spinners/SyncLoader";
 
 const PlayingCardReg = () => {
   //Test Flow Model
@@ -26,18 +28,22 @@ const PlayingCardReg = () => {
     desc: "",
     id: 0,
   }]);
-  const [cameraIsLoaded, setCameraIsLoaded] = useState(false);
+  const [loading, setLoading] = useState(false);
+  //finder window størrelse
+  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   //checks if camera is live and then calls roboflow function
   //source: https://stackoverflow.com/questions/50311525/check-if-webcam-is-already-activated
   const isCamActive = () => {
     navigator.mediaDevices.getUserMedia({video: true})
     .then(function(stream){
-      var result = stream.getVideoTracks().some(function (track) {
+      var result = stream.getVideoTracks()
+      .some(function (track) {
         return track.enabled && track.readyState === 'live';
       });
       if(result){
       console.log("camera loaded")
+      setLoading(true);
       //timeout just to test if it works
         setTimeout(() => {
           roboflowFunc();
@@ -64,7 +70,7 @@ const PlayingCardReg = () => {
 
     //     runModel();
     //     setWindowDimensions(getWindowDimensions());
-    //   });
+    //   })>
     isCamActive();
     setWindowDimensions(getWindowDimensions());
   }, []);
@@ -88,7 +94,8 @@ const PlayingCardReg = () => {
         setTimeout(200)
 
         runModel();
-      });
+      })
+      .then(setLoading(false));
   }
 
   async function runModel() {
@@ -178,9 +185,6 @@ const PlayingCardReg = () => {
     };
   }
 
-  //finder window størrelse
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
   const videoMax = {
     width: windowDimensions.width * 0.65,
     height: windowDimensions.width * 0.365,
@@ -194,19 +198,22 @@ const PlayingCardReg = () => {
   return (
     <div className="table-div">
       <div className="left">
-      <div id="overlay">
-        <canvas id="canvas" width={windowDimensions.width * 0.65}height={windowDimensions.width * 0.365} />
-      </div>
-      <div id="webcamLayer">
-        <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
-            width: "65%",
-            objectFit: "fill",
-            position: "absolute"
-          }}/>  
-      </div>
-      <div className="advance-div">
-        <AdvanceButton cameraHandler={callAdvanceGS}/>
-      </div>
+        <div id="overlay">
+          {loading 
+          ? (<Loader loading={loading} width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>)   
+          : (<canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />)
+          }
+        </div>
+        <div id="webcamLayer">
+          <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
+              width: "65%",
+              objectFit: "fill",
+              position: "absolute"
+            }}/>  
+        </div>
+        <div className="advance-div">
+          <AdvanceButton cameraHandler={callAdvanceGS}/>
+        </div>
       </div>
       <div className="right">
         <MoveList moveList={moveList}/>

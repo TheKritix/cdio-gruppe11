@@ -16,7 +16,7 @@ const PlayingCardReg = () => {
   //Prod model
   var PCRegModel;
   const pKeys =
-  "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
+  "rf_dmfFx6VKjIWvGQt19T1bGnO3uVw1";
   const loadModel = "spilekort";
   const versionModel = 7;
 

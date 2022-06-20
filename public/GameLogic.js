@@ -20,7 +20,7 @@ var state = {
 for (var i=0; i<state.a.length; i++) { // initialize board structure
 	state.a[i] = [];
 }
-const searchDepth = 4;
+var searchDepth = 5;
 var hasInit = false;
 var autoEnable = true;
 // nice seed: jZ3fcxlGWwmxXtcrS4hIZ8R0apeTZ9pLDiTrcXYenV1Cuow8H2KK1vNVRrPY0Y2M
@@ -191,7 +191,9 @@ function parseInput(input, st, img_width, img_height) {
 					maxDistance = Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2));
 				}
 			}
-			st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
+			if (Boolean(st.a[12][st.a[12].length-1].faceup) == false) {
+				st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
+			}
 		}
 	}
 	
@@ -838,7 +840,7 @@ var identifyMoves = function identifyMoves(st) {
 		if ((st.a[12].length > 0) && (st.a[x].length > 0)) {
 		if ( (st.a[12][st.a[12].length-1].value-1 == st.a[x][st.a[x].length-1].value)
 			&&(st.a[12][st.a[12].length-1].suit == st.a[x][st.a[x].length-1].suit) ) {
-			newMove((st.a[12][st.a[12].length-1].cardName+" to "+st.a[x][st.a[x].length-1].cardName + " from stock"), 12, st.a[12].length-1, x, 0);
+			newMove((st.a[12][st.a[12].length-1].cardName+" to foundation"), 12, st.a[12].length-1, x, 0);
 			}
 		} else {
 			if (st.a[12].length > 0) {
@@ -1041,12 +1043,27 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
+function reduceSearchDepthDynamically(st) {
+	var allRevealed = true;
+	for (var x = 0; x < 13; x++) {
+		for (var y = 0; y < st.a[x].length; y++) {
+			if (Boolean(st.a[x][y].faceup) == false) {
+				allRevealed = false; break;
+			}
+		}
+	}
+	if (allRevealed) {
+		searchDepth = 1;
+	}
+}
+
 function revertGameState(st) {
 	st = JSON.parse(JSON.stringify(oldGameState));
 }
 
 function advanceGS(model, screen_width, screen_height) {
 	oldGameState = JSON.parse(JSON.stringify(state));
+	reduceSearchDepthDynamically(state);
 	parseInput(model, state, screen_width, screen_height);
 	console.log(state);
 	printGameState(state);

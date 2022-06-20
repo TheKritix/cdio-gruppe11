@@ -33,39 +33,6 @@ const deltaX = 3; //%
 const deltaY = 3; //%
 var movedCardX;
 var movedCardY;
-var testInput = []
-
-
-testInput[0]=[
-	{ x: 85, y:138, name: "KC" },
-	{ x: 316, y:196, name: "JC"},
-	{ x: 522, y:265, name: "2H" },
-	{ x: 707, y:337, name: "QS" },
-	{ x: 891, y:416, name: "7C" },
-	{ x: 1046, y:497, name: "3D" },
-	{ x: 1183, y:556, name: "4C" }
-];
-testInput[1]=[
-	{ x: 85, y:138, name: "KC" },
-	{ x: 316, y:196, name: "JC"},
-	{ x: 522, y:265, name: "2H" },
-	{ x: 707, y:337, name: "QS" },
-	{ x: 891, y:416, name: "7C" },
-	{ x: 1186, y:604, name: "3D" },
-	{ x: 1183, y:556, name: "4C" },
-	{ x: 1046, y:417, name: "TH" }
-];
-testInput[2]=[
-	{ x: 85, y:138, name: "KC" },
-	{ x: 316, y:196, name: "JC"},
-	{ x: 315, y:264, name: "TH" },
-	{ x: 522, y:265, name: "2H" },
-	{ x: 707, y:337, name: "QS" },
-	{ x: 891, y:416, name: "7C" },
-	{ x: 1186, y:604, name: "3D" },
-	{ x: 1183, y:556, name: "4C" },
-	{ x: 1046, y:336, name: "2D" }
-];
 
 function parseRawFromModel(input) {
 	var outputArray = [];
@@ -560,7 +527,12 @@ var evals = function evals(st) {
 		var sim = JSON.parse(JSON.stringify(st)); // deep copy object
 		//if (st.moves[i].dst != 12) { // dont run for cycle stock
 			var debug = "Debug:";
+			try {
 			st.moves[i].score = s + scoreMove(sim,i,searchDepth,debug);
+			} catch (e) {
+				console.log(e);
+				console.log(st.moves[i]);
+			}
 		//}
 	}
 	var maxScore = st.moves[0].score;

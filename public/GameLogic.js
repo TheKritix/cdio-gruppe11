@@ -10,6 +10,7 @@ var decklist = []; // used for initializing random deck
 //var moves = []; // used to hold calculated valid moves
 var stmp = 0; // global variable for seed digest
 var hasEnforcedDrawPileRule = false;
+var oldGameState;
 var state = {
 	initialized: false,
 	a: Array(13) ,
@@ -143,12 +144,7 @@ function parseInput(input, st, img_width, img_height) {
 			
 		}
 		
-		var sum = 0;
-		while (sum < 52 - 1) {
-			sum = 0;
-			for (var i=0; i < output.length; i++) {
-				sum += output[i].length;
-			}
+		for (i = 0; i < 24; i++) {
 			output[11].push(new Card());
 		}
 
@@ -316,8 +312,8 @@ class Card {
 		var suit;
 		var cardName;
 		var faceup = false;
-		var img;
-		var originX;
+		var img; // image link for visual representation
+		var originX; // coordinates for where the card was found by image rec
 		var originY;
 	}
 	assignName() {
@@ -376,11 +372,9 @@ class LegalMove {
 		var srcX; // source of card to be moved
 		var srcY;
 		var dst; // destination of card to be moved
-		var moveUnderneath;
-		//var offset; // if multiple cards are to be moved how many
-		//var useOffset; // dicates whether cards below are to be moves
+		var moveUnderneath; // bool for whether multiple cards are moved
 		var score; // AI scoring of move
-		var real;
+		var real; // whether the move is legal
 		var type; // 0 for no card unveiled, 1 for tableau card unveiled, 2 for new stock card
 	}
 }    
@@ -950,7 +944,7 @@ var executeMove = function executeMove(st,x) {
 		//console.log("x:" + st.moves[x].srcX + "  y:" + st.moves[x].srcY);
 	}
 	st.moveHistory.unshift(st.moves[x]); // Add move to history
-	if (st.moves[x].srcX == 11 && st.moves[x].dst == 12) {
+	if (st.moves[x].srcX == 11 && st.moves[x].dst == 12) { // cycle stock
 		if ((st.a[11].length + st.a[12].length) > 0) {
 			if (st.a[11].length >= 3) {
 				for (var i=0; i<3; i++) {
@@ -977,12 +971,12 @@ var executeMove = function executeMove(st,x) {
 		offset = (st.a[st.moves[x].srcX].length - 1) - st.moves[x].srcY;
 	}
 	if (st.moves[x].srcX == 11 && st.moves[x].dst != 12) {
-		st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.moves[x].srcY]);
-		st.a[st.moves[x].srcX].splice(st.moves[x].srcY,1);	
+		st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,1));
 	} else {
 		for (var i = 0; i <= offset; i++) {
 			st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX][st.a[st.moves[x].srcX].length-1-(offset-i)]);
 			st.a[st.moves[x].srcX].splice(st.a[st.moves[x].srcX].length-1-(offset-i),1);
+			//st.a[st.moves[x].dst].push(st.a[st.moves[x].srcX].splice(st.moves[x].srcY,offset+1));
 			}
 		}
 	}
@@ -1075,7 +1069,12 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
+function revertGameState(st) {
+	st = JSON.parse(JSON.stringify(oldGameState));
+}
+
 function advanceGS(model, screen_width, screen_height) {
+	oldGameState = JSON.parse(JSON.stringify(state));
 	parseInput(model, state, screen_width, screen_height);
 	console.log(state);
 	printGameState(state);
@@ -1086,6 +1085,9 @@ function advanceGS(model, screen_width, screen_height) {
 	console.log(state.a);
 	return state;
 }
+
+// below this point is deprecated
+
 var advanceGamestate = function advanceGamestate() {
 	parseInput(testInput[0], state, 1280, 720);
 	faceControl(state);

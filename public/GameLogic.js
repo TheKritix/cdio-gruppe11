@@ -1061,7 +1061,7 @@ function advanceGS(model, screen_width, screen_height) {
 // below this point is deprecated
 
 var advanceGamestate = function advanceGamestate() {
-	parseInput(testInput[0], state, 1280, 720);
+	parseInput( state, 1280, 720);
 	faceControl(state);
 	printGameState(state);
 	identifyMoves(state);

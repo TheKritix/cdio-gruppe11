@@ -1046,13 +1046,13 @@ var sortMoves = function sortMoves(st) {
 function reduceSearchDepthDynamically(st) {
 	var allRevealed = true;
 	for (var x = 0; x < 13; x++) {
-		for (var y = 0; y < st.a[x].length; y++) {
-			if (Boolean(st.a[x][y].faceup) == false) {
-				allRevealed = false; break;
+		if (st.a[x].length > 0) {
+			if (Boolean(st.a[x][0].faceup) == false) {
+				allRevealed = false;
 			}
 		}
 	}
-	if (allRevealed) {
+	if (allRevealed === true) {
 		searchDepth = 1;
 	}
 }
@@ -1064,6 +1064,7 @@ function revertGameState(st) {
 function advanceGS(model, screen_width, screen_height) {
 	oldGameState = JSON.parse(JSON.stringify(state));
 	reduceSearchDepthDynamically(state);
+	console.log("searchDepth="+searchDepth);
 	parseInput(model, state, screen_width, screen_height);
 	console.log(state);
 	printGameState(state);

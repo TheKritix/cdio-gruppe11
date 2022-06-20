@@ -10,6 +10,7 @@ var decklist = []; // used for initializing random deck
 //var moves = []; // used to hold calculated valid moves
 var stmp = 0; // global variable for seed digest
 var hasEnforcedDrawPileRule = false;
+var oldGameState;
 var state = {
 	initialized: false,
 	a: Array(13) ,
@@ -1068,7 +1069,12 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
+function revertGameState(st) {
+	st = JSON.parse(JSON.stringify(oldGameState));
+}
+
 function advanceGS(model, screen_width, screen_height) {
+	oldGameState = JSON.parse(JSON.stringify(state));
 	parseInput(model, state, screen_width, screen_height);
 	console.log(state);
 	printGameState(state);

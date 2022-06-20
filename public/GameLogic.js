@@ -1047,7 +1047,7 @@ function reduceSearchDepthDynamically(st) {
 	var allRevealed = true;
 	for (var x = 0; x < 13; x++) {
 		if (st.a[x].length > 0) {
-			if (Boolean(st.a[x][0].faceup) == false) {
+			if (!st.a[x][0].faceup) {
 				allRevealed = false;
 			}
 		}

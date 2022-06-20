@@ -1044,15 +1044,15 @@ var sortMoves = function sortMoves(st) {
 }
 
 function reduceSearchDepthDynamically(st) {
-	var allRevealed = true;
+	var allRevealed = 1;
 	for (var x = 0; x < 13; x++) {
 		if (st.a[x].length > 0) {
 			if (!st.a[x][0].faceup) {
-				allRevealed = false;
+				allRevealed = 0;
 			}
 		}
 	}
-	if (allRevealed === true) {
+	if (allRevealed) {
 		searchDepth = 2;
 	}
 }

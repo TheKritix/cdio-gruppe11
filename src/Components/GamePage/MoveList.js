@@ -16,7 +16,7 @@ const MoveList = ({moveList}) => {
         scrollToLast()
     }, [moveList]);
 
-
+    
     
     return (
         <div className="movelist-div">
@@ -29,7 +29,7 @@ const MoveList = ({moveList}) => {
             <div className="movelist-content">
             {moveList.filter((move) => (move.id > 0)).map((move) => (
                 <p className="movelist-text" key={move.id}>
-                        {move.id}. {move.desc}
+                        {move.id}. {move.moves[0].desc}
                 </p>
             ))}
             <div ref={movesEndRef}/>

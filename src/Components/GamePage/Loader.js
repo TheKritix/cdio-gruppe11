@@ -4,19 +4,19 @@ import PulseLoader from "react-spinners/PulseLoader";
 import DoneIcon from '@mui/icons-material/Done';
 
 
-const Loader = ({loading, width, height, finishedLoading}) => {
+const Loader = ({loading, finishedLoading}) => {
 
     return (
         <div>
-            <div className="loader-div" style={{height: height * 0.2, width: width * 0.2}}>
+            <div className="loader-div" >
                 {finishedLoading
                 ? (<>
-                    <DoneIcon/>
                     <p className="loader-text">Model Loaded</p>
+                    <DoneIcon/>
                   </>)
                 : (<>
-                    <PulseLoader loading={loading} color={"black"}/>
                     <p className="loader-text">Loading model</p>
+                    <PulseLoader loading={loading} color={"black"}/>
                   </>)            
                 }
             </div>

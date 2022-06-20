@@ -26,8 +26,12 @@ const PlayingCardReg = () => {
   const [predModelState, setPredModelState] = useState();
   const [webcamCompState, setWebcamCompState] = useState();
   const [moveList, setMoveList] = useState([{
-    desc: "",
     id: 0,
+    initialized: false,
+    a: [],
+    moves: [],
+    moveHistory: []
+    
   }]);
   const [loading, setLoading] = useState(false);
   const [finishedLoading, setFinishedLoading] = useState(false);
@@ -168,51 +172,52 @@ const PlayingCardReg = () => {
 
   const addMoveToList = (st) => {
     const moveObject = {
-      desc: st.desc,
-      id: moveList.length 
+      id: moveList.length,
+      initialized: st.initialized,
+      a: st.a,
+      moves: st.moves,
+      moveHistory: st.moveHistory 
+      //desc: st.desc,
+      
     }
     setMoveList(moveList.concat(moveObject))
+    console.log(moveList);
 }  
-  // //scuffed timersetup 
-  // const [cd, setCd] = useState();
-  //   useEffect(() => {
-  //       cd > 0 && setTimeout(() => setCd(cd -1 ), 1000);
+  // const [cd, setCd] = useState(0);
+  // const [cdOn, setCdOn] = useState(false);
+  // const [cdOver, setCdOver] = useState(false);
 
-  //       if (cd === 0 ) {
-  //         console.log("PRUT")
-  //         reverseState(stList);
-  //       }
-  //   }, [cd])
-
-  // const [stList, setStList] = useState([{
-  //       initialized: false,
-  //       a: Array(13) ,
-  //       moves: [] ,
-  //       moveHistory: []
-  // }]);
-
-  //   const addStateToList = (st) => {
-  //     const stateObject = {
-  //       initialized: st.initialized,
-  //       a: st.a,
-  //       moves: st.moves,
-  //       moveHistory: st.moveHistory
-  //     }
-  //     setStList(stList.concat(stateObject))
-  // }  
-
-  // const reverseState = (stList) => {
-  //   window.revertGameState(stList[stList.length-1]);
+  // const tick = () => {
+  //   if (cd === 0) {
+  //     setCdOver(true);
+  //     deleteLastMove();
+  //   }
+  //   else {
+  //     setCd(cd - 1);
+  //   }
   // }
+
+  // const deleteLastMove = () => {
+  //   moveList.splice(-1)
+  // }
+
+  // const reset = () => {
+  //   setCd(30);
+  //   setCdOver(false);
+  // }
+  // //useeffect for timer 
+  // useEffect(() => {
+  //   const timerID = setInterval(() => tick(), 1000);
+  //   return () => clearInterval(timerID);
+  // });
+
 
   const callAdvanceGS = () => {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
-    addMoveToList(st.moves[0]);
-    // addStateToList(st);
-    // setCd(30);
-    console.log(moveList);
-    // console.log(stList);
+    addMoveToList(st);
+    //reset();
+    //console.log(moveList);
 }
 
 
@@ -241,9 +246,9 @@ const PlayingCardReg = () => {
     <div className="table-div">
       <div className="left">
         <div id="overlay">
-         <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
+         <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>
          {loading
-          ? (<Loader loading={loading} finishedLoading={finishedLoading} width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>)   
+          ? (<Loader loading={loading} finishedLoading={finishedLoading}/>)   
           : (<></>)// : (<canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />)
         }
         </div>
@@ -256,7 +261,7 @@ const PlayingCardReg = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
-          {/* <p>{cd}</p> */}
+          {/* {cdOver && cd === 0 ? (<></>) : (<p>{cd}</p>)} */}
         </div>
       </div>
       <div className="right">

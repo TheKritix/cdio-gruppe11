@@ -10,6 +10,7 @@ var decklist = []; // used for initializing random deck
 //var moves = []; // used to hold calculated valid moves
 var stmp = 0; // global variable for seed digest
 var hasEnforcedDrawPileRule = false;
+var oldGameState;
 var state = {
 	initialized: false,
 	a: Array(13) ,
@@ -311,8 +312,8 @@ class Card {
 		var suit;
 		var cardName;
 		var faceup = false;
-		var img;
-		var originX;
+		var img; // image link for visual representation
+		var originX; // coordinates for where the card was found by image rec
 		var originY;
 	}
 	assignName() {
@@ -371,11 +372,9 @@ class LegalMove {
 		var srcX; // source of card to be moved
 		var srcY;
 		var dst; // destination of card to be moved
-		var moveUnderneath;
-		//var offset; // if multiple cards are to be moved how many
-		//var useOffset; // dicates whether cards below are to be moves
+		var moveUnderneath; // bool for whether multiple cards are moved
 		var score; // AI scoring of move
-		var real;
+		var real; // whether the move is legal
 		var type; // 0 for no card unveiled, 1 for tableau card unveiled, 2 for new stock card
 	}
 }    
@@ -1072,7 +1071,12 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
+function revertGameState(st) {
+	st = JSON.parse(JSON.stringify(oldGameState));
+}
+
 function advanceGS(model, screen_width, screen_height) {
+	oldGameState = JSON.parse(JSON.stringify(state));
 	parseInput(model, state, screen_width, screen_height);
 	console.log(state);
 	printGameState(state);

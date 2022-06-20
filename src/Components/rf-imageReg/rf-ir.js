@@ -1,6 +1,7 @@
 import Webcam from "react-webcam";
 import MoveList from "../../Components/GamePage/MoveList.js"
 import Loader from "../../Components/GamePage/Loader.js"
+import Timer from "../../Components/GamePage/Timer.js"
 import React, { useEffect, useState } from "react";
 import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
@@ -18,7 +19,7 @@ const PlayingCardReg = () => {
   //Prod model
   var PCRegModel;
   const pKeys =
-  "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
+  "rf_dmfFx6VKjIWvGQt19T1bGnO3uVw1";
   const loadModel = "spilekort";
   const versionModel = 7;
 
@@ -100,7 +101,7 @@ const PlayingCardReg = () => {
       .then(
         setTimeout(() => {
           setLoading(false);
-        }, 2000))
+        }, 1000))
   }
 
   async function runModel() {
@@ -177,6 +178,7 @@ const PlayingCardReg = () => {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st.moves[0]);
+    setCd(30);
     console.log(moveList);
 }
 
@@ -200,14 +202,17 @@ const PlayingCardReg = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const webcamComp = React.useRef(null);
 
+  const [cd, setCd] = useState();
+
   return (
     <div className="table-div">
       <div className="left">
         <div id="overlay">
-          {loading
+         <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />
+         {loading
           ? (<Loader loading={loading} finishedLoading={finishedLoading} width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>)   
-          : (<canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />)
-          }
+          : (<></>)// : (<canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />)
+        }
         </div>
         <div id="webcamLayer">
           <Webcam id="feed" ref={webcamComp} videoConstraints={videoMax} style={{
@@ -218,6 +223,7 @@ const PlayingCardReg = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
+          <Timer cd={cd}/>
         </div>
       </div>
       <div className="right">

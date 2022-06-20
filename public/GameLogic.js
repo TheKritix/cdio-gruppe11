@@ -21,6 +21,7 @@ for (var i=0; i<state.a.length; i++) { // initialize board structure
 	state.a[i] = [];
 }
 var searchDepth = 5;
+var forceFromStockToTableauMove;
 var hasInit = false;
 var autoEnable = true;
 // nice seed: jZ3fcxlGWwmxXtcrS4hIZ8R0apeTZ9pLDiTrcXYenV1Cuow8H2KK1vNVRrPY0Y2M
@@ -384,19 +385,24 @@ var init = function init(st,seed) {
 }
 
 var categorize = function categorize(n) {
-	if (n <= 6) {
-		return 0;
-	} else if (n <= 10) {
+	if (n <= 6) { //tableau
+		return 0; 
+	} else if (n <= 10) { //foundation
 		return 1;
-	} else if (n == 11) {
+	} else if (n == 11) { //stock
 		return 2;
-	} else if (n == 12) {
+	} else if (n == 12) { //talon
 		return 3;
 	}
 	return -1;
 }
 
 var evals = function evals(st) {
+	if (st.a[11].length == 0 && st.a[12].length%3 == 0) {
+		forceFromStockToTableauMove = true;
+	} else if (st.a[11].length%3 != 0) {
+		forceFromStockToTableauMove = false;
+	}
 	//console.log("evals");
 	for (var i=0; i<st.moves.length; i++) {
 		var s = 0;
@@ -510,7 +516,7 @@ var evals = function evals(st) {
 			case 3: // source stock
 				switch(categorize(x2)) {	
 					case 0: // destination tableau
-						if ((st.a[11].length + st.a[12].length)%3 == 0) {
+						if (forceFromStockToTableauMove) {
 						s += c[10];
 						}
 						//debug += "9";

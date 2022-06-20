@@ -27,7 +27,7 @@ var autoEnable = true;
 // better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
 var c = Array(12);
 
-c = [60,-65,50,-45,15,1075,90,-80,5,17,20,80]; // changed 10000 to 17
+c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80]; // changed 10000 to 17
 
 const deltaX = 3; //%
 const deltaY = 3; //%
@@ -388,9 +388,9 @@ var categorize = function categorize(n) {
 		return 0;
 	} else if (n <= 10) {
 		return 1;
-	} else if (n === 11) {
+	} else if (n == 11) {
 		return 2;
-	} else if (n === 12) {
+	} else if (n == 12) {
 		return 3;
 	}
 	return -1;
@@ -510,7 +510,9 @@ var evals = function evals(st) {
 			case 3: // source stock
 				switch(categorize(x2)) {	
 					case 0: // destination tableau
+						if ((st.a[11].length + st.a[12].length)%3 == 0) {
 						s += c[10];
+						}
 						//debug += "9";
 					break;
 					case 1: // destination foundation

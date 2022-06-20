@@ -19,9 +19,6 @@
 
 /* Cam layout */
 #webcamLayer {
-  border: 1px solid red;
-  width: 35%;
-  height: 35%;
 }
 
 /* the content in the movelist */

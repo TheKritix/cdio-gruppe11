@@ -183,40 +183,51 @@ const PlayingCardReg = () => {
     setMoveList(moveList.concat(moveObject))
     console.log(moveList);
 }  
+
+
+
+// const startUndoTimer = () => {
+//   const timer = setTimeout(() => {
+//     console.log("timer")
+//     setMoveList(moveList.sort((move) => (move != moveList.pop())))
+//   }, 30000);
+//   return () => clearTimeout(timer);
+// }
   // const [cd, setCd] = useState(0);
-  // const [cdOn, setCdOn] = useState(false);
   // const [cdOver, setCdOver] = useState(false);
 
   // const tick = () => {
   //   if (cd === 0) {
-  //     setCdOver(true);
-  //     deleteLastMove();
+  //       setCdOver(true)
   //   }
   //   else {
   //     setCd(cd - 1);
   //   }
   // }
 
-  // const deleteLastMove = () => {
-  //   moveList.splice(-1)
-  // }
-
   // const reset = () => {
   //   setCd(30);
-  //   setCdOver(false);
+  //   setCdOver(false)
   // }
+
   // //useeffect for timer 
   // useEffect(() => {
   //   const timerID = setInterval(() => tick(), 1000);
-  //   return () => clearInterval(timerID);
+  //   return () => {
+  //     clearInterval(timerID);
+  //   }
   // });
+
+  // const clear = () => {
+  //   setMoveList(moveList.filter((move) => (move != moveList.pop())))
+  // }
 
 
   const callAdvanceGS = () => {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st);
-    //reset();
+    //startUndoTimer();
     //console.log(moveList);
 }
 

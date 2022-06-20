@@ -173,13 +173,46 @@ const PlayingCardReg = () => {
     }
     setMoveList(moveList.concat(moveObject))
 }  
+  // //scuffed timersetup 
+  // const [cd, setCd] = useState();
+  //   useEffect(() => {
+  //       cd > 0 && setTimeout(() => setCd(cd -1 ), 1000);
+
+  //       if (cd === 0 ) {
+  //         console.log("PRUT")
+  //         reverseState(stList);
+  //       }
+  //   }, [cd])
+
+  // const [stList, setStList] = useState([{
+  //       initialized: false,
+  //       a: Array(13) ,
+  //       moves: [] ,
+  //       moveHistory: []
+  // }]);
+
+  //   const addStateToList = (st) => {
+  //     const stateObject = {
+  //       initialized: st.initialized,
+  //       a: st.a,
+  //       moves: st.moves,
+  //       moveHistory: st.moveHistory
+  //     }
+  //     setStList(stList.concat(stateObject))
+  // }  
+
+  // const reverseState = (stList) => {
+  //   window.revertGameState(stList[stList.length-1]);
+  // }
 
   const callAdvanceGS = () => {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st.moves[0]);
-    setCd(30);
+    // addStateToList(st);
+    // setCd(30);
     console.log(moveList);
+    // console.log(stList);
 }
 
 
@@ -202,7 +235,7 @@ const PlayingCardReg = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const webcamComp = React.useRef(null);
 
-  const [cd, setCd] = useState();
+ 
 
   return (
     <div className="table-div">
@@ -223,7 +256,7 @@ const PlayingCardReg = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
-          <Timer cd={cd}/>
+          {/* <p>{cd}</p> */}
         </div>
       </div>
       <div className="right">

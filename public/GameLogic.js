@@ -1060,8 +1060,6 @@ function reduceSearchDepthDynamically(st) {
 	}
 }
 
-function revertGameState(st) {
-	st = JSON.parse(JSON.stringify(oldGameState));
 function revertGameState() {
 	state = JSON.parse(JSON.stringify(oldGameState));
 	console.log(state);

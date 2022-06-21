@@ -635,12 +635,6 @@ var evals = function evals(st) {
 }
 var printGameState = function printGameState(st) {
 
-	console.log("Start of stock print");
-	for (var i = 0; i < st.a[11].length; i++) {
-		console.log(st.a[11][i].cardName);
-	}
-	console.log("End of stock print");
-
 	// stacks
 	const elements = document.getElementById('stacks'); // clear table before rebuilding
 	elements?.remove();
@@ -881,9 +875,6 @@ var identifyMoves = function identifyMoves(st) {
 		for (var x = 0; x < 7; x++) {
 			if (st.a[11].length > 0) {
 				for (var y=0; y < st.a[11].length; y++) { // for (var y=st.a[11].length-3; y>0; y-=3)
-				if (x == 0) {
-				console.log("Card considered: "+st.a[11][y].cardName);
-				}
 				try {
 				if (st.a[11][y].faceup) {
 				// if card is king
@@ -1074,15 +1065,13 @@ function revertGameState(st) {
 function advanceGS(model, screen_width, screen_height) {
 	oldGameState = JSON.parse(JSON.stringify(state));
 	reduceSearchDepthDynamically(state);
-	console.log("searchDepth="+searchDepth);
 	parseInput(model, state, screen_width, screen_height);
-	console.log(state);
 	printGameState(state);
 	identifyMoves(state);
 	evals(state);
 	sortMoves(state);
 	executeMove(state,0);
-	console.log(state.a);
+	console.log(state);
 	return state;
 }
 

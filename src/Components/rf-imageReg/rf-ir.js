@@ -248,7 +248,7 @@ const PlayingCardReg = () => {
     facingMode: "environment",
   };
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  //eslint-disable-next-line react-hooks/rules-of-hooks
   const webcamComp = React.useRef(null);
 
  

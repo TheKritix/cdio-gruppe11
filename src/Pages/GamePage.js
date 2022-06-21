@@ -79,21 +79,19 @@ const GamePage = () => {
                       Solitaire game rules
                     </a>
                   </li>
-                  <li> Open camera by using the button "Camera" </li>
+                  <li> Click on "allow" in the popop window and the webcam will open. </li>
                   <li>
                     {" "}
-                    Take a picture of your solitaire and click "OK" to accept
-                    the picture. The game will now begin!
+                    Take a picture of your solitaire by clicking on the "Advances gamestate OK" button.
                   </li>
-                  <li>Our Algoritme will suggest the next possible move.</li>
-                  <li>
-                    Once you have made your move. Take a new piture of your
-                    solitaire, and the next possible move will be suggested.
+                  <li>You will know see the suggested next move in the move list to the right.</li>
+                  <li>Once you have made your move. Take a new picture of your solitaire by clicking on the "Advances gamestate OK" button again, and the next possible move will be suggested.
                   </li>
-                  <li>To the right you will see the list of moves made.</li>
+                  <li>You will see all the moves made in the move list.</li>
                   <li>
                     Continue until your solitaire is solved or it's no longer
                     possible to make a new move.
+                    
                   </li>
                 </ol>
               </div>

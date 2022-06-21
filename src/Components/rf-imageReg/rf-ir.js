@@ -100,13 +100,13 @@ const PlayingCardReg = () => {
         //Shitty solution for it to wait for the Camera to wake up, but works.
         //setTimeout(200)
 
-        runModel();
+        runModel()
+        .then(setFinishedLoading(true))
+        .then(
+          setTimeout(() => {
+            setLoading(false);
+          }, 1000))
       })
-      .then(setFinishedLoading(true))
-      .then(
-        setTimeout(() => {
-          setLoading(false);
-        }, 1000))
   }
 
   async function runModel() {
@@ -285,7 +285,7 @@ const callRevertGS = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
-          {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)}
+          {/* {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)} */}
           {/* {cdOver && cd === 0 ? (<></>) : (<p>{cd}</p>)} */}
         </div>
       </div>

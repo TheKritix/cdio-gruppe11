@@ -7,7 +7,7 @@ const MoveList = ({moveList}) => {
     //source for scroll: https://codesandbox.io/s/scrolltobottomexample-f90lz
     const movesEndRef = useRef(null);
 
-    //comment
+    //scrolls to empty div in bottom of parent div
     const scrollToLast = () => {
         movesEndRef.current?.scrollIntoView({ behavior: "smooth"})
     }
@@ -15,7 +15,6 @@ const MoveList = ({moveList}) => {
     useEffect(() => {
         scrollToLast()
     }, [moveList]);
-
 
     
     return (
@@ -29,7 +28,7 @@ const MoveList = ({moveList}) => {
             <div className="movelist-content">
             {moveList.filter((move) => (move.id > 0)).map((move) => (
                 <p className="movelist-text" key={move.id}>
-                        {move.id}. {move.desc}
+                        {move.id}. {move.moves[0].desc}
                 </p>
             ))}
             <div ref={movesEndRef}/>

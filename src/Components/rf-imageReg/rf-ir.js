@@ -285,7 +285,7 @@ const callRevertGS = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
-          {/* {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)} */}
+          {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)}
           {/* {cdOver && cd === 0 ? (<></>) : (<p>{cd}</p>)} */}
         </div>
       </div>

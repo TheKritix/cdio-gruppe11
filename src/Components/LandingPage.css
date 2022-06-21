@@ -82,6 +82,9 @@
   z-index: -1;
 }
 
+/*Animation for falling cards*/
+/*source: https://codepen.io/esornire/full/ZKbmdx*/
+
 /*time for when cards is falling down*/
 .card1 {
   animation-duration: 4s;

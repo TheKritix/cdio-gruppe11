@@ -5,6 +5,11 @@ import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
 import "../../Pages/GamePage.css";
 
+//Author: Kristoffer T. Pedersen
+//Source: https://docs.roboflow.com/inference/web-browser
+//Source: https://towardsdatascience.com/how-to-use-tensorflow-js-in-react-js-object-detection-98b3782f08c2
+//Source: https://www.section.io/engineering-education/building-an-object-detection-application-with-tensorflowjs-and-reactjs/
+
 const PlayingCardReg = () => {
   //Test Flow Model
   // var PCRegModel;
@@ -29,26 +34,6 @@ const PlayingCardReg = () => {
   const [cameraIsLoaded, setCameraIsLoaded] = useState();
   
   useEffect(() => {
-    // window.roboflow
-    //   .auth({
-    //     publishable_key: pKeys,
-    //   })
-    //   .load({
-    //     model: loadModel,
-    //     version: versionModel,
-    //   })
-    //   .then(function (model) {
-    //     console.log("Bitch ass model loaded");
-    //     PCRegModel = model;
-
-    //     //Shitty solution for it to wait for the Camera to wake up, but works.
-    //     setTimeout(200)
-
-    //     runModel();
-    //     setWindowDimensions(getWindowDimensions());
-    //   });
-    //document.getElementById("feed").addEventListener('onUserMedia', roboflowFunc());
-    //document.getElementById("feed").addEventListener('loadeddata', roboflowFunc());
     setWindowDimensions(getWindowDimensions());
   }, []);
 
@@ -106,12 +91,7 @@ const PlayingCardReg = () => {
           ctx.fillStyle = predModel[n].color;
 
           ctx.fillText(
-            predModel[n].class 
-            // +
-            //   ": " +
-            //   Math.round(parseFloat(predModel[n].confidence) * 100) +
-            //   "%"
-              ,
+            predModel[n].class,
             bboxLeft,
             bboxTop
           );

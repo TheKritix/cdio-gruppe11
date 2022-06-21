@@ -882,6 +882,9 @@ var identifyMoves = function identifyMoves(st) {
 		for (var x = 0; x < 7; x++) {
 			if (st.a[11].length > 0) {
 				for (var y=st.a[11].length-1; y>0; y--) { // for (var y=st.a[11].length-3; y>0; y-=3)
+				if (x == 0) {
+				console.log("Card considered: "+st.a[11][y].cardName);
+				}
 				try {
 				if (st.a[11][y].faceup) {
 				// if card is king

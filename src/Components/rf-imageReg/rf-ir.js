@@ -24,14 +24,8 @@ const PlayingCardReg = () => {
 
   //Prod model
   var PCRegModel;
-<<<<<<< HEAD
-  const pKeys = "u8RcGfMlTYb8CXocUGM0GVEg78D3";
-  //"rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
-  //"rf_dmfFx6VKjIWvGQt19T1bGnO3uVw1";
-=======
   const pKeys =
   "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
->>>>>>> 40a7c3ae84514a8edb59ed8cc59c1703433a4ca4
   const loadModel = "spilekort";
   const versionModel = 7;
 
@@ -291,7 +285,7 @@ const callRevertGS = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
-          {/* {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)} */}
+          {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)}
           {/* {cdOver && cd === 0 ? (<></>) : (<p>{cd}</p>)} */}
         </div>
       </div>

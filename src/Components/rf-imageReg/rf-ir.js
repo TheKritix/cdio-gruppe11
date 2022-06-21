@@ -34,26 +34,6 @@ const PlayingCardReg = () => {
   const [cameraIsLoaded, setCameraIsLoaded] = useState();
   
   useEffect(() => {
-    // window.roboflow
-    //   .auth({
-    //     publishable_key: pKeys,
-    //   })
-    //   .load({
-    //     model: loadModel,
-    //     version: versionModel,
-    //   })
-    //   .then(function (model) {
-    //     console.log("Bitch ass model loaded");
-    //     PCRegModel = model;
-
-    //     //Shitty solution for it to wait for the Camera to wake up, but works.
-    //     setTimeout(200)
-
-    //     runModel();
-    //     setWindowDimensions(getWindowDimensions());
-    //   });
-    //document.getElementById("feed").addEventListener('onUserMedia', roboflowFunc());
-    //document.getElementById("feed").addEventListener('loadeddata', roboflowFunc());
     setWindowDimensions(getWindowDimensions());
   }, []);
 
@@ -111,12 +91,7 @@ const PlayingCardReg = () => {
           ctx.fillStyle = predModel[n].color;
 
           ctx.fillText(
-            predModel[n].class 
-            // +
-            //   ": " +
-            //   Math.round(parseFloat(predModel[n].confidence) * 100) +
-            //   "%"
-              ,
+            predModel[n].class,
             bboxLeft,
             bboxTop
           );

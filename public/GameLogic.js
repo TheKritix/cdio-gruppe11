@@ -587,9 +587,8 @@ var evals = function evals(st) {
 			*/
 			executeMove(sim,move);
 			
-			while (sim.a[12].length > 1) {
-				sim.a[11].unshift(sim.a[12][0]);
-				sim.a[12].shift();
+			while (st.a[12].length > 1) {
+				st.a[11].splice(0,0,st.a[12].shift());
 			}
 		
 			identifyMoves(sim);
@@ -881,7 +880,7 @@ var identifyMoves = function identifyMoves(st) {
 	// consider all cards in stock as options
 		for (var x = 0; x < 7; x++) {
 			if (st.a[11].length > 0) {
-				for (var y=st.a[11].length-1; y>0; y--) { // for (var y=st.a[11].length-3; y>0; y-=3)
+				for (var y=0; y < st.a[11].length; y++) { // for (var y=st.a[11].length-3; y>0; y-=3)
 				if (x == 0) {
 				console.log("Card considered: "+st.a[11][y].cardName);
 				}

@@ -542,14 +542,12 @@ var evals = function evals(st) {
 		while (sim.a[12].length > 1) {
 			sim.a[11].splice(0,0,sim.a[12].shift());
 		}
-		//if (st.moves[i].dst != 12) { // dont run for cycle stock
+		st.moves[i].score = s;
 			try {
-			st.moves[i].score = s + scoreMove(sim,i,searchDepth);
+			st.moves[i].score += scoreMove(sim,i,searchDepth);
 			} catch (e) {
 				console.log(e);
-				console.log(st.moves[i]);
 			}
-		//}
 	}
 	var maxScore = st.moves[0].score;
 	for (var i=0; i<st.moves.length; i++) {

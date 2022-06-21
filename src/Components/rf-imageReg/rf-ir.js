@@ -7,6 +7,8 @@ import "../../Pages/GamePage.css";
 
 //Author: Kristoffer T. Pedersen
 //Source: https://docs.roboflow.com/inference/web-browser
+//Source: https://towardsdatascience.com/how-to-use-tensorflow-js-in-react-js-object-detection-98b3782f08c2
+//Source: https://www.section.io/engineering-education/building-an-object-detection-application-with-tensorflowjs-and-reactjs/
 
 const PlayingCardReg = () => {
   //Test Flow Model

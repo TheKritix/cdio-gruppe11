@@ -227,8 +227,7 @@ const PlayingCardReg = () => {
     var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     console.log("Predictions:", predModelState);
     addMoveToList(st);
-    //startUndoTimer();
-    //console.log(moveList);
+    console.log(moveList);
 }
 
 

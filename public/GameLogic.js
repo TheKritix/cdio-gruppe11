@@ -1061,7 +1061,7 @@ function reduceSearchDepthDynamically(st) {
 	if (allRevealed) {
 		searchDepth = 1;
 	}else{
-		searchDepth = 5;
+		searchDepth = 4;
 	}
 }
 

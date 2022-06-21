@@ -536,6 +536,10 @@ var evals = function evals(st) {
 		//console.log(debug);
 		// recursion
 		var sim = JSON.parse(JSON.stringify(st)); // deep copy object
+
+		while (sim.a[12].length > 1) {
+			sim.a[11].splice(0,0,sim.a[12].shift());
+		}
 		//if (st.moves[i].dst != 12) { // dont run for cycle stock
 			try {
 			st.moves[i].score = s + scoreMove(sim,i,searchDepth);
@@ -586,10 +590,6 @@ var evals = function evals(st) {
 			console.log(st.moves[move]);
 			*/
 			executeMove(sim,move);
-			
-			while (st.a[12].length > 1) {
-				st.a[11].splice(0,0,st.a[12].shift());
-			}
 		
 			identifyMoves(sim);
 			for (var i=0; i<sim.moves.length; i++) {

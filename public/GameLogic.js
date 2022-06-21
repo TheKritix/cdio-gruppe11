@@ -1071,8 +1071,9 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
-function revertGameState(st) {
-	st = JSON.parse(JSON.stringify(oldGameState));
+function revertGameState() {
+	state = JSON.parse(JSON.stringify(oldGameState));
+	console.log(state);
 }
 
 function advanceGS(model, screen_width, screen_height) {

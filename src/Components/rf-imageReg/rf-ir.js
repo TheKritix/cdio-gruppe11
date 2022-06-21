@@ -7,6 +7,7 @@ import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
 import "../../Pages/GamePage.css";
 import SyncLoader from "react-spinners/SyncLoader";
+import { AddLocationRounded } from "@mui/icons-material";
 
 const PlayingCardReg = () => {
   //Test Flow Model
@@ -19,7 +20,7 @@ const PlayingCardReg = () => {
   //Prod model
   var PCRegModel;
   const pKeys =
-  "rf_dmfFx6VKjIWvGQt19T1bGnO3uVw1";
+  "rf_u8RcGfMlTYb8CXocUGM0GVEg78D3";
   const loadModel = "spilekort";
   const versionModel = 7;
 
@@ -97,7 +98,7 @@ const PlayingCardReg = () => {
         PCRegModel = model;
 
         //Shitty solution for it to wait for the Camera to wake up, but works.
-        setTimeout(200)
+        //setTimeout(200)
 
         runModel();
       })
@@ -222,12 +223,25 @@ const PlayingCardReg = () => {
   //   setMoveList(moveList.filter((move) => (move != moveList.pop())))
   // }
 
+  var old;
+  var st;
 
   const callAdvanceGS = () => {
-    var st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
+    st = window.advanceGS(predModelState, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
+    old = JSON.parse(JSON.stringify(st));
+    console.log(old);
+    setRevShow(true);
     console.log("Predictions:", predModelState);
     addMoveToList(st);
     console.log(moveList);
+}
+ 
+const [revShow, setRevShow] = useState(false);
+const callRevertGS = () => {
+    window.revertGameState(st);
+    setRevShow(false);
+    moveList.pop();
+    setMoveList(moveList);
 }
 
 
@@ -271,6 +285,7 @@ const PlayingCardReg = () => {
         </div>
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
+          {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)}
           {/* {cdOver && cd === 0 ? (<></>) : (<p>{cd}</p>)} */}
         </div>
       </div>

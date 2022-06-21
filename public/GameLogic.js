@@ -192,8 +192,10 @@ function parseInput(input, st, img_width, img_height) {
 					maxDistance = Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2));
 				}
 			}
-			if (Boolean(st.a[12][st.a[12].length-1].faceup) == false) {
-				st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
+			if (st.a[12].length > 0) {
+				if (Boolean(st.a[12][st.a[12].length-1].faceup) == false) {
+					st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
+				}
 			}
 		}
 	}
@@ -642,11 +644,13 @@ var printGameState = function printGameState(st) {
 const stck = document.createElement('table');
 	stck.id = 'stacks';
 	//stck.style.width = '15%';
-	stck.style.border = '1px solid black'; // show element position for debugging
+	//stck.style.border = '1px solid black'; // show element position for debugging
+	stck.style.width = '20%';
 	stck.style.position = 'absolute';
 	stck.style.marginBottom = '10%';
-	stck.style.marginLeft = '65%';
-	stck.style.top = '50%';
+	stck.style.marginLeft = '67.5%';
+	stck.style.top = '55%';
+	stck.style.zIndex = 0;
 		const trs = stck.insertRow();
 		for (var i = 0; i < 2; i++) {
 			const tds = trs.insertCell();
@@ -689,10 +693,10 @@ const stck = document.createElement('table');
 const tbl = document.createElement('table');
 	tbl.id = 'tableau';
 	  tbl.style.width = '20%';
-	  tbl.style.border = '1px solid black'; // show element position for debugging
+	  //tbl.style.border = '1px solid black'; // show element position for debugging
 	tbl.style.position = 'absolute';
 	tbl.style.marginTop = '20%';
-	tbl.style.marginLeft = '65%';
+	tbl.style.marginLeft = '67.5%';
 	tbl.style.top = '40%';
 	for (var y = 0; y < 21; y++) { // 21 is max height of a solitaire game
 		const tr = tbl.insertRow();

@@ -49,7 +49,7 @@ const PlayingCardReg = () => {
         version: versionModel,
       })
       .then(function (model) {
-        console.log("Bitch ass model loaded");
+        console.log("TensorFlowJS Model loaded successfully");
         PCRegModel = model;
 
         //Shitty solution for it to wait for the Camera to wake up, but works.

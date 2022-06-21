@@ -20,8 +20,9 @@ const PlayingCardReg = () => {
 
   //Prod model
   var PCRegModel;
-  const pKeys =
-  "rf_dmfFx6VKjIWvGQt19T1bGnO3uVw1";
+  const pKeys = "u8RcGfMlTYb8CXocUGM0GVEg78D3";
+  //"rf_hB1FG8hLbwhs49HoSSxyjNek1up1";
+  //"rf_dmfFx6VKjIWvGQt19T1bGnO3uVw1";
   const loadModel = "spilekort";
   const versionModel = 7;
 

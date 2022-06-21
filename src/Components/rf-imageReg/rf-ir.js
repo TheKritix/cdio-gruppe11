@@ -5,6 +5,9 @@ import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
 import "../../Pages/GamePage.css";
 
+//Author: Kristoffer T. Pedersen
+//Source: https://docs.roboflow.com/inference/web-browser
+
 const PlayingCardReg = () => {
   //Test Flow Model
   // var PCRegModel;

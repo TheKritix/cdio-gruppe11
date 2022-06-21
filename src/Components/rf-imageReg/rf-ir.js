@@ -65,8 +65,6 @@ const PlayingCardReg = () => {
   }
 
   useEffect(() => {
-<<<<<<< HEAD
-=======
     // window.roboflow
     //   .auth({
     //     publishable_key: pKeys,
@@ -86,7 +84,6 @@ const PlayingCardReg = () => {
     //     setWindowDimensions(getWindowDimensions());
     //   })>
     isCamActive();
->>>>>>> dev_ui_lau
     setWindowDimensions(getWindowDimensions());
   }, []);
 

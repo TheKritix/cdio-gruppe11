@@ -1044,7 +1044,6 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
-<<<<<<< HEAD
 function reduceSearchDepthDynamically(st) {
 	var allRevealed = 1;
 	for (var x = 0; x < 13; x++) {
@@ -1063,11 +1062,9 @@ function reduceSearchDepthDynamically(st) {
 
 function revertGameState(st) {
 	st = JSON.parse(JSON.stringify(oldGameState));
-=======
 function revertGameState() {
 	state = JSON.parse(JSON.stringify(oldGameState));
 	console.log(state);
->>>>>>> dev_ui_lau
 }
 
 function advanceGS(model, screen_width, screen_height) {

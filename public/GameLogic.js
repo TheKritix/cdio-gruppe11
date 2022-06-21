@@ -28,7 +28,7 @@ var autoEnable = true;
 // better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
 var c = Array(12);
 
-c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80]; // changed 10000 to 17
+c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80,20]; // changed 10000 to 17
 
 const deltaX = 3; //%
 const deltaY = 3; //%
@@ -428,7 +428,7 @@ var evals = function evals(st) {
 							s += c[1]; // was neg
 							//debug += "1";
 							for (var x=0; x<10; x++) { // x is column
-								if (st.a[x].length > 0) {
+								if (st.a[x].length > 0) { 
 									if (st.a[x1][y1-1].value - 1 == st.a[x][st.a[x].length-1].value &&
 										st.a[x1][y1-1].suit % 2 != st.a[x][st.a[x].length-1].suit % 2) {
 											s += c[2];
@@ -519,6 +519,7 @@ var evals = function evals(st) {
 						if (forceFromStockToTableauMove) {
 						s += c[10];
 						}
+						s += c[12];
 						//debug += "9";
 					break;
 					case 1: // destination foundation
@@ -536,9 +537,8 @@ var evals = function evals(st) {
 		// recursion
 		var sim = JSON.parse(JSON.stringify(st)); // deep copy object
 		//if (st.moves[i].dst != 12) { // dont run for cycle stock
-			var debug = "Debug:";
 			try {
-			st.moves[i].score = s + scoreMove(sim,i,searchDepth,debug);
+			st.moves[i].score = s + scoreMove(sim,i,searchDepth);
 			} catch (e) {
 				console.log(e);
 				console.log(st.moves[i]);
@@ -556,10 +556,9 @@ var evals = function evals(st) {
 	st.moves[0].score = maxScore;
 
 
-	function scoreMove(st, move, d, debug) {
+	function scoreMove(st, move, d) {
 		var s = 0;
 		if (d-- > 0) {
-			debug = debug+","+st.moves[move].desc;
 			//console.log(st.moves[move]);
 			var x1 = st.moves[move].srcX;
 			//var y1 = (st.a[st.moves[move].srcX].length - st.moves[move].offset - 1);
@@ -574,7 +573,6 @@ var evals = function evals(st) {
 			} 
 			} catch {
 				console.log("x1:"+x1+" y1:"+y1);
-				console.log(debug);
 			}
 			var sim = JSON.parse(JSON.stringify(st)); // deep copy object
 			/*var sim = JSON.stringify(st); 
@@ -598,7 +596,7 @@ var evals = function evals(st) {
 			for (var i=0; i<sim.moves.length; i++) {
 				if (sim.moves[i].dst != 12) { // avoid cycle stock in recursion
 					var tmp = 0;	
-					tmp = scoreMove(sim,i,d,debug); 
+					tmp = scoreMove(sim,i,d); 
 					if (tmp > s) {
 						s = tmp;
 					}

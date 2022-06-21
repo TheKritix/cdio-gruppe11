@@ -1,3 +1,5 @@
+/*Background fade*/
+/*soruce: https://www.w3schools.com/css/css3_gradients.asp*/
 .landingpage {
   display: flex;
   position: relative;
@@ -5,6 +7,7 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  /*Background fade*/
   background: linear-gradient(180deg, #000, #10a329);
   background-size: 100% 100%;
   animation: sky 50s ease infinite;
@@ -81,6 +84,9 @@
   transform: translate3d(0, 0, 0);
   z-index: -1;
 }
+
+/*Animation for falling cards*/
+/*source: https://codepen.io/esornire/full/ZKbmdx*/
 
 /*time for when cards is falling down*/
 .card1 {

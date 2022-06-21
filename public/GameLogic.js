@@ -28,7 +28,7 @@ var autoEnable = true;
 // better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
 var c = Array(12);
 
-c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80]; // changed 10000 to 17
+c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80,20]; // changed 10000 to 17
 
 const deltaX = 3; //%
 const deltaY = 3; //%
@@ -428,7 +428,7 @@ var evals = function evals(st) {
 							s += c[1]; // was neg
 							//debug += "1";
 							for (var x=0; x<10; x++) { // x is column
-								if (st.a[x].length > 0) {
+								if (st.a[x].length > 0) { 
 									if (st.a[x1][y1-1].value - 1 == st.a[x][st.a[x].length-1].value &&
 										st.a[x1][y1-1].suit % 2 != st.a[x][st.a[x].length-1].suit % 2) {
 											s += c[2];
@@ -519,6 +519,7 @@ var evals = function evals(st) {
 						if (forceFromStockToTableauMove) {
 						s += c[10];
 						}
+						s += c[12];
 						//debug += "9";
 					break;
 					case 1: // destination foundation
@@ -535,10 +536,13 @@ var evals = function evals(st) {
 		//console.log(debug);
 		// recursion
 		var sim = JSON.parse(JSON.stringify(st)); // deep copy object
+
+		while (sim.a[12].length > 1) {
+			sim.a[11].splice(0,0,sim.a[12].shift());
+		}
 		//if (st.moves[i].dst != 12) { // dont run for cycle stock
-			var debug = "Debug:";
 			try {
-			st.moves[i].score = s + scoreMove(sim,i,searchDepth,debug);
+			st.moves[i].score = s + scoreMove(sim,i,searchDepth);
 			} catch (e) {
 				console.log(e);
 				console.log(st.moves[i]);
@@ -556,10 +560,9 @@ var evals = function evals(st) {
 	st.moves[0].score = maxScore;
 
 
-	function scoreMove(st, move, d, debug) {
+	function scoreMove(st, move, d) {
 		var s = 0;
 		if (d-- > 0) {
-			debug = debug+","+st.moves[move].desc;
 			//console.log(st.moves[move]);
 			var x1 = st.moves[move].srcX;
 			//var y1 = (st.a[st.moves[move].srcX].length - st.moves[move].offset - 1);
@@ -574,7 +577,6 @@ var evals = function evals(st) {
 			} 
 			} catch {
 				console.log("x1:"+x1+" y1:"+y1);
-				console.log(debug);
 			}
 			var sim = JSON.parse(JSON.stringify(st)); // deep copy object
 			/*var sim = JSON.stringify(st); 
@@ -588,17 +590,12 @@ var evals = function evals(st) {
 			console.log(st.moves[move]);
 			*/
 			executeMove(sim,move);
-			
-			while (sim.a[12].length > 1) {
-				sim.a[11].unshift(sim.a[12][0]);
-				sim.a[12].shift();
-			}
 		
 			identifyMoves(sim);
 			for (var i=0; i<sim.moves.length; i++) {
 				if (sim.moves[i].dst != 12) { // avoid cycle stock in recursion
 					var tmp = 0;	
-					tmp = scoreMove(sim,i,d,debug); 
+					tmp = scoreMove(sim,i,d); 
 					if (tmp > s) {
 						s = tmp;
 					}
@@ -638,28 +635,23 @@ var evals = function evals(st) {
 }
 var printGameState = function printGameState(st) {
 
-	console.log("Start of stock print");
-	for (var i = 0; i < st.a[11].length; i++) {
-		console.log(st.a[11][i].cardName);
-	}
-	console.log("End of stock print");
-
 	// stacks
 	const elements = document.getElementById('stacks'); // clear table before rebuilding
 	elements?.remove();
 	const body = document.body;
 const stck = document.createElement('table');
 	stck.id = 'stacks';
-	stck.style.width = '75px';
-	//stck.style.border = '1px solid black'; // show element position for debugging
+	//stck.style.width = '15%';
+	stck.style.border = '1px solid black'; // show element position for debugging
 	stck.style.position = 'absolute';
-	stck.style.marginBottom = '200px';
-	stck.style.top = '1000px';
+	stck.style.marginBottom = '10%';
+	stck.style.marginLeft = '65%';
+	stck.style.top = '50%';
 		const trs = stck.insertRow();
 		for (var i = 0; i < 2; i++) {
 			const tds = trs.insertCell();
 			const cs = document.createElement("img");
-			cs.style.marginRight = '60px';
+			cs.style.marginRight = '50px';
 			if (i==0) {
 			if (st.a[11].length > 0)
 				cs.src = "./cards/back.png";
@@ -671,7 +663,7 @@ const stck = document.createElement('table');
 				else
 				cs.src = "./cards/base.png";
 			cs.style.marginLeft = '-60px';
-			cs.style.width = '75px';
+			cs.style.width = '60px';
 			}
 			tds.appendChild(cs);
 		}
@@ -687,7 +679,7 @@ const stck = document.createElement('table');
 			else {
 				cs.src = "./cards/base.png"; 
 			}
-			cs.style.width = '75px';
+			cs.style.width = '60px';
 			tds.appendChild(cs);
 		}
 	body.appendChild(stck);
@@ -696,11 +688,12 @@ const stck = document.createElement('table');
 	element?.remove();
 const tbl = document.createElement('table');
 	tbl.id = 'tableau';
-	  tbl.style.width = '75px';
-	  //tbl.style.border = '1px solid black'; // show element position for debugging
+	  tbl.style.width = '20%';
+	  tbl.style.border = '1px solid black'; // show element position for debugging
 	tbl.style.position = 'absolute';
-	tbl.style.marginTop = '300px';
-	tbl.style.top = '1000px';
+	tbl.style.marginTop = '20%';
+	tbl.style.marginLeft = '65%';
+	tbl.style.top = '40%';
 	for (var y = 0; y < 21; y++) { // 21 is max height of a solitaire game
 		const tr = tbl.insertRow();
 		for (var x = 0; x < 7; x++) {
@@ -711,7 +704,7 @@ const tbl = document.createElement('table');
 				const c = document.createElement("img");
 				c.src = st.a[x][y].img;
 				c.style.marginTop = '-90px'; // these values should be global constants and scaled
-				c.style.width = '75px';
+				c.style.width = '60px';
 				td.appendChild(c);
 				}
 				else 
@@ -719,7 +712,7 @@ const tbl = document.createElement('table');
 					const c = document.createElement("img");
 					c.src = "./cards/back.png";
 					c.style.marginTop = '-90px';
-					c.style.width = '75px';
+					c.style.width = '60px';
 					td.appendChild(c);
 				}
 			} else {
@@ -727,7 +720,7 @@ const tbl = document.createElement('table');
 					const c = document.createElement("img");
 					c.src = "./cards/base.png";
 					c.style.marginTop = '-90px';
-					c.style.width = '75px';
+					c.style.width = '60px';
 					td.appendChild(c);
 				}
 			}
@@ -883,7 +876,7 @@ var identifyMoves = function identifyMoves(st) {
 	// consider all cards in stock as options
 		for (var x = 0; x < 7; x++) {
 			if (st.a[11].length > 0) {
-				for (var y=st.a[11].length-1; y>0; y--) { // for (var y=st.a[11].length-3; y>0; y-=3)
+				for (var y=0; y < st.a[11].length; y++) { // for (var y=st.a[11].length-3; y>0; y-=3)
 				try {
 				if (st.a[11][y].faceup) {
 				// if card is king
@@ -1063,26 +1056,25 @@ function reduceSearchDepthDynamically(st) {
 	if (allRevealed) {
 		searchDepth = 1;
 	}else{
-		searchDepth = 5;
+		searchDepth = 4;
 	}
 }
 
-function revertGameState(st) {
-	st = JSON.parse(JSON.stringify(oldGameState));
+function revertGameState() {
+	state = JSON.parse(JSON.stringify(oldGameState));
+	console.log(state);
 }
 
 function advanceGS(model, screen_width, screen_height) {
 	oldGameState = JSON.parse(JSON.stringify(state));
 	reduceSearchDepthDynamically(state);
-	console.log("searchDepth="+searchDepth);
 	parseInput(model, state, screen_width, screen_height);
-	console.log(state);
 	printGameState(state);
 	identifyMoves(state);
 	evals(state);
 	sortMoves(state);
 	executeMove(state,0);
-	console.log(state.a);
+	console.log(state);
 	return state;
 }
 

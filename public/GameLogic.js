@@ -192,8 +192,10 @@ function parseInput(input, st, img_width, img_height) {
 					maxDistance = Math.sqrt(Math.pow(input[i].bbox.x,2) + Math.pow(input[i].bbox.y,2));
 				}
 			}
-			if (Boolean(st.a[12][st.a[12].length-1].faceup) == false) {
-				st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
+			if (st.a[12].length > 0) {
+				if (Boolean(st.a[12][st.a[12].length-1].faceup) == false) {
+					st.a[12].splice(st.a[12].length-1,1,convert(input[index]));
+				}
 			}
 		}
 	}

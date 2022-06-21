@@ -641,16 +641,17 @@ var printGameState = function printGameState(st) {
 	const body = document.body;
 const stck = document.createElement('table');
 	stck.id = 'stacks';
-	stck.style.width = '75px';
-	//stck.style.border = '1px solid black'; // show element position for debugging
+	//stck.style.width = '15%';
+	stck.style.border = '1px solid black'; // show element position for debugging
 	stck.style.position = 'absolute';
-	stck.style.marginBottom = '200px';
-	stck.style.top = '1000px';
+	stck.style.marginBottom = '10%';
+	stck.style.marginLeft = '65%';
+	stck.style.top = '50%';
 		const trs = stck.insertRow();
 		for (var i = 0; i < 2; i++) {
 			const tds = trs.insertCell();
 			const cs = document.createElement("img");
-			cs.style.marginRight = '60px';
+			cs.style.marginRight = '50px';
 			if (i==0) {
 			if (st.a[11].length > 0)
 				cs.src = "./cards/back.png";
@@ -662,7 +663,7 @@ const stck = document.createElement('table');
 				else
 				cs.src = "./cards/base.png";
 			cs.style.marginLeft = '-60px';
-			cs.style.width = '75px';
+			cs.style.width = '60px';
 			}
 			tds.appendChild(cs);
 		}
@@ -678,7 +679,7 @@ const stck = document.createElement('table');
 			else {
 				cs.src = "./cards/base.png"; 
 			}
-			cs.style.width = '75px';
+			cs.style.width = '60px';
 			tds.appendChild(cs);
 		}
 	body.appendChild(stck);
@@ -687,11 +688,12 @@ const stck = document.createElement('table');
 	element?.remove();
 const tbl = document.createElement('table');
 	tbl.id = 'tableau';
-	  tbl.style.width = '75px';
-	  //tbl.style.border = '1px solid black'; // show element position for debugging
+	  tbl.style.width = '20%';
+	  tbl.style.border = '1px solid black'; // show element position for debugging
 	tbl.style.position = 'absolute';
-	tbl.style.marginTop = '300px';
-	tbl.style.top = '1000px';
+	tbl.style.marginTop = '20%';
+	tbl.style.marginLeft = '65%';
+	tbl.style.top = '40%';
 	for (var y = 0; y < 21; y++) { // 21 is max height of a solitaire game
 		const tr = tbl.insertRow();
 		for (var x = 0; x < 7; x++) {
@@ -702,7 +704,7 @@ const tbl = document.createElement('table');
 				const c = document.createElement("img");
 				c.src = st.a[x][y].img;
 				c.style.marginTop = '-90px'; // these values should be global constants and scaled
-				c.style.width = '75px';
+				c.style.width = '60px';
 				td.appendChild(c);
 				}
 				else 
@@ -710,7 +712,7 @@ const tbl = document.createElement('table');
 					const c = document.createElement("img");
 					c.src = "./cards/back.png";
 					c.style.marginTop = '-90px';
-					c.style.width = '75px';
+					c.style.width = '60px';
 					td.appendChild(c);
 				}
 			} else {
@@ -718,7 +720,7 @@ const tbl = document.createElement('table');
 					const c = document.createElement("img");
 					c.src = "./cards/base.png";
 					c.style.marginTop = '-90px';
-					c.style.width = '75px';
+					c.style.width = '60px';
 					td.appendChild(c);
 				}
 			}
@@ -1042,6 +1044,7 @@ var sortMoves = function sortMoves(st) {
 	console.log(st.moves[0]);
 }
 
+<<<<<<< HEAD
 function reduceSearchDepthDynamically(st) {
 	var allRevealed = 1;
 	for (var x = 0; x < 13; x++) {
@@ -1060,6 +1063,11 @@ function reduceSearchDepthDynamically(st) {
 
 function revertGameState(st) {
 	st = JSON.parse(JSON.stringify(oldGameState));
+=======
+function revertGameState() {
+	state = JSON.parse(JSON.stringify(oldGameState));
+	console.log(state);
+>>>>>>> dev_ui_lau
 }
 
 function advanceGS(model, screen_width, screen_height) {

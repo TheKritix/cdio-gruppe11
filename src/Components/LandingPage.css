@@ -1,0 +1,344 @@
+/*Background fade*/
+/*soruce: https://www.w3schools.com/css/css3_gradients.asp*/
+.landingpage {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /*Background fade*/
+  background: linear-gradient(180deg, #000, #10a329);
+  background-size: 100% 100%;
+  animation: sky 50s ease infinite;
+  z-index: -1;
+  /*Make images and title not selectable */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+ /*headline*/
+ .title {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 150px;
+  color: rgb(255, 255, 255);
+  text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+  font-family: "Cinzel", serif;
+}
+
+/*div for game button*/
+.button-list {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 60%;
+  height: 70px;
+  width: 100%;
+}
+
+/*Start game button*/
+.button {
+  width: 200px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: "Cinzel", serif;
+  box-shadow: 0px 0px 12px -2px;
+  background-color: rgb(255, 240, 211);
+  justify-content: center;
+  height: 50px;
+}
+
+
+.button:hover {
+  background-color: rgb(50, 53, 52);
+  color: white;
+}
+.button:active {
+  background-color: rgb(44, 43, 40);
+  transform: translate(4px);
+}
+
+@keyframes sky {
+  0% {
+    background-position: 50% 0;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0;
+  }
+}
+
+
+/*div for cards*/
+.deck {
+  display: block;
+  position: relative;
+  top: -10px;
+  animation: rain linear infinite;
+  transform: translate3d(0, 0, 0);
+  z-index: -1;
+}
+
+/*Animation for falling cards*/
+/*source: https://codepen.io/esornire/full/ZKbmdx*/
+
+/*time for when cards is falling down*/
+.card1 {
+  animation-duration: 4s;
+}
+
+.card2 {
+  animation-duration: 5.5s;
+}
+
+.card3 {
+  animation-duration: 4.1s;
+}
+
+.card4 {
+  animation-duration: 6s;
+}
+
+.card5 {
+  animation-duration: 4.5s;
+}
+
+.card6 {
+  animation-duration: 4.7s;
+}
+
+.card7 {
+  animation-duration: 5s;
+}
+.card8 {
+  animation-duration: 3.5s;
+}
+
+.card9 {
+  animation-duration: 3.8s;
+}
+.card10 {
+  animation-duration: 4.2s;
+}
+
+
+/*animation start and stop on the screen*/
+@keyframes rain {
+  from {
+    top: -30%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+/* END OF LANDINGPAGE */
+
+/*Link for scaling*/
+/*Source: https://www.w3schools.com/cssref/css3_pr_mediaquery.asp*/
+/* SCALE OF LANDINGPAGE BEGIN */
+@media only screen and (max-width: 1230px) {
+
+  /*headline*/
+  .title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(255, 255, 255);
+    text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+    font-family: "Cinzel", serif;
+    font-size: 150px;
+    
+  }
+  
+  /*div for game button*/
+  .button-list {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 60%;
+    height: 70px;
+    width: 100%;
+  }
+  
+  /*Start game button*/
+  .button {
+    width: 200px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: "Cinzel", serif;
+    box-shadow: 0px 0px 12px -2px;
+    background-color: rgb(255, 240, 211);
+    justify-content: center;
+    height: 50px;
+  }
+  
+  
+  .button:hover {
+    background-color: rgb(50, 53, 52);
+    color: white;
+  }
+  .button:active {
+    background-color: rgb(44, 43, 40);
+    transform: translate(4px);
+  }
+  
+  }
+
+@media only screen and (max-width: 1139px) {
+
+  /*headline*/
+  .title {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 130px;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+    font-family: "Cinzel", serif;
+  }
+  
+  /*div for game button*/
+  .button-list {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 60%;
+    height: 70px;
+    width: 100%;
+  }
+  
+  /*Start game button*/
+  .button {
+    width: 200px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: "Cinzel", serif;
+    box-shadow: 0px 0px 12px -2px;
+    background-color: rgb(255, 240, 211);
+    justify-content: center;
+    height: 50px;
+  }
+  
+  
+  .button:hover {
+    background-color: rgb(50, 53, 52);
+    color: white;
+  }
+  .button:active {
+    background-color: rgb(44, 43, 40);
+    transform: translate(4px);
+  }
+
+  img{
+    height: 160px;
+  }
+  }
+
+  @media only screen and (max-width: 600px) {
+    /*headline*/
+    .title {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 90px;
+      color: rgb(255, 255, 255);
+      text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+      font-family: "Cinzel", serif;
+    }
+    
+    /*div for game button*/
+    .button-list {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      top: 60%;
+      height: 70px;
+      width: 100%;
+    }
+    
+    /*Start game button*/
+    .button {
+      width: 200px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-family: "Cinzel", serif;
+      box-shadow: 0px 0px 12px -2px;
+      background-color: rgb(255, 240, 211);
+      justify-content: center;
+      height: 50px;
+    }
+    
+    
+    .button:hover {
+      background-color: rgb(50, 53, 52);
+      color: white;
+    }
+    .button:active {
+      background-color: rgb(44, 43, 40);
+      transform: translate(4px);
+    }
+
+    img{
+      height: 110px;
+    }
+    }
+
+   
+
+  @media only screen and (max-width: 421px) {
+    /*headline*/
+    .title {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 150px;
+      color: rgb(255, 255, 255);
+      text-shadow: 0 9px 9px rgba(0, 0, 0, 0.25);
+      font-family: "Cinzel", serif;
+    }
+    
+    /*div for game button*/
+    .button-list {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      top: 60%;
+      height: 70px;
+      width: 100%;
+    }
+    
+    /*Start game button*/
+    .button {
+      width: 200px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-family: "Cinzel", serif;
+      box-shadow: 0px 0px 12px -2px;
+      background-color: rgb(255, 240, 211);
+      justify-content: center;
+      height: 50px;
+    }
+    
+    
+    .button:hover {
+      background-color: rgb(50, 53, 52);
+      color: white;
+    }
+    .button:active {
+      background-color: rgb(44, 43, 40);
+      transform: translate(4px);
+    }
+    }
+
+   

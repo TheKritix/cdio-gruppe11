@@ -1,18 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react";
-import Webcam from "react-webcam";
-import Tensor from "tensor"
+import {BrowserRouter, Route, Routes} from 'react-router-dom'; 
+import HomePage from './Pages/HomePage';
+import PopUpPage from './Pages/PopUpPage';
+import GamePage from './Pages/GamePage';
+
 
 function App() {
-  const WebcamComponent = () => <Webcam />;
+  document.title = "Solitaire"
   return (
-    <div className="App">
-      <header className="App-header">
-        <Webcam
-        ></Webcam>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage/>}></Route>
+        <Route path= "#" element={<PopUpPage/>}></Route>
+        <Route path="/gamepage" element={<GamePage/>}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

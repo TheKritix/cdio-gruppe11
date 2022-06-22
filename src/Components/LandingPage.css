@@ -140,7 +140,8 @@
 
 /* END OF LANDINGPAGE */
 
-
+/*Link for scaling*/
+/*Source: https://www.w3schools.com/cssref/css3_pr_mediaquery.asp*/
 /* SCALE OF LANDINGPAGE BEGIN */
 @media only screen and (max-width: 1230px) {
 

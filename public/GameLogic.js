@@ -28,7 +28,7 @@ var autoEnable = true;
 // better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
 var c = Array(12);
 
-c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80,20]; // changed 10000 to 17
+c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80,20,-80]; // changed 10000 to 17
 
 const deltaX = 3; //%
 const deltaY = 3; //%
@@ -133,7 +133,7 @@ function parseInput(input, st, img_width, img_height) {
 		if (st.moveHistory[0].type === 1) {
 			var success = false;
 			for (var i=0; i < input.length; i++) {
-				console.log("inputx:" + input[i].bbox.x + "  srcX:"+movedCardX+"  img_width:"+img_width);
+				//console.log("inputx:" + input[i].bbox.x + "  srcX:"+movedCardX+"  img_width:"+img_width);
 				if  (((Math.abs((input[i].bbox.x - movedCardX)/img_width) < deltaX/100) &&
 					(Math.abs(movedCardY - input[i].bbox.y - input[i].bbox.height)/img_height < deltaY/100)) 
 					|| ((Math.abs((input[i].bbox.x - movedCardX + input[i].bbox.x*3)/img_width) < deltaX/100) &&
@@ -146,7 +146,7 @@ function parseInput(input, st, img_width, img_height) {
 							if (st.a[j][z].faceup) {
 								if (st.a[j][z].cardName == tmp.cardName) {
 									match = true;
-									console.log("match = true; " + tmp.cardName);
+									//console.log("match = true; " + tmp.cardName);
 								}
 							}
 						}
@@ -431,6 +431,7 @@ var evals = function evals(st) {
 							//debug += "1";
 							for (var x=0; x<10; x++) { // x is column
 								if (st.a[x].length > 0) { 
+									// Would the card underneath the card being moved lead to available tableau moves?
 									if (st.a[x1][y1-1].value - 1 == st.a[x][st.a[x].length-1].value &&
 										st.a[x1][y1-1].suit % 2 != st.a[x][st.a[x].length-1].suit % 2) {
 											s += c[2];
@@ -441,6 +442,7 @@ var evals = function evals(st) {
 								for (var y=1; y<st.a[x].length; y++) { // y is depth
 									if (categorize(x) == 0) { // tableau
 										if (st.a[x].length > 0) {
+					
 											if (st.a[x1][y1-1].value + 1 == st.a[x][y-1].value &&
 												st.a[x1][y1-1].suit % 2 != st.a[x][y-1].suit % 2) {
 													s += c[3]; // was neg
@@ -515,7 +517,7 @@ var evals = function evals(st) {
 				}
 				//debug += "8";
 			break;
-			case 3: // source stock
+			case 3: // source talon
 				switch(categorize(x2)) {	
 					case 0: // destination tableau
 						if (forceFromStockToTableauMove) {
@@ -526,6 +528,9 @@ var evals = function evals(st) {
 					break;
 					case 1: // destination foundation
 						s += c[11];
+						if ((st.a[12].length+st.a[11].length+1)%3 == 0) {
+							s += c[13];
+						}
 						//debug += "A";
 					break;
 					default:

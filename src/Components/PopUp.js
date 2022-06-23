@@ -13,4 +13,4 @@ const PopUp = props => {
     )
 }
 
-export default PopUp
+export default PopUp;

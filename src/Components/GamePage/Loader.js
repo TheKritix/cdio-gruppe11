@@ -3,7 +3,7 @@ import {useRef, useState} from "react"
 import PulseLoader from "react-spinners/PulseLoader";
 import DoneIcon from '@mui/icons-material/Done';
 
-
+//author: Lauritz Pepke
 const Loader = ({loading, finishedLoading}) => {
 
     return (

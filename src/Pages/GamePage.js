@@ -2,8 +2,6 @@ import "./GamePage.css";
 import "../Components/GamePage/AdvanceButton.js";
 import AdvanceButton from "../Components/GamePage/AdvanceButton.js";
 import PlayingCardReg from "../Components/rf-imageReg/rf-ir";
-import Tableau from "../Components/GamePage/Tableau.js";
-import MoveList from "../Components/GamePage/MoveList.js";
 import React, { useState, useEffect } from "react";
 import PopUp from "../Components/PopUp";
 import { Help } from "@mui/icons-material";
@@ -102,15 +100,8 @@ const GamePage = () => {
 
         {isCameraOpen && !isOpen ? (
           <PlayingCardReg />
-        ) : (
-          <Tableau cards={cards} />
-        )}
-        {/* <MoveList moves={moves}/> */}
-        {/* <div className="advance-div">
-                    <AdvanceButton
-                        cameraHandler={isCameraOpenHandler}
-                    />
-                </div> */}
+        ) : (<></>)
+        }
       </div>
     </>
   );

@@ -5,11 +5,10 @@ import Timer from "../../Components/GamePage/Timer.js"
 import React, { useEffect, useState } from "react";
 import AdvanceButton from "../../Components/GamePage/AdvanceButton.js";
 import "./rf-ir.css";
-import "../../Pages/GamePage.css";
-import SyncLoader from "react-spinners/SyncLoader";
+import "../../Pages/GamePage.css"
 import { AddLocationRounded } from "@mui/icons-material";
 
-//Author: Kristoffer T. Pedersen
+//Author: Kristoffer T. Pedersen, Lauritz Pepke
 //Source: https://docs.roboflow.com/inference/web-browser
 //Source: https://towardsdatascience.com/how-to-use-tensorflow-js-in-react-js-object-detection-98b3782f08c2
 //Source: https://www.section.io/engineering-education/building-an-object-detection-application-with-tensorflowjs-and-reactjs/
@@ -65,24 +64,7 @@ const PlayingCardReg = () => {
   }
 
   useEffect(() => {
-    // window.roboflow
-    //   .auth({
-    //     publishable_key: pKeys,
-    //   })
-    //   .load({
-    //     model: loadModel,
-    //     version: versionModel,
-    //   })
-    //   .then(function (model) {
-    //     console.log("Bitch ass model loaded");
-    //     PCRegModel = model;
-
-    //     //Shitty solution for it to wait for the Camera to wake up, but works.
-    //     setTimeout(200)
-
-    //     runModel();
-    //     setWindowDimensions(getWindowDimensions());
-    //   })>
+    //isCamActive checks if the webcam runs, then calls roboFlowFunc, which then calls runModel
     isCamActive();
     setWindowDimensions(getWindowDimensions());
   }, []);
@@ -101,9 +83,6 @@ const PlayingCardReg = () => {
       .then(function (model) {
         console.log("TensorFlowJS Model loaded successfully");
         PCRegModel = model;
-
-        //Shitty solution for it to wait for the Camera to wake up, but works.
-        //setTimeout(200)
 
         runModel()
         .then(setFinishedLoading(true))
@@ -158,14 +137,9 @@ const PlayingCardReg = () => {
           ctx.stroke();
         }
       }
-      //Advance for GameLogic.js Script
-      //Skal køre på click af advance button.
-
+  
       setPredModelState(predModel);
       setWebcamCompState(webcamCompState);
-
-      //callAdvanceGS(predModel, webcamComp)
-      //window.advanceGS(predModel, webcamComp.current.video.videoWidth, webcamComp.current.video.videoHeight);
     }
 
     setTimeout(() => runModel(), 1000);  
@@ -178,51 +152,12 @@ const PlayingCardReg = () => {
       a: st.a,
       moves: st.moves,
       moveHistory: st.moveHistory 
-      //desc: st.desc,
       
     }
     setMoveList(moveList.concat(moveObject))
     console.log(moveList);
 }  
-
-
-
-// const startUndoTimer = () => {
-//   const timer = setTimeout(() => {
-//     console.log("timer")
-//     setMoveList(moveList.sort((move) => (move != moveList.pop())))
-//   }, 30000);
-//   return () => clearTimeout(timer);
-// }
-  // const [cd, setCd] = useState(0);
-  // const [cdOver, setCdOver] = useState(false);
-
-  // const tick = () => {
-  //   if (cd === 0) {
-  //       setCdOver(true)
-  //   }
-  //   else {
-  //     setCd(cd - 1);
-  //   }
-  // }
-
-  // const reset = () => {
-  //   setCd(30);
-  //   setCdOver(false)
-  // }
-
-  // //useeffect for timer 
-  // useEffect(() => {
-  //   const timerID = setInterval(() => tick(), 1000);
-  //   return () => {
-  //     clearInterval(timerID);
-  //   }
-  // });
-
-  // const clear = () => {
-  //   setMoveList(moveList.filter((move) => (move != moveList.pop())))
-  // }
-
+  //variables to aid the calling of javascript code from GameLogic.js
   var old;
   var st;
 
@@ -273,7 +208,7 @@ const callRevertGS = () => {
          <canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365}/>
          {loading
           ? (<Loader loading={loading} finishedLoading={finishedLoading}/>)   
-          : (<></>)// : (<canvas id="canvas" width={windowDimensions.width * 0.65} height={windowDimensions.width * 0.365} />)
+          : (<></>)
         }
         </div>
         <div id="webcamLayer">
@@ -286,7 +221,6 @@ const callRevertGS = () => {
         <div className="advance-div">
           <AdvanceButton cameraHandler={callAdvanceGS}/>
           {revShow ?(<button style={{width: "100px", height: "100px"}} onClick={callRevertGS}>REVERT</button>) : (<></>)}
-          {/* {cdOver && cd === 0 ? (<></>) : (<p>{cd}</p>)} */}
         </div>
       </div>
       <div className="right">

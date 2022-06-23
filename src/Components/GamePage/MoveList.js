@@ -1,7 +1,7 @@
 import "../../Pages/GamePage.css"
 import {useRef, useEffect} from "react"
  
-
+//author: Lauritz Pepke
 const MoveList = ({moveList}) => {
     
     //source for scroll: https://codesandbox.io/s/scrolltobottomexample-f90lz

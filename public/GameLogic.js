@@ -1056,7 +1056,7 @@ function reduceSearchDepthDynamically(st) {
 		}
 	}
 	if (allRevealed) {
-		searchDepth = 1;
+		searchDepth = 2;
 	}else{
 		searchDepth = 4;
 	}

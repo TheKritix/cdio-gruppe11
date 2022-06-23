@@ -28,7 +28,7 @@ var autoEnable = true;
 // better experiment seed: yulIf7e2jhJa3a88mnNtDjfIJUkOw4EEiCQ4VqY689hoT2JcypKdzCqAnyCsR74p
 var c = Array(12);
 
-c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80,20,-80]; // changed 10000 to 17
+c = [60,-65,50,-45,15,1075,90,-80,5,17,40,80,20,0]; // changed 10000 to 17
 
 const deltaX = 3; //%
 const deltaY = 3; //%
